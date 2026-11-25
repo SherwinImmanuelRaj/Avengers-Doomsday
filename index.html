@@ -85,167 +85,82 @@
       font-family: 'Cinzel', Georgia, serif;
     }
 
-    /* =====================================================================
-       GLASSMORPHIC SURFACES & UNOFFICIAL STYLING
-    ===================================================================== */
     .glass {
       background: var(--glass-bg);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--glass-border);
       box-shadow: var(--card-shadow);
     }
 
     .glass-strong {
       background: var(--glass-bg-strong);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
       box-shadow: var(--card-shadow);
     }
 
-    .unofficial-card {
-      border: 1.5px dashed rgba(168, 85, 247, 0.65) !important;
-      background: linear-gradient(145deg, rgba(168, 85, 247, 0.08), var(--glass-bg));
+    /* Latverian Emerald & Cosmic Accents */
+    .glow-doom {
+      text-shadow: 0 0 24px rgba(16, 185, 129, 0.7), 0 0 45px rgba(16, 185, 129, 0.35);
+    }
+
+    .border-glow-doom {
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.38), inset 0 0 15px rgba(16, 185, 129, 0.15);
     }
 
     .unofficial-badge {
+      border: 1px dashed rgba(168, 85, 247, 0.8);
+      background: rgba(168, 85, 247, 0.16);
+      color: #c084fc;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 7px;
+      border-radius: 9999px;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      padding: 2px 8px;
-      border-radius: 9999px;
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #e9d5ff;
-      background: rgba(168, 85, 247, 0.25);
-      border: 1px dashed #a855f7;
     }
 
-    [data-theme="light"] .unofficial-badge {
-      color: #6b21a8;
-      background: rgba(168, 85, 247, 0.14);
+    .unofficial-card {
+      border-style: dashed !important;
+      border-color: rgba(168, 85, 247, 0.55) !important;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(13, 19, 34, 0.7)) !important;
     }
 
     /* =====================================================================
-       AUDIO EQUALIZER ANIMATION
+       3D MULTIVERSE CHARACTER HOLO-STAGE & PEDESTAL STYLES
     ===================================================================== */
-    @keyframes eqBounce1 { 0%, 100% { height: 4px; } 50% { height: 14px; } }
-    @keyframes eqBounce2 { 0%, 100% { height: 14px; } 50% { height: 6px; } }
-    @keyframes eqBounce3 { 0%, 100% { height: 7px; } 50% { height: 16px; } }
-    .music-playing .music-bar:nth-child(1) { animation: eqBounce1 0.72s ease-in-out infinite; }
-    .music-playing .music-bar:nth-child(2) { animation: eqBounce2 0.58s ease-in-out infinite; }
-    .music-playing .music-bar:nth-child(3) { animation: eqBounce3 0.82s ease-in-out infinite; }
-
-    /* =====================================================================
-       3D CSS TILT CARDS & SPECULAR SHEEN
-    ===================================================================== */
-    .tilt-card {
-      transform-style: preserve-3d;
-      transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
-      position: relative;
-    }
-
-    .tilt-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.15), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      pointer-events: none;
-      border-radius: inherit;
-    }
-
-    .tilt-card:hover::after {
-      opacity: 1;
-    }
-
-    .tilt-card:hover {
-      border-color: var(--glass-border-hover);
-    }
-
-    /* =====================================================================
-       POPOUT 3D REAL CHARACTER DOSSIER CARDS
-    ===================================================================== */
-    .popout-card {
-      position: relative;
-      padding-top: 52px !important;
-      overflow: visible !important;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .popout-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 45px -12px rgba(16, 185, 129, 0.25);
-    }
-
-    .popout-cutout-img {
-      position: absolute;
-      top: -48px;
-      left: 50%;
-      transform: translateX(-50%) translateZ(20px);
-      width: 120px;
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      z-index: 20;
-    }
-
-    .popout-cutout-img img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.75));
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
-    }
-
-    .popout-card:hover .popout-cutout-img img {
-      transform: translateY(-12px) scale(1.15) translateZ(40px);
-      filter: drop-shadow(0 20px 28px rgba(16, 185, 129, 0.5));
-    }
-
-    /* =====================================================================
-       SECTION 1.5: 3D MULTIVERSE CHARACTER HOLO-STAGE
-    ===================================================================== */
-    #holo-stage {
-      position: relative;
-    }
-
     .holo-viewport {
-      perspective: 1100px;
-      min-height: 520px;
+      perspective: 1200px;
+      perspective-origin: 50% 50%;
     }
 
     .holo-stage-3d {
-      position: relative;
-      width: 100%;
-      height: 100%;
       transform-style: preserve-3d;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.15s ease-out;
     }
 
     .holo-pedestal {
       position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%) rotateX(72deg);
+      bottom: 18px;
       width: 320px;
-      height: 320px;
+      height: 72px;
       border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0.15) 45%, transparent 70%);
       border: 2px solid rgba(16, 185, 129, 0.6);
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(14, 165, 233, 0.12) 45%, transparent 70%);
-      box-shadow: 0 0 50px rgba(16, 185, 129, 0.45), inset 0 0 35px rgba(16, 185, 129, 0.35);
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.4), inset 0 0 25px rgba(16, 185, 129, 0.3);
+      transform: rotateX(72deg);
+      pointer-events: none;
       animation: pedestalPulse 4s ease-in-out infinite;
     }
 
     .holo-pedestal-rings {
       position: absolute;
-      inset: -15px;
+      inset: -12px;
       border-radius: 50%;
       border: 1px dashed rgba(234, 179, 8, 0.5);
       animation: pedestalSpin 24s linear infinite;
@@ -325,7 +240,7 @@
 
     .movie-backdrop-header {
       position: relative;
-      height: 135px;
+      height: 140px;
       width: 100%;
       overflow: hidden;
       background-size: cover;
@@ -368,13 +283,30 @@
     }
 
     /* =====================================================================
-       HERO 3D CANVAS & EMBOSSED LOGO ANIMATIONS
+       HERO MEDIA CONTAINER (CINEMATIC VIDEO BACKGROUND + CANVAS OVERLAY)
     ===================================================================== */
-    #hero-canvas-container {
+    #hero-media-container {
       position: absolute;
       inset: 0;
       z-index: 0;
       overflow: hidden;
+    }
+
+    #hero-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.62;
+    }
+
+    #hero-canvas-container {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
     }
 
     #hero-canvas-container canvas {
@@ -386,9 +318,9 @@
     .hero-vignette {
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: 2;
       background:
-        radial-gradient(circle at 50% 42%, transparent 18%, rgba(6, 8, 15, 0.65) 75%, var(--bg-primary) 100%),
+        radial-gradient(circle at 50% 42%, transparent 16%, rgba(6, 8, 15, 0.68) 72%, var(--bg-primary) 100%),
         linear-gradient(to bottom, rgba(6, 8, 15, 0.35) 0%, transparent 25%, transparent 72%, var(--bg-primary) 100%);
       pointer-events: none;
     }
@@ -418,7 +350,7 @@
     }
 
     /* =====================================================================
-       INTERACTIVE MULTIVERSE CONNECTION MAP
+       INTERACTIVE MULTIVERSE CONNECTION MAP & MOBILE SCROLL CONTROL
     ===================================================================== */
     #map-viewport {
       position: relative;
@@ -427,13 +359,17 @@
       overflow: hidden;
       background: var(--map-bg);
       cursor: grab;
-      touch-action: none;
+      touch-action: pan-y; /* Allows vertical page scroll on mobile by default */
       user-select: none;
+    }
+
+    #map-viewport.pan-mode-active {
+      touch-action: none; /* Locks touch to map panning when toggled */
     }
 
     @media (max-width: 768px) {
       #map-viewport {
-        height: 600px;
+        height: 540px;
       }
     }
 
@@ -451,16 +387,6 @@
       pointer-events: none;
     }
 
-    #map-stage {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 1600px;
-      height: 980px;
-      transform-origin: 0 0;
-      will-change: transform;
-    }
-
     #map-edges-svg {
       position: absolute;
       inset: 0;
@@ -470,70 +396,74 @@
       pointer-events: none;
     }
 
-    .map-edge-hit {
-      stroke: transparent;
-      stroke-width: 16;
-      fill: none;
-      pointer-events: stroke;
-      cursor: pointer;
+    .map-edge-line {
+      transition: stroke-width 0.2s ease, opacity 0.2s ease;
     }
 
-    .map-edge-line {
-      fill: none;
-      transition: opacity 0.25s ease, stroke-width 0.2s ease;
-      pointer-events: none;
+    .map-edge-hit {
+      stroke: transparent;
+      stroke-width: 22;
+      cursor: pointer;
+      pointer-events: stroke;
     }
 
     .map-node {
       position: absolute;
       transform: translate(-50%, -50%);
-      min-width: 136px;
-      max-width: 175px;
-      padding: 8px 11px;
-      border-radius: 14px;
       cursor: pointer;
-      transition: transform 0.2s ease, opacity 0.25s ease, box-shadow 0.25s ease;
-      z-index: 10;
+      user-select: none;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      touch-action: none;
     }
 
     .map-node:hover {
-      z-index: 30;
-      transform: translate(-50%, -50%) scale(1.07);
-    }
-
-    .map-node.dimmed {
-      opacity: 0.2;
-    }
-
-    .map-node.active-focus {
-      z-index: 35;
-      box-shadow: 0 0 0 2px #10b981, 0 0 28px rgba(16, 185, 129, 0.55);
-    }
-
-    .map-edge-line.dimmed {
-      opacity: 0.08 !important;
-    }
-
-    .map-edge-line.highlighted {
-      stroke-width: 3.6 !important;
-      opacity: 1 !important;
+      transform: translate(-50%, -50%) scale(1.12);
+      z-index: 40 !important;
     }
 
     /* =====================================================================
-       SLIDE-OVER INSPECTOR DRAWER
+       POP-OUT 3D TILT DOSSIER CARDS
     ===================================================================== */
-    #inspector-backdrop {
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.12s ease-out, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+
+    .popout-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .popout-card:hover .popout-badge {
+      transform: translateZ(28px) scale(1.05);
+      box-shadow: 0 12px 28px -4px rgba(16, 185, 129, 0.45);
+    }
+
+    .popout-card:hover .popout-avatar {
+      transform: translateZ(42px) scale(1.08);
+      filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.7));
+    }
+
+    .popout-card:hover .popout-quote {
+      transform: translateZ(18px);
+    }
+
+    /* =====================================================================
+       INSPECTOR DRAWER
+    ===================================================================== */
+    #drawer-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(2, 6, 23, 0.55);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(6px);
       z-index: 70;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.28s ease;
+      transition: opacity 0.3s ease;
     }
 
-    #inspector-backdrop.open {
+    #drawer-backdrop.open {
       opacity: 1;
       pointer-events: auto;
     }
@@ -587,6 +517,14 @@
       transform: translateY(0);
     }
 
+    /* Guarantee on mobile that sections are never stuck at opacity 0 */
+    @media (max-width: 768px) {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
     ::-webkit-scrollbar {
       width: 8px;
       height: 8px;
@@ -607,6 +545,7 @@
 
   <!-- HTML5 Audio Element for Looping Doomsday Theme -->
   <audio id="doomsday-theme-audio" loop preload="auto">
+    <source src="assets/audio/doomsday_theme.mp3" type="audio/mpeg" />
     <source src="https://ia800504.us.archive.org/11/items/tvtunes_54/Avengers.mp3" type="audio/mpeg" />
   </audio>
 
@@ -633,12 +572,12 @@
           </a>
 
           <nav class="hidden lg:flex items-center gap-1 ml-2">
-            <a href="#hero" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">1. Hero</a>
-            <a href="#holo-stage" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 hover:bg-emerald-500/25 transition">★ 3D Holo-Stage</a>
-            <a href="#multiverse-map" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">2. Map</a>
-            <a href="#timeline" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">3. Timeline</a>
-            <a href="#dossier" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">4. Dossier</a>
-            <a href="#leak-audit" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-purple-500/15 hover:text-purple-400 transition">5. Leak Audit</a>
+            <a href="#hero" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Hero</a>
+            <a href="#holo-stage" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 hover:bg-emerald-500/25 transition">★ Holo-Stage</a>
+            <a href="#multiverse-map" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Connection Map</a>
+            <a href="#timeline" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Timeline</a>
+            <a href="#dossier" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Dossiers</a>
+            <a href="#leak-audit" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-purple-500/15 hover:text-purple-400 transition">Leak Audit</a>
           </nav>
         </div>
 
@@ -678,91 +617,57 @@
             <button data-canon="unofficial" class="canon-btn px-2 py-1 rounded-lg opacity-75 hover:opacity-100 transition">Unofficial</button>
           </div>
 
-          <button id="theme-toggle" class="p-2 rounded-xl bg-slate-500/15 border border-slate-500/25 hover:border-emerald-400/60 transition" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
-            <svg id="theme-icon-sun" class="w-4 h-4 hidden text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            </svg>
-            <svg id="theme-icon-moon" class="w-4 h-4 text-emerald-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-            </svg>
+          <button id="theme-toggle" class="p-2 rounded-xl glass hover:border-emerald-400/60 transition" aria-label="Toggle dark/light theme" title="Toggle Theme">
+            <svg id="theme-icon-dark" class="w-4 h-4 text-amber-300 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <svg id="theme-icon-light" class="w-4 h-4 text-cyan-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
           </button>
         </div>
-      </div>
 
-      <!-- Mobile Quick-Jump Bar -->
-      <div class="flex lg:hidden items-center justify-between gap-1 mt-2 pt-2 border-t border-slate-500/15 text-[11px] font-medium overflow-x-auto">
-        <a href="#hero" class="px-2 py-1 rounded-lg whitespace-nowrap hover:text-emerald-400">1. Hero</a>
-        <a href="#holo-stage" class="px-2 py-1 rounded-lg whitespace-nowrap text-emerald-400 font-bold">★ 3D Holo-Stage</a>
-        <a href="#multiverse-map" class="px-2 py-1 rounded-lg whitespace-nowrap hover:text-emerald-400">2. Map</a>
-        <a href="#timeline" class="px-2 py-1 rounded-lg whitespace-nowrap hover:text-emerald-400">3. Timeline</a>
-        <a href="#dossier" class="px-2 py-1 rounded-lg whitespace-nowrap hover:text-emerald-400">4. Dossier</a>
-        <a href="#leak-audit" class="px-2 py-1 rounded-lg whitespace-nowrap text-purple-400">5. Leak Audit</a>
       </div>
     </div>
   </header>
 
   <!-- =======================================================================
-       SECTION 1: 3D LANDING HERO (FULL VIEWPORT)
+       HERO: CINEMATIC VIDEO BACKGROUND + EMBOSSED DOOMSDAY COLD OPEN
   ======================================================================= -->
-  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
-    <div id="hero-canvas-container" aria-hidden="true"></div>
-    <div class="hero-vignette"></div>
+  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
+    <!-- Cinematic Looping Video Background with 3D Particles & Vignette Overlay -->
+    <div id="hero-media-container">
+      <video id="hero-bg-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1920&q=80">
+        <source src="assets/video/hero_incursion.mp4" type="video/mp4" />
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-flying-through-a-star-field-in-space-41547-large.mp4" type="video/mp4" />
+      </video>
+      <div id="hero-canvas-container"></div>
+      <div class="hero-vignette"></div>
+    </div>
 
-    <div class="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
-      <div class="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold tracking-wider uppercase mb-6 text-slate-100">
+    <!-- Hero Content Overlay -->
+    <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+      
+      <!-- Phase Tag Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold uppercase tracking-widest mb-5 shadow-lg shadow-emerald-500/10">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Multiverse Saga Penultimate Chapter</span>
-        <span class="opacity-40">•</span>
-        <span class="text-emerald-300">PG-13 · ~150 min</span>
-        <span class="opacity-40">•</span>
-        <span class="text-amber-300">Directed by Anthony &amp; Joe Russo</span>
+        <span>Multiverse Incursion Saga · The Final Stand</span>
       </div>
 
-      <!-- AVENGERS: DOOMSDAY Embossed Logo -->
-      <div class="doomsday-logo-glow mb-5 w-full max-w-2xl px-2">
-        <svg viewBox="0 0 760 225" class="w-full h-auto" role="img" aria-label="Avengers: Doomsday Embossed Logo">
-          <defs>
-            <linearGradient id="metalSilver" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#f8fafc"/>
-              <stop offset="45%" stop-color="#cbd5e1"/>
-              <stop offset="55%" stop-color="#64748b"/>
-              <stop offset="100%" stop-color="#e2e8f0"/>
-            </linearGradient>
-            <linearGradient id="latverianEmerald" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#6ee7b7"/>
-              <stop offset="35%" stop-color="#10b981"/>
-              <stop offset="70%" stop-color="#047857"/>
-              <stop offset="100%" stop-color="#34d399"/>
-            </linearGradient>
-            <linearGradient id="gothicFrame" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="rgba(16,185,129,0.05)"/>
-              <stop offset="50%" stop-color="rgba(16,185,129,0.45)"/>
-              <stop offset="100%" stop-color="rgba(16,185,129,0.05)"/>
-            </linearGradient>
-          </defs>
-
-          <path d="M90 198 L90 76 Q380 4 670 76 L670 198 Z" fill="rgba(6, 18, 16, 0.36)" stroke="url(#gothicFrame)" stroke-width="1.6"/>
-          <path d="M128 190 L128 90 Q380 28 632 90 L632 190" fill="none" stroke="rgba(16,185,129,0.22)" stroke-width="1" stroke-dasharray="6 6"/>
-
-          <path d="M150 56 L185 78 L172 86 L212 104" stroke="#34d399" stroke-width="2" fill="none" opacity="0.75"/>
-          <path d="M610 56 L575 78 L588 86 L548 104" stroke="#34d399" stroke-width="2" fill="none" opacity="0.75"/>
-          <path d="M380 18 L374 36 L386 42 L378 60" stroke="#6ee7b7" stroke-width="2.2" fill="none" opacity="0.85"/>
-
-          <g transform="translate(335, 16)" opacity="0.92">
-            <circle cx="45" cy="45" r="38" fill="none" stroke="url(#latverianEmerald)" stroke-width="3.5" stroke-dasharray="195 36"/>
-            <path d="M45 6 L19 76 H32 L38 59 H55 L59 69 L72 56 L60 44 V51 H41 L45 39 L53 59 H68 L45 6 Z" fill="url(#latverianEmerald)" stroke="#ecfdf5" stroke-width="1"/>
-          </g>
-
-          <text x="380" y="128" text-anchor="middle" font-family="Cinzel, serif" font-weight="900" font-size="46" letter-spacing="14" fill="url(#metalSilver)" stroke="#0f172a" stroke-width="1.4">AVENGERS</text>
-          <text x="380" y="186" text-anchor="middle" font-family="Cinzel, serif" font-weight="900" font-size="68" letter-spacing="10" fill="url(#latverianEmerald)" stroke="#022c22" stroke-width="2.2">DOOMSDAY</text>
-        </svg>
+      <!-- Main Latverian Embossed Title Treatment -->
+      <div class="mb-4">
+        <div class="font-display font-black text-xs sm:text-sm tracking-[0.35em] text-slate-300 uppercase mb-1">
+          MARVEL STUDIOS PRESENTS
+        </div>
+        <div class="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-slate-400 drop-shadow-2xl leading-none">
+          AVENGERS
+        </div>
+        <div class="font-display font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 doomsday-logo-glow -mt-1 sm:-mt-2">
+          DOOMSDAY
+        </div>
       </div>
 
       <h1 class="text-xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white drop-shadow mb-3">
-        26 Years of Continuity. 3 Colliding Universes. 1 Monarch.
+        Infinite Realities in Collapse. Colliding Universes. The Sovereign Monarch.
       </h1>
       <p class="max-w-2xl text-sm sm:text-base text-slate-200/90 leading-relaxed mb-6">
-        Set in <strong class="text-white">2028</strong>, fourteen months after <em>Thunderbolts*</em>, Victor von Doom of Earth-828 executes a multiversal masterstroke as Earth-616, Earth-828, and Earth-10005 hurtle toward total Incursion collapse around God Loki’s Yggdrasil throne.
+        Fourteen months following the New Avengers assembly, Victor von Doom of Earth-828 executes a multiversal masterstroke as Earth-616, Earth-828, and Earth-10005 hurtle toward total Incursion collapse around God Loki’s Yggdrasil throne.
       </p>
 
       <!-- Live Countdown Clock -->
@@ -770,11 +675,11 @@
         <div class="flex flex-wrap items-center justify-between gap-2 mb-3 text-xs">
           <div class="flex items-center gap-2 font-semibold text-emerald-300">
             <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span id="countdown-label">India Theatrical Release · Dec 17, 2026 (EN / HI / TA / TE)</span>
+            <span id="countdown-label">Theatrical Release · Dec 17, 2026 (EN / HI / TA / TE)</span>
           </div>
-          <div class="flex items-center gap-1 bg-slate-900/60 p-0.5 rounded-lg border border-white/10">
-            <button id="cd-india" class="px-2 py-0.5 rounded-md bg-emerald-500/30 text-emerald-200 font-semibold transition">India (Dec 17)</button>
-            <button id="cd-global" class="px-2 py-0.5 rounded-md text-slate-300 hover:text-white transition">Global (Dec 18)</button>
+          <div class="flex items-center gap-1 bg-slate-950/60 p-0.5 rounded-lg border border-white/10">
+            <button id="cd-india" class="px-2 py-0.5 rounded-md bg-emerald-500/30 text-emerald-200 font-semibold transition">Opening Night</button>
+            <button id="cd-global" class="px-2 py-0.5 rounded-md text-slate-300 hover:text-white transition">Global Premiere</button>
           </div>
         </div>
         <div class="grid grid-cols-4 gap-2 sm:gap-3">
@@ -799,32 +704,32 @@
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 w-full max-w-3xl mb-7">
         <div class="glass rounded-xl p-3 text-center border-red-500/30">
-          <div class="text-xl sm:text-2xl font-black text-white">39+</div>
-          <div class="text-[11px] font-medium text-slate-300">Confirmed Cast</div>
+          <div class="text-base sm:text-lg font-black text-white">Confirmed Assemble</div>
+          <div class="text-[11px] font-medium text-slate-300">Earth-616 · Earth-828 · Earth-10005</div>
         </div>
         <div class="glass rounded-xl p-3 text-center border-cyan-500/30">
-          <div class="text-xl sm:text-2xl font-black text-cyan-300">7</div>
-          <div class="text-[11px] font-medium text-slate-300">Operational Factions</div>
+          <div class="text-base sm:text-lg font-black text-cyan-300">Operational Factions</div>
+          <div class="text-[11px] font-medium text-slate-300">Latveria · TVA · Thunderbolts</div>
         </div>
         <div class="glass rounded-xl p-3 text-center border-amber-500/30">
-          <div class="text-xl sm:text-2xl font-black text-amber-300">9</div>
-          <div class="text-[11px] font-medium text-slate-300">Bridging Credits Scenes</div>
+          <div class="text-base sm:text-lg font-black text-amber-300">Bridging Nexus Scenes</div>
+          <div class="text-[11px] font-medium text-slate-300">Multiverse Domination Climax</div>
         </div>
         <div class="glass rounded-xl p-3 text-center border-purple-500/40" style="border-style: dashed;">
-          <div class="text-xl sm:text-2xl font-black text-purple-300">14</div>
-          <div class="text-[11px] font-medium text-purple-200">Audited Leak Claims</div>
+          <div class="text-base sm:text-lg font-black text-purple-300">Audited Leak Dossiers</div>
+          <div class="text-[11px] font-medium text-purple-200">Plot Acts &amp; Verified Rumors</div>
         </div>
       </div>
 
       <div class="flex flex-wrap items-center justify-center gap-3 mb-7">
         <a href="#holo-stage" class="px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 shadow-lg shadow-emerald-500/30 hover:scale-[1.03] transition flex items-center gap-2">
-          <span>★ Launch 3D Holo-Stage</span>
+          <span>★ Launch Holo-Stage</span>
         </a>
         <a href="#multiverse-map" class="px-6 py-3 rounded-xl font-bold text-sm glass text-white hover:border-emerald-400/60 hover:scale-[1.03] transition">
-          Explore Multiverse Map
+          Explore Connection Map
         </a>
         <a href="#timeline" class="px-6 py-3 rounded-xl font-bold text-sm glass text-white hover:border-cyan-400/60 hover:scale-[1.03] transition">
-          Open Watchlist &amp; Timeline
+          Open Timeline &amp; Watchlist
         </a>
       </div>
 
@@ -834,7 +739,7 @@
       </div>
 
       <a href="#holo-stage" class="scroll-cue inline-flex flex-col items-center gap-1 text-xs uppercase tracking-widest text-emerald-300/90">
-        <span>Enter 3D Multiverse Holo-Stage</span>
+        <span>Enter Multiverse Holo-Stage</span>
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M19 9l-7 7-7-7"/>
         </svg>
@@ -843,20 +748,20 @@
   </section>
 
   <!-- =======================================================================
-       SECTION 1.5: 3D MULTIVERSE CHARACTER HOLO-STAGE & PEDESTAL
+       MULTIVERSE CHARACTER HOLO-STAGE & PEDESTAL
   ======================================================================= -->
   <section id="holo-stage" class="py-16 px-3 sm:px-6 max-w-7xl mx-auto reveal">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
       <div>
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-widest mb-2">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>Section 01.5 · Interactive Multiverse Gateway</span>
+          <span>Multiverse Gateway · Character Hologram Stage</span>
         </div>
         <h2 class="text-2xl sm:text-4xl font-black tracking-tight flex items-center gap-3">
-          <span>3D Character Holo-Stage</span>
+          <span>Character Holo-Stage</span>
         </h2>
         <p class="text-sm opacity-75 mt-1 max-w-2xl">
-          Rotate real photorealistic character cutouts on a 3D pedestal, filter by specific movie, and inspect their direct Incursion mission leading into <em>Avengers: Doomsday</em>.
+          Rotate character cutouts on a 3D pedestal, filter by specific film, and inspect their direct Incursion mission leading into <em>Avengers: Doomsday</em>.
         </p>
       </div>
 
@@ -870,7 +775,7 @@
     <div class="glass rounded-3xl overflow-hidden relative border border-slate-500/20 p-4 sm:p-7">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
 
-        <!-- 3D Pedestal & REAL Character Cutout Display (7 cols) -->
+        <!-- 3D Pedestal & Character Cutout Display (7 cols) -->
         <div class="lg:col-span-7 flex flex-col items-center justify-center relative min-h-[460px] holo-viewport overflow-hidden rounded-2xl bg-gradient-to-b from-slate-950/80 via-slate-900/40 to-slate-950/90 border border-white/5">
           <div id="holo-portal-aura" class="holo-ambient-portal"></div>
 
@@ -879,10 +784,10 @@
             <div class="holo-pedestal-rings"></div>
           </div>
 
-          <!-- 3D Stage Interactive Area with REAL Character Cutout -->
+          <!-- 3D Stage Interactive Area with Character Cutout -->
           <div id="holo-stage-interactive" class="holo-stage-3d flex items-center justify-center w-full h-full cursor-grab active:cursor-grabbing select-none" title="Drag to tilt & inspect 3D perspective">
             <div id="holo-cutout-container" class="relative z-10 flex items-center justify-center p-3">
-              <!-- Injected REAL Cutout Image -->
+              <!-- Injected Cutout Image -->
             </div>
           </div>
 
@@ -898,107 +803,116 @@
           </div>
         </div>
 
-        <!-- Character Dossier Intel & Power Matrix (5 cols) -->
+        <!-- Character Incursion Mission Dossier & Power Stats (5 cols) -->
         <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
           <div>
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span id="holo-badge-universe" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Earth-828 (Doom)</span>
-              <span id="holo-badge-faction" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-500/20 text-slate-200">Doctor Doom's Faction</span>
+            <div class="flex items-center gap-2 mb-1">
+              <span id="holo-faction-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                LATVERIAN MONARCH
+              </span>
+              <span id="holo-canon-badge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-500/20 text-slate-300">
+                OFFICIAL
+              </span>
+            </div>
+            
+            <h3 id="holo-char-name" class="text-2xl sm:text-3xl font-black tracking-tight text-white">
+              Victor von Doom
+            </h3>
+            <div id="holo-char-alias" class="text-xs font-semibold text-emerald-400 tracking-wide uppercase mt-0.5">
+              Doctor Doom · Monarch of Latveria
+            </div>
+            <div id="holo-char-actor" class="text-xs opacity-60 mt-0.5">
+              Portrayed by Robert Downey Jr.
             </div>
 
-            <h3 id="holo-char-name" class="text-2xl sm:text-3xl font-black tracking-tight leading-tight">Victor von Doom</h3>
-            <div id="holo-char-alias" class="text-sm font-semibold text-emerald-400 mt-0.5">Doctor Doom · Monarch of Latveria</div>
-            <div id="holo-char-actor" class="text-xs opacity-75 mt-0.5">Portrayed by Robert Downey Jr.</div>
+            <!-- Dialogue Quote -->
+            <div class="mt-4 p-3 rounded-xl bg-slate-900/60 border border-slate-500/25 italic text-xs leading-relaxed text-slate-300">
+              <span id="holo-char-quote">
+                "I did not ask for this burden... yet reality itself demands order. Your heroes fractured eternity; Doom will forge what remains."
+              </span>
+            </div>
+          </div>
 
-            <!-- Dialogue Quote with Audio Pulse -->
-            <div class="mt-3.5 p-3 rounded-xl bg-slate-950/60 border border-emerald-500/30 flex items-start gap-3">
-              <div class="w-7 h-7 rounded-lg bg-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
-                <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Zm-1 14.93A7.008 7.008 0 0 1 5 10H3a9.008 9.008 0 0 0 8 8.945V22h2v-3.055A9.008 9.008 0 0 0 21 10h-2a7.008 7.008 0 0 1-6 6.93V16.93Z"/></svg>
+          <!-- Mission Domino Leading to Doomsday -->
+          <div class="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30">
+            <div class="text-[11px] font-black uppercase tracking-wider text-emerald-300 flex items-center gap-1.5 mb-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>Direct Mission in Doomsday</span>
+            </div>
+            <p id="holo-char-mission" class="text-xs opacity-90 leading-relaxed text-slate-200">
+              Devastated by an Earth-828 dimensional tear, Doom captures Franklin Richards, Hulk, and Wanda Maximoff to fuel his Creation Engine, determined to siphon God Loki’s Yggdrasil chronokinetic lifeblood before Battleworld collapses.
+            </p>
+          </div>
+
+          <!-- Power Stats Visualization -->
+          <div class="space-y-2 p-3.5 rounded-xl bg-slate-950/50 border border-white/10 text-xs">
+            <div class="flex justify-between font-bold text-[11px] uppercase tracking-wider text-slate-400 mb-1">
+              <span>Threat &amp; Capability Index</span>
+              <span class="text-emerald-400">Level Alpha-Omega</span>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="opacity-80">Combat Proficiency</span>
+                <span id="stat-val-combat" class="font-mono text-emerald-300">95%</span>
               </div>
-              <div class="text-xs italic opacity-90 leading-snug">
-                <span id="holo-char-quote">"I did not ask for this burden... yet reality itself demands order. Your heroes fractured eternity; Doom will forge what remains."</span>
+              <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                <div id="stat-bar-combat" class="stat-bar-fill h-full bg-emerald-500 rounded-full" style="width: 95%;"></div>
               </div>
             </div>
 
-            <!-- What Leads to Doomsday Intel Box -->
-            <div class="mt-3.5 p-3.5 rounded-xl leads-to-doomsday-box border border-emerald-500/40">
-              <div class="text-[11px] font-black uppercase tracking-wider text-emerald-300 flex items-center gap-1.5 mb-1">
-                <span>⚡ WHAT LEADS TO DOOMSDAY</span>
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="opacity-80">Sorcery &amp; Reality Warp</span>
+                <span id="stat-val-sorcery" class="font-mono text-purple-300">99%</span>
               </div>
-              <p id="holo-char-leads" class="text-xs leading-relaxed opacity-95">
-                Grieving the loss of his family from an Earth-828 dimensional anomaly, Doom discovers Incursions threaten all reality. Rather than dying quietly, he abducts cosmic nexus beings (Franklin Richards, Hulk, Scarlet Witch) to build a multiversal engine and conquer Yggdrasil.
-              </p>
+              <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                <div id="stat-bar-sorcery" class="stat-bar-fill h-full bg-purple-500 rounded-full" style="width: 99%;"></div>
+              </div>
             </div>
 
-            <!-- Power Matrix Bars -->
-            <div class="mt-4 space-y-2 text-xs">
-              <div class="text-[11px] font-bold uppercase tracking-wider opacity-60 mb-1">Combat &amp; Cosmic Power Matrix</div>
-             
-              <div>
-                <div class="flex justify-between text-[11px] mb-0.5">
-                  <span class="opacity-80">Combat Mastery</span>
-                  <span id="holo-stat-combat" class="font-mono font-bold text-emerald-300">95%</span>
-                </div>
-                <div class="w-full h-1.5 rounded-full bg-slate-500/20 overflow-hidden">
-                  <div id="holo-bar-combat" class="stat-bar-fill h-full bg-emerald-400" style="width: 95%"></div>
-                </div>
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="opacity-80">Genius Intellect</span>
+                <span id="stat-val-intellect" class="font-mono text-cyan-300">100%</span>
               </div>
-
-              <div>
-                <div class="flex justify-between text-[11px] mb-0.5">
-                  <span class="opacity-80">Sorcery &amp; Arcane Arts</span>
-                  <span id="holo-stat-sorcery" class="font-mono font-bold text-purple-300">98%</span>
-                </div>
-                <div class="w-full h-1.5 rounded-full bg-slate-500/20 overflow-hidden">
-                  <div id="holo-bar-sorcery" class="stat-bar-fill h-full bg-purple-400" style="width: 98%"></div>
-                </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                <div id="stat-bar-intellect" class="stat-bar-fill h-full bg-cyan-400 rounded-full" style="width: 100%;"></div>
               </div>
+            </div>
 
-              <div>
-                <div class="flex justify-between text-[11px] mb-0.5">
-                  <span class="opacity-80">Genius Multiversal Intellect</span>
-                  <span id="holo-stat-intellect" class="font-mono font-bold text-cyan-300">100%</span>
-                </div>
-                <div class="w-full h-1.5 rounded-full bg-slate-500/20 overflow-hidden">
-                  <div id="holo-bar-intellect" class="stat-bar-fill h-full bg-cyan-400" style="width: 100%"></div>
-                </div>
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="opacity-80">Incursion Danger Class</span>
+                <span id="stat-val-danger" class="font-mono text-red-400">100%</span>
               </div>
-
-              <div>
-                <div class="flex justify-between text-[11px] mb-0.5">
-                  <span class="opacity-80">Multiverse Incursion Threat Tier</span>
-                  <span id="holo-stat-danger" class="font-mono font-bold text-red-400">OMEGA (100%)</span>
-                </div>
-                <div class="w-full h-1.5 rounded-full bg-slate-500/20 overflow-hidden">
-                  <div id="holo-bar-danger" class="stat-bar-fill h-full bg-red-500" style="width: 100%"></div>
-                </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                <div id="stat-bar-danger" class="stat-bar-fill h-full bg-red-500 rounded-full" style="width: 100%;"></div>
               </div>
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-500/20">
-            <button id="holo-btn-locate" class="flex-1 py-2.5 px-4 rounded-xl font-bold text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 transition flex items-center justify-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
-              <span>Locate on Multiverse Map</span>
+          <!-- Quick Jump into Connection Map for this Character -->
+          <div class="flex items-center gap-2">
+            <button id="holo-jump-map-btn" class="flex-1 py-2 px-3 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 transition flex items-center justify-center gap-1.5">
+              <span>View Connections on Map</span>
+              <span>→</span>
             </button>
-            <button id="holo-btn-dossier" class="py-2.5 px-4 rounded-xl font-bold text-xs glass hover:border-emerald-400 transition">
-              Open Full Dossier
+            <button id="holo-open-dossier-btn" class="py-2 px-3 rounded-xl text-xs font-bold glass hover:border-emerald-400/60 transition">
+              Full File
             </button>
           </div>
+
         </div>
       </div>
 
-      <!-- Bottom Character Selector Carousel (Real Cutout Thumbnails) -->
+      <!-- Character Carousel / Thumbnail Selection Strip -->
       <div class="mt-6 pt-5 border-t border-slate-500/20">
-        <div class="flex items-center justify-between mb-3">
-          <div class="text-xs font-bold uppercase tracking-wider opacity-75">
-            Select Character to Project on Holo-Stage:
-          </div>
-          <div id="holo-carousel-count" class="text-xs font-semibold text-emerald-400">
-            Showing characters...
-          </div>
+        <div class="flex items-center justify-between mb-3 text-xs">
+          <span class="font-bold uppercase tracking-wider text-slate-400">Select Character Roster:</span>
+          <span id="holo-carousel-count" class="text-emerald-400 font-semibold text-[11px]">Showing 25 characters</span>
         </div>
-        <div id="holo-char-carousel" class="flex items-center gap-3 overflow-x-auto pb-2">
+        <div id="holo-char-carousel" class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
           <!-- Injected via JS -->
         </div>
       </div>
@@ -1006,12 +920,12 @@
   </section>
 
   <!-- =======================================================================
-       SECTION 2: INTERACTIVE MULTIVERSE CONNECTION MAP
+       INTERACTIVE MULTIVERSE CONNECTION MAP
   ======================================================================= -->
   <section id="multiverse-map" class="py-16 px-3 sm:px-6 max-w-7xl mx-auto reveal">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
       <div>
-        <div class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Section 02 · Interactive Web of Realities</div>
+        <div class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Web of Realities · Multiverse Connection Map</div>
         <h2 class="text-2xl sm:text-4xl font-black tracking-tight">Multiverse Connection Map</h2>
         <p class="text-sm opacity-75 mt-1 max-w-2xl">
           Drag nodes, pan the canvas, or click any character, universe nexus, or connection line to inspect the exact lore bridging Earth-616, Earth-828, Earth-10005, and the TVA.
@@ -1039,57 +953,67 @@
         </div>
 
         <div class="flex items-center gap-1.5">
+          <!-- Mobile Scroll vs Pan Toggle Button -->
+          <button id="mobile-map-pan-toggle" class="sm:hidden px-2.5 py-1 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40" title="Toggle between scrolling the page and panning the map">
+            Touch: Scroll Page
+          </button>
           <button id="map-zoom-in" class="w-8 h-8 rounded-lg glass flex items-center justify-center font-bold hover:border-emerald-400 transition" title="Zoom In">+</button>
           <button id="map-zoom-out" class="w-8 h-8 rounded-lg glass flex items-center justify-center font-bold hover:border-emerald-400 transition" title="Zoom Out">−</button>
-          <button id="map-fit" class="px-2.5 h-8 rounded-lg glass text-xs font-semibold hover:border-emerald-400 transition" title="Fit Map to Screen">Fit View</button>
+          <button id="map-fit" class="px-2.5 h-8 rounded-lg glass text-xs font-semibold hover:border-emerald-400 transition">Reset View</button>
         </div>
       </div>
 
-      <div id="map-viewport">
+      <!-- Main Pan/Zoom Interactive Map Surface -->
+      <div id="map-viewport" class="relative">
         <div class="map-grid-bg"></div>
-        <div id="map-stage">
-          <div class="absolute left-[110px] top-[55px] text-xs font-black tracking-[0.22em] uppercase text-[#e21936]/75 pointer-events-none">Earth-616 · Main MCU &amp; Branch</div>
-          <div class="absolute left-[635px] top-[34px] text-xs font-black tracking-[0.22em] uppercase text-[#eab308]/80 pointer-events-none">TVA · Yggdrasil Incursion Nexus</div>
-          <div class="absolute left-[1125px] top-[55px] text-xs font-black tracking-[0.22em] uppercase text-[#0ea5e9]/80 pointer-events-none">Earth-828 · Latveria &amp; Fantastic Four</div>
-          <div class="absolute left-[110px] top-[640px] text-xs font-black tracking-[0.22em] uppercase text-[#f59e0b]/80 pointer-events-none">Earth-10005 · Fox X-Men Reality</div>
-          <div class="absolute left-[1050px] top-[660px] text-xs font-black tracking-[0.22em] uppercase text-[#a855f7]/80 pointer-events-none">[UNOFFICIAL] Rumored &amp; Leaked Nexus</div>
 
+        <div id="map-transform-container" class="absolute origin-top-left will-change-transform">
+          <!-- SVG Connection Lines -->
           <svg id="map-edges-svg"></svg>
-          <div id="map-nodes-layer"></div>
+
+          <!-- Real-Time Universe Ambient Territories -->
+          <div class="absolute top-[80px] left-[60px] text-[11px] font-black tracking-[0.22em] uppercase text-[#e21936]/75 pointer-events-none">Earth-616 · Main MCU &amp; Battleworld Base</div>
+          <div class="absolute top-[80px] left-[700px] text-[11px] font-black tracking-[0.22em] uppercase text-[#eab308]/80 pointer-events-none">TVA · Yggdrasil Incursion Hub</div>
+          <div class="absolute top-[520px] left-[90px] text-[11px] font-black tracking-[0.22em] uppercase text-[#0ea5e9]/80 pointer-events-none">Earth-828 · Latveria &amp; Baxter Core</div>
+          <div class="absolute top-[520px] left-[840px] text-[11px] font-black tracking-[0.22em] uppercase text-[#f59e0b]/80 pointer-events-none">Earth-10005 · Fox X-Men Reality</div>
+          <div class="absolute top-[280px] left-[1220px] text-[11px] font-black tracking-[0.22em] uppercase text-[#a855f7]/80 pointer-events-none">[UNOFFICIAL] Rumored &amp; Unconfirmed Operatives</div>
+
+          <!-- Interactive Node Badges Rendered Here -->
+          <div id="map-nodes-container"></div>
         </div>
 
         <div class="absolute bottom-3 left-3 glass px-3 py-1.5 rounded-xl text-[11px] opacity-80 pointer-events-none">
-          Tip: Drag canvas to pan · Drag any node to rearrange · Click lines or nodes to inspect lore
+          Tip: Drag canvas to pan · Drag any node to rearrange · Click lines or nodes to inspect lore · On mobile, toggle Touch mode to pan
         </div>
       </div>
     </div>
   </section>
 
   <!-- =======================================================================
-       SECTION 3: ROAD TO DOOMSDAY TIMELINE (2000–2028)
+       ROAD TO DOOMSDAY TIMELINE
   ======================================================================= -->
   <section id="timeline" class="py-16 px-3 sm:px-6 max-w-7xl mx-auto reveal">
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
       <div>
-        <div class="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-1">Section 03 · 26 Years of Continuity</div>
-        <h2 class="text-2xl sm:text-4xl font-black tracking-tight">Road to Doomsday Timeline (2000–2028)</h2>
+        <div class="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-1">Chronological Continuity · Road to Doomsday Timeline</div>
+        <h2 class="text-2xl sm:text-4xl font-black tracking-tight">Road to Doomsday Timeline</h2>
         <p class="text-sm opacity-75 mt-1 max-w-2xl">
-          Track your prep across all 4 narrative lanes, inspect real movie title treatments, explore exact narrative dominos leading to Doomsday, and read unfiltered spoiler intel.
+          Track your prep across all 4 narrative lanes, inspect movie title treatments, explore exact narrative dominos leading to Doomsday, and read unfiltered spoiler intel.
         </p>
       </div>
 
       <div class="glass rounded-2xl p-3.5 flex flex-col sm:flex-row sm:items-center gap-3 min-w-[290px]">
         <div class="flex items-center gap-1 bg-slate-500/15 p-1 rounded-xl text-xs font-semibold">
-          <button id="tl-filter-all" class="px-2.5 py-1 rounded-lg bg-cyan-500/25 text-cyan-300 transition">All Canon (23)</button>
-          <button id="tl-filter-d15" class="px-2.5 py-1 rounded-lg opacity-75 hover:opacity-100 transition">Disney+ Official 15</button>
+          <button id="tl-filter-all" class="px-2.5 py-1 rounded-lg bg-cyan-500/25 text-cyan-300 transition">All Canon</button>
+          <button id="tl-filter-d15" class="px-2.5 py-1 rounded-lg opacity-75 hover:opacity-100 transition">Disney+ Essential</button>
         </div>
         <div class="flex-1 min-w-[150px]">
           <div class="flex justify-between text-[11px] font-semibold mb-1">
             <span>Watchlist Progress</span>
-            <span id="watched-count" class="text-emerald-400">0 / 20 Watched</span>
+            <span id="watched-count" class="text-emerald-400">0 Watched</span>
           </div>
           <div class="w-full h-2 rounded-full bg-slate-500/20 overflow-hidden">
-            <div id="watched-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 to-cyan-400 transition-all duration-300" style="width: 0%"></div>
+            <div id="watched-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 transition-all duration-300" style="width: 0%;"></div>
           </div>
         </div>
       </div>
@@ -1099,145 +1023,120 @@
   </section>
 
   <!-- =======================================================================
-       SECTION 4: CHARACTER & FACTION DOSSIER (39+ CONFIRMED & 14+ UNOFFICIAL)
+       CHARACTER DOSSIERS (POP-OUT 3D TILT CARDS)
   ======================================================================= -->
   <section id="dossier" class="py-16 px-3 sm:px-6 max-w-7xl mx-auto reveal">
-    <div class="mb-6">
-      <div class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-1">Section 04 · Roster &amp; Power Index</div>
-      <h2 class="text-2xl sm:text-4xl font-black tracking-tight">Character &amp; Faction Dossier</h2>
-      <p class="text-sm opacity-75 mt-1 max-w-2xl">
-        Explore all 39+ officially confirmed cast members with real transparent 3D pop-out cutouts across 7 operational factions, plus 14 rumored cameos clearly marked with dashed violet <span class="text-purple-400 font-semibold">UNOFFICIAL</span> badges.
-      </p>
-    </div>
-
-    <div class="glass rounded-2xl p-4 mb-6 space-y-3">
-      <div class="flex flex-wrap items-center gap-2">
-        <span class="text-xs font-bold uppercase tracking-wider opacity-60 mr-1">Universe:</span>
-        <button data-uni="all" class="uni-filter-btn active px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/25 text-emerald-300 border border-emerald-500/40 transition">All Realities</button>
-        <button data-uni="Earth-616" class="uni-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-500/10 border border-slate-500/20 hover:border-[#e21936] transition">Earth-616</button>
-        <button data-uni="Earth-828" class="uni-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-500/10 border border-slate-500/20 hover:border-[#0ea5e9] transition">Earth-828</button>
-        <button data-uni="Earth-10005" class="uni-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-500/10 border border-slate-500/20 hover:border-[#f59e0b] transition">Earth-10005</button>
-        <button data-uni="TVA / Nexus" class="uni-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-500/10 border border-slate-500/20 hover:border-[#eab308] transition">TVA / Nexus</button>
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Intelligence Dossiers · Operatives &amp; Factions</div>
+        <h2 class="text-2xl sm:text-4xl font-black tracking-tight">Character Intelligence Files</h2>
+        <p class="text-sm opacity-75 mt-1 max-w-2xl">
+          Pop-out 3D tilt dossiers covering every confirmed champion, villain, and unconfirmed multiverse operative.
+        </p>
       </div>
 
-      <div class="flex flex-wrap items-center gap-1.5">
-        <span class="text-xs font-bold uppercase tracking-wider opacity-60 mr-1">Faction:</span>
-        <button data-fac="all" class="fac-filter-btn active px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/10 border border-white/20 transition">All Factions</button>
-        <button data-fac="Doctor Doom's Faction" class="fac-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-500/10 border border-transparent hover:border-emerald-400/50 transition">Doom's Faction</button>
-        <button data-fac="Sam Wilson's Avengers" class="fac-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-500/10 border border-transparent hover:border-red-400/50 transition">Sam's Avengers</button>
-        <button data-fac="Branched Earth-616 Legends" class="fac-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-500/10 border border-transparent hover:border-red-400/50 transition">Branched Legends</button>
-        <button data-fac="New Avengers" class="fac-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-500/10 border border-transparent hover:border-red-400/50 transition">New Avengers</button>
-        <button data-fac="Wakanda & Talokan" class="fac-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-500/10 border border-transparent hover:border-cyan-400/50 transition">Wakanda &amp; Talokan</button>
-        <button data-fac="Fantastic Four" class="fac-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-500/10 border border-transparent hover:border-cyan-400/50 transition">Fantastic Four</button>
-        <button data-fac="X-Men" class="fac-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-500/10 border border-transparent hover:border-amber-400/50 transition">X-Men</button>
-        <button data-fac="TVA / Yggdrasil" class="fac-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-500/10 border border-transparent hover:border-yellow-400/50 transition">TVA</button>
-        <button data-fac="Unofficial Rumored Bench" class="fac-filter-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-500/15 text-purple-300 border border-dashed border-purple-500/50 transition">[UNOFFICIAL] Rumored</button>
+      <!-- Faction Filter Pills -->
+      <div class="flex flex-wrap items-center gap-1.5" id="faction-filter-pills">
+        <!-- Rendered via JS -->
       </div>
     </div>
 
-    <div id="dossier-count" class="text-xs font-semibold opacity-70 mb-4">Showing characters...</div>
-    <div id="dossier-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-6"></div>
+    <div id="dossier-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
   </section>
 
   <!-- =======================================================================
-       SECTION 5: UNOFFICIAL INTEL & FORENSIC LEAK AUDIT
+       LEAK & PRODUCTION AUDIT MATRIX
   ======================================================================= -->
   <section id="leak-audit" class="py-16 px-3 sm:px-6 max-w-7xl mx-auto reveal">
     <div class="mb-6">
-      <div class="flex items-center gap-2 mb-1">
-        <span class="unofficial-badge">UNOFFICIAL INTEL</span>
-        <span class="text-xs font-bold uppercase tracking-widest text-purple-400">Section 05 · Forensic Leak Audit</span>
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-black tracking-tight">Unofficial Leaks, Concept Art &amp; Theories</h2>
+      <div class="text-xs font-bold uppercase tracking-widest text-purple-400 mb-1">Production Intelligence &amp; Leak Verification</div>
+      <h2 class="text-2xl sm:text-4xl font-black tracking-tight">Leak &amp; Production Intel Audit</h2>
+      <p class="text-sm opacity-75 mt-1 max-w-2xl">
+        Every rumor, leak, and production report rigorously audited against confirmed trades, trailer footage, and set leaks.
+      </p>
     </div>
 
-    <div class="unofficial-card rounded-2xl p-4 sm:p-5 mb-8 flex items-start gap-3.5">
-      <div class="w-10 h-10 rounded-xl bg-purple-500/20 border border-dashed border-purple-400 flex items-center justify-center shrink-0 text-purple-300 font-black text-lg">!</div>
-      <div>
-        <div class="font-bold text-sm text-purple-300 uppercase tracking-wider mb-1">Evidentiary Warning — Unverified &amp; Unofficial Material</div>
-        <p class="text-xs sm:text-sm opacity-85 leading-relaxed">
-          Everything in this section compiles unconfirmed plot leaks, scrubbed March 2025 concept art, July 2025 set photography, and community theories. None of these claims are verified by Marvel Studios. Each beat below is cross-examined against official trailers, <em>Avengers: Endgame – Encore</em> (Sept 2026), and the <em>VisionQuest</em> finale (Nov 2026).
-        </p>
-      </div>
+    <div class="glass rounded-3xl p-5 border border-purple-500/30 mb-8 overflow-x-auto">
+      <table class="w-full text-left text-xs min-w-[720px]">
+        <thead>
+          <tr class="border-b border-slate-500/20 text-[11px] uppercase tracking-wider text-slate-400">
+            <th class="py-3 px-3">Leak Claim</th>
+            <th class="py-3 px-3">Source &amp; Date</th>
+            <th class="py-3 px-3">Status</th>
+            <th class="py-3 px-3">Reliability Index</th>
+            <th class="py-3 px-3">Analysis &amp; Verification Evidence</th>
+          </tr>
+        </thead>
+        <tbody id="leak-table-body" class="divide-y divide-slate-500/15"></tbody>
+      </table>
     </div>
 
-    <div class="glass unofficial-card rounded-3xl p-5 sm:p-6 mb-8">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
-        <div>
-          <h3 class="text-xl font-black flex items-center gap-2">
-            <span>August 2026 "Russian Plot Leak" Forensic Audit</span>
-          </h3>
-          <p class="text-xs sm:text-sm opacity-75 mt-1">14 major claims cross-checked against official trailers and Fall 2026 bridging canon.</p>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-1.5 text-xs font-semibold" id="audit-filter-bar">
-          <button data-status="all" class="audit-btn active px-3 py-1.5 rounded-xl bg-purple-500/25 text-purple-200 border border-purple-400/50 transition">All (14)</button>
-          <button data-status="corroborated" class="audit-btn px-3 py-1.5 rounded-xl bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 transition">Corroborated (7)</button>
-          <button data-status="contradicted" class="audit-btn px-3 py-1.5 rounded-xl bg-red-500/15 text-red-300 border border-red-500/30 transition">Contradicted (3)</button>
-          <button data-status="unverified" class="audit-btn px-3 py-1.5 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/30 transition">Unverified (4)</button>
-        </div>
+    <!-- 3-Act Structure Breakdown -->
+    <div class="glass rounded-3xl p-6 border border-slate-500/20 mb-8">
+      <div class="mb-4">
+        <div class="text-xs font-bold uppercase tracking-widest text-emerald-400">Audited Narrative Flow</div>
+        <h3 class="text-xl sm:text-2xl font-black tracking-tight">Three-Act Narrative Structure</h3>
       </div>
 
-      <div id="audit-claims-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="act-cards-container"></div>
     </div>
 
-    <div class="glass unofficial-card rounded-3xl p-5 sm:p-6 mb-8">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-        <div>
-          <h3 class="text-xl font-black">7-Act Unofficial Plot Leak Breakdown</h3>
-          <p class="text-xs opacity-75">Includes MyTimeToShineHello’s Battleworld memory-wipe ending corroboration.</p>
-        </div>
-        <span class="unofficial-badge">UNOFFICIAL SYNOPSIS</span>
+    <!-- Concept Leaks & Fan Theories Accordions -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="glass rounded-3xl p-5 border border-slate-500/20">
+        <h3 class="text-lg font-black tracking-tight mb-3 flex items-center gap-2">
+          <span>Major Concept &amp; Character Leaks</span>
+        </h3>
+        <div class="space-y-3" id="concept-leaks-container"></div>
       </div>
 
-      <div id="act-tabs" class="flex flex-wrap gap-1.5 mb-4"></div>
-      <div id="act-content" class="rounded-2xl p-4 sm:p-5 bg-slate-950/35 border border-purple-500/25 text-sm leading-relaxed"></div>
-    </div>
-
-    <div class="mb-8">
-      <h3 class="text-xl font-black mb-4 flex items-center gap-2">
-        <span>Scrubbed Concept Art (March 2025) &amp; Set Photos (July 2025)</span>
-        <span class="unofficial-badge">UNOFFICIAL</span>
-      </h3>
-      <div id="concept-leaks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-    </div>
-
-    <div>
-      <h3 class="text-xl font-black mb-4 flex items-center gap-2">
-        <span>5 Major Community Theories</span>
-        <span class="unofficial-badge">SPECULATION</span>
-      </h3>
-      <div id="theories-accordion" class="space-y-3"></div>
+      <div class="glass rounded-3xl p-5 border border-slate-500/20">
+        <h3 class="text-lg font-black tracking-tight mb-3 flex items-center gap-2">
+          <span>High-Credibility Fan Theories</span>
+        </h3>
+        <div class="space-y-3" id="theories-container"></div>
+      </div>
     </div>
   </section>
 
   <!-- =======================================================================
-       FOOTER
+       INSPECTOR SIDE DRAWER & MODAL
   ======================================================================= -->
-  <footer class="border-t border-slate-500/15 py-10 px-4 text-center text-xs opacity-75">
-    <div class="max-w-4xl mx-auto space-y-2">
-      <div class="font-display font-bold tracking-widest text-emerald-400">AVENGERS: DOOMSDAY — MULTIVERSE LORE ATLAS</div>
-      <p>Interactive fan reference &amp; continuity guide. Official canon details reflect confirmed Marvel Studios releases through November 2026; all rumored cast, leaked plot beats, and concept art are explicitly tagged <span class="text-purple-400 font-semibold">UNOFFICIAL</span>.</p>
+  <div id="drawer-backdrop"></div>
+  <aside id="inspector-drawer" class="glass-strong border-l border-slate-500/25 p-5 overflow-y-auto">
+    <div class="flex items-center justify-between pb-3 border-b border-slate-500/20">
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Multiverse Intelligence File</span>
+      </div>
+      <button id="close-drawer-btn" class="w-7 h-7 rounded-lg glass flex items-center justify-center text-xs hover:border-emerald-400" aria-label="Close Inspector">✕</button>
+    </div>
+
+    <div id="drawer-content" class="py-4 space-y-4 text-xs"></div>
+  </aside>
+
+  <!-- =======================================================================
+       FOOTER & CONTINUITY CITATIONS
+  ======================================================================= -->
+  <footer class="py-12 px-4 border-t border-slate-500/20 text-center text-xs opacity-75">
+    <div class="max-w-4xl mx-auto space-y-3">
+      <div class="font-display font-bold tracking-widest text-emerald-400">AVENGERS: DOOMSDAY · MULTIVERSE ATLAS</div>
+      <p class="leading-relaxed">
+        Continuity research compiled from Marvel Studios official releases, Disney+ Phase 4–6 broadcasts, San Diego Comic-Con, D23, and production trade filings.
+      </p>
+      <div class="text-[11px] opacity-60">
+        All character names, logos, and related marks are trademarks of Marvel Characters, Inc. and The Walt Disney Company.
+      </div>
     </div>
   </footer>
 
   <!-- =======================================================================
-       FLOATING SLIDE-OVER INSPECTOR DRAWER
-  ======================================================================= -->
-  <div id="inspector-backdrop"></div>
-  <aside id="inspector-drawer" class="glass-strong border-l border-slate-500/25">
-    <div class="md:hidden w-12 h-1.5 rounded-full bg-slate-400/40 mx-auto mt-3 mb-1"></div>
-    <div class="flex items-start justify-between gap-3 p-5 border-b border-slate-500/15">
-      <div id="inspector-header-content"></div>
-      <button id="inspector-close" class="w-9 h-9 rounded-xl bg-slate-500/15 hover:bg-slate-500/25 flex items-center justify-center shrink-0 transition" aria-label="Close Inspector">✕</button>
-    </div>
-    <div id="inspector-body" class="flex-1 overflow-y-auto p-5 space-y-5 text-sm"></div>
-  </aside>
-
-  <!-- =======================================================================
-       APPLICATION LOGIC, 3D STAGE & AUDIO ENGINE
+       JAVASCRIPT APPLICATION ENGINE
   ======================================================================= -->
   <script>
+    /* =======================================================================
+       DATA DICTIONARIES & MULTIVERSE LORE ENCYCLOPEDIA
+    ======================================================================= */
     const FRANCHISE_ICONS = {
       avengers: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" stroke-dasharray="48 10"/><path d="M12 3.5L5.8 19.5H9.2L10.6 15.8H14.5L15.6 18.2L18.8 15L15.8 12.2V14H11.2L12 11.5L13.8 15.8H17.5L12 3.5Z" fill="currentColor"/></svg>`,
       f4: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M13.8 17.5V14.7H7.8V12.6L13.2 6.2H16V12.7H17.6V14.7H16V17.5H13.8ZM10.3 12.7H13.8V8.8L10.3 12.7Z" fill="currentColor"/></svg>`,
@@ -1257,6 +1156,14 @@
       "Earth-10005": "#f59e0b",
       "TVA / Nexus": "#eab308",
       "Unofficial": "#a855f7"
+    };
+
+    const EDGE_COLORS = {
+      "doom_target": "#10b981",
+      "alliance": "#0ea5e9",
+      "clash": "#f97316",
+      "credits": "#eab308",
+      "unofficial": "#a855f7"
     };
 
     const TIMELINE_LANES = [
@@ -2609,25 +2516,31 @@
       "c_yelena": "https://www.pngmart.com/files/2/Black-Widow-PNG-Transparent-Image.png",
       "c_bucky": "https://www.pngmart.com/files/22/Bucky-Barnes-PNG-Photos.png",
       "c_walker": "https://www.pngmart.com/files/22/Bucky-Barnes-PNG-Photos.png",
-      "c_alexei": "https://www.pngmart.com/files/22/The-Incredible-Hulk-PNG-Isolated-File.png",
-      "c_bob": "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png",
-      "c_shangchi": "https://www.pngmart.com/files/2/Captain-America-PNG-Photo.png",
+      "c_redguardian": "https://www.pngmart.com/files/2/Captain-America-PNG-Photo.png",
+      "c_sentry": "https://www.pngmart.com/files/22/The-Incredible-Hulk-PNG-Isolated-File.png",
+      "c_bob": "https://www.pngmart.com/files/22/The-Incredible-Hulk-PNG-Isolated-File.png",
+      "c_doombots": "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png",
+      "c_val": "https://www.pngmart.com/files/2/Black-Widow-PNG-Transparent-Image.png",
+      "c_ross": "https://www.pngmart.com/files/22/The-Incredible-Hulk-PNG-Isolated-File.png",
       "c_wanda": "https://www.pngmart.com/files/2/Scarlet-Witch-PNG-Transparent-Image.png",
       "c_hulk": "https://www.pngmart.com/files/22/The-Incredible-Hulk-PNG-Isolated-File.png",
-      "c_mystique": "https://www.pngmart.com/files/2/Black-Widow-PNG-Transparent-Image.png",
-      "c_nightcrawler": "https://www.pngmart.com/files/2/Gambit-PNG-Free-Download.png",
-      "c_beast": "https://www.pngmart.com/files/17/Marvel-Professor-X-PNG-HD.png",
       "c_shuri": "https://www.pngmart.com/files/22/Black-Panther-Marvel-PNG-Transparent.png",
       "c_namor": "https://www.pngmart.com/files/22/Black-Panther-Marvel-PNG-Transparent.png",
-      "c_vision": "https://www.pngmart.com/files/2/Loki-PNG-File.png",
-      "u_wanda": "https://www.pngmart.com/files/2/Scarlet-Witch-PNG-Transparent-Image.png",
-      "u_wolverine": "https://www.pngmart.com/files/2/Wolverine-PNG-HD.png",
-      "u_deadpool": "https://www.pngmart.com/files/22/Deadpool-Movie-PNG-Transparent.png",
-      "u_tobey": "https://www.pngmart.com/files/12/Miles-Morales-Spider-Man-PNG-Transparent-Picture.png",
-      "u_holland": "https://www.pngmart.com/files/12/Miles-Morales-Spider-Man-PNG-Transparent-Picture.png",
-      "u_strange": "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png",
-      "u_clea": "https://www.pngmart.com/files/2/Scarlet-Witch-PNG-Transparent-Image.png"
+      "c_mystique": "https://www.pngmart.com/files/2/Scarlet-Witch-PNG-Transparent-Image.png",
+      "c_nightcrawler": "https://www.pngmart.com/files/2/Gambit-PNG-Free-Download.png",
+      "c_beast": "https://www.pngmart.com/files/17/Marvel-Professor-X-PNG-HD.png",
+      "c_shangchi": "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png",
+      "c_spidey_miles": "https://www.pngmart.com/files/12/Miles-Morales-Spider-Man-PNG-Transparent-Picture.png",
+      "c_spidey_peter": "https://www.pngmart.com/files/12/Miles-Morales-Spider-Man-PNG-Transparent-Picture.png"
     };
+
+    // Ensure all Holo & Dossier characters have cutoutUrl defined
+    HOLO_CHARACTERS.forEach(c => {
+      c.cutoutUrl = REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
+    });
+    CHARACTERS.forEach(c => {
+      c.cutoutUrl = REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
+    });
 
     function buildFallbackLogoSVG(title, subtitle, accentColor, iconKey) {
       const safeTitle = (title || '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
@@ -2649,92 +2562,82 @@
           <rect width="360" height="88" rx="12" fill="url(#bg-${iconKey}-${safeTitle.length})" stroke="${accentColor}" stroke-opacity="0.5" stroke-width="1.4"/>
           <line x1="20" y1="18" x2="340" y2="18" stroke="${accentColor}" stroke-opacity="0.3" stroke-width="1"/>
           <line x1="20" y1="70" x2="340" y2="70" stroke="${accentColor}" stroke-opacity="0.3" stroke-width="1"/>
-          <text x="180" y="47" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-weight="900" font-size="${fontSize}" letter-spacing="2.2" fill="#f8fafc" filter="url(#glow-${safeTitle.length})">${safeTitle.toUpperCase()}</text>
-          <text x="180" y="64" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="9" letter-spacing="3" fill="${accentColor}">${safeSub.toUpperCase()}</text>
+          <text x="180" y="47" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-weight="900" font-size="${fontSize}" fill="#ffffff" filter="url(#glow-${safeTitle.length})" letter-spacing="1.5">${safeTitle}</text>
+          <text x="180" y="62" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="8.5" fill="${accentColor}" letter-spacing="2.8" text-transform="uppercase" opacity="0.92">${safeSub}</text>
         </svg>
       `;
     }
 
     /* =======================================================================
-       DOOMSDAY THEME MUSIC CONTROLLER & WEB AUDIO SYNTHESIZER
+       LOOPING DOOMSDAY THEME MUSIC ENGINE (DUAL HTML5 AUDIO + WEB AUDIO SYNTH)
     ======================================================================= */
-    let audioContext = null;
-    let synthInterval = null;
     let isThemePlaying = false;
+    let webAudioContext = null;
+    let synthLoopInterval = null;
 
     function playCinematicOrchestralSynth() {
       try {
-        if (!audioContext) {
-          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        if (!webAudioContext) {
+          webAudioContext = new AudioCtx();
         }
-        if (audioContext.state === "suspended") {
-          audioContext.resume();
+        if (webAudioContext.state === "suspended") {
+          webAudioContext.resume();
         }
 
-        // Alan Silvestri Avengers Motif progression: C - Ab - Bb - G
+        // Ominous Latverian chord progression (D minor -> Bb major -> G minor -> A major)
         const chords = [
-          [130.81, 196.00, 261.63, 311.13], // Cm
-          [103.83, 164.81, 207.65, 261.63], // Ab
-          [116.54, 174.61, 233.08, 293.66], // Bb
-          [98.00, 146.83, 196.00, 246.94]   // Gm
+          [146.83, 174.61, 220.00], // D3, F3, A3
+          [116.54, 146.83, 174.61], // Bb2, D3, F3
+          [98.00, 146.83, 196.00],  // G2, D3, G3
+          [110.00, 138.59, 164.81]  // A2, C#3, E3
         ];
-        let step = 0;
+        let chordIdx = 0;
 
         function triggerChord() {
-          if (!isThemePlaying) return;
-          const chord = chords[step % chords.length];
-          const now = audioContext.currentTime;
+          if (!isThemePlaying || !webAudioContext) return;
+          const freqs = chords[chordIdx % chords.length];
+          chordIdx++;
+          const now = webAudioContext.currentTime;
 
-          chord.forEach((freq, idx) => {
-            const osc = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            const filter = audioContext.createBiquadFilter();
+          freqs.forEach(freq => {
+            const osc = webAudioContext.createOscillator();
+            const gain = webAudioContext.createGain();
+            const filter = webAudioContext.createBiquadFilter();
 
-            osc.type = idx === 0 ? "sawtooth" : "triangle";
+            osc.type = "sawtooth";
             osc.frequency.setValueAtTime(freq, now);
 
             filter.type = "lowpass";
-            filter.frequency.setValueAtTime(idx === 0 ? 320 : 850, now);
+            filter.frequency.setValueAtTime(450, now);
+            filter.frequency.exponentialRampToValueAtTime(1100, now + 1.2);
+            filter.frequency.exponentialRampToValueAtTime(350, now + 3.8);
 
             gain.gain.setValueAtTime(0.001, now);
-            gain.gain.exponentialRampToValueAtTime(0.06 / (idx + 1), now + 0.4);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.8);
+            gain.gain.linearRampToValueAtTime(0.06, now + 0.8);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.9);
 
             osc.connect(filter);
             filter.connect(gain);
-            gain.connect(audioContext.destination);
+            gain.connect(webAudioContext.destination);
 
             osc.start(now);
-            osc.stop(now + 3.9);
+            osc.stop(now + 4.0);
           });
-
-          // Timpani percussive pulse
-          const timpOsc = audioContext.createOscillator();
-          const timpGain = audioContext.createGain();
-          timpOsc.type = "sine";
-          timpOsc.frequency.setValueAtTime(95, now);
-          timpOsc.frequency.exponentialRampToValueAtTime(35, now + 0.45);
-          timpGain.gain.setValueAtTime(0.18, now);
-          timpGain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
-          timpOsc.connect(timpGain);
-          timpGain.connect(audioContext.destination);
-          timpOsc.start(now);
-          timpOsc.stop(now + 0.55);
-
-          step++;
         }
 
         triggerChord();
-        synthInterval = setInterval(triggerChord, 4000);
-      } catch (e) {
-        console.warn("Web Audio synth error:", e);
+        synthLoopInterval = setInterval(triggerChord, 4000);
+      } catch (err) {
+        console.warn("Web Audio fallback unavailable:", err);
       }
     }
 
     function stopCinematicOrchestralSynth() {
-      if (synthInterval) {
-        clearInterval(synthInterval);
-        synthInterval = null;
+      if (synthLoopInterval) {
+        clearInterval(synthLoopInterval);
+        synthLoopInterval = null;
       }
     }
 
@@ -2760,10 +2663,9 @@
           const playPromise = audio.play();
           if (playPromise !== undefined) {
             playPromise.then(() => {
-              console.log("Playing Doomsday theme audio stream");
-            }).catch(() => {
-              // If remote audio stream fails or is blocked, Web Audio API starts
-              console.log("Audio stream blocked. Starting real-time Web Audio orchestral theme loop.");
+              console.log("Playing looping Doomsday theme audio stream");
+            }).catch(err => {
+              console.warn("HTML5 audio playback blocked/failed, switching to Web Audio synth:", err);
               playCinematicOrchestralSynth();
             });
           }
@@ -2774,11 +2676,11 @@
     }
 
     /* =======================================================================
-       3D MULTIVERSE CHARACTER HOLO-STAGE LOGIC (REAL IMAGE CUTOUTS)
+       3D MULTIVERSE CHARACTER HOLO-STAGE LOGIC
     ======================================================================= */
     const holoState = {
-      activeMovie: "all",
-      activeCharId: "c_doom"
+      activeCharId: "c_doom",
+      activeMovie: "all"
     };
 
     function initHoloStage() {
@@ -2788,13 +2690,13 @@
       if (!filterBar || !carousel) return;
 
       const movieFilterOptions = [
-        { id: "all", label: "All Characters (Multiverse)" },
-        { id: "doomsday", label: "Avengers: Doomsday (2026)" },
-        { id: "f4steps", label: "The Fantastic Four: First Steps" },
+        { id: "all", label: "All Characters" },
+        { id: "doomsday", label: "Avengers: Doomsday" },
+        { id: "f4steps", label: "The Fantastic Four" },
         { id: "thunderbolts", label: "Thunderbolts*" },
         { id: "dpw", label: "Deadpool & Wolverine" },
         { id: "encore", label: "Endgame: Encore" },
-        { id: "xmen2000", label: "Fox X-Men Timeline" }
+        { id: "xmen2000", label: "Fox X-Men" }
       ];
 
       filterBar.innerHTML = movieFilterOptions.map(opt => `
@@ -2828,17 +2730,21 @@
           holoState.activeCharId = filtered[0].id;
         }
 
-        carousel.innerHTML = filtered.map(c => `
+        carousel.innerHTML = filtered.map(c => {{
+          const localImg = `assets/images/characters/${c.id}.png`;
+          const fallbackImg = c.cutoutUrl || REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
+          return `
           <button data-id="${c.id}" class="holo-thumb shrink-0 flex items-center gap-2.5 p-2 rounded-xl glass border border-slate-500/25 ${c.id === holoState.activeCharId ? "active" : ""}">
             <div class="w-11 h-11 rounded-lg overflow-hidden flex items-center justify-center bg-slate-950/70 border border-white/10 shrink-0 p-1">
-              <img src="${c.cutoutUrl}" alt="${c.name}" class="max-h-full max-w-full object-contain" />
+              <img src="${localImg}" onerror="if(this.src!=='${fallbackImg}')this.src='${fallbackImg}';" alt="${c.name}" class="max-h-full max-w-full object-contain" />
             </div>
             <div class="text-left pr-2">
               <div class="font-bold text-xs truncate max-w-[110px]">${c.name}</div>
               <div class="text-[10px] opacity-65 truncate max-w-[110px]">${c.alias.split("·")[0]}</div>
             </div>
           </button>
-        `).join("");
+        `;
+        }}).join("");
 
         carousel.querySelectorAll(".holo-thumb").forEach(thumb => {
           thumb.addEventListener("click", () => {
@@ -2856,10 +2762,13 @@
         const char = HOLO_CHARACTERS.find(c => c.id === holoState.activeCharId) || HOLO_CHARACTERS[0];
         if (!char) return;
 
-        // Render REAL Character Cutout Image in 3D stage
+        // Render Character Cutout Image in 3D stage with local asset check
         const container = document.getElementById("holo-cutout-container");
+        const localImg = `assets/images/characters/${char.id}.png`;
+        const fallbackImg = char.cutoutUrl || REAL_CUTOUT_MAP[char.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
+
         container.innerHTML = `
-          <img id="holo-real-cutout-img" src="${char.cutoutUrl}" alt="${char.name}" class="holo-character-cutout object-contain select-none" />
+          <img id="holo-real-cutout-img" src="${localImg}" onerror="if(this.src!=='${fallbackImg}')this.src='${fallbackImg}';" alt="${char.name}" class="holo-character-cutout object-contain select-none" />
         `;
 
         document.getElementById("holo-portal-aura").style.setProperty("--char-glow", char.glowColor || "rgba(16, 185, 129, 0.45)");
@@ -2869,101 +2778,81 @@
         document.getElementById("holo-char-alias").textContent = char.alias;
         document.getElementById("holo-char-actor").textContent = `Portrayed by ${char.actor}`;
         document.getElementById("holo-char-quote").textContent = `"${char.quote}"`;
-        document.getElementById("holo-char-leads").textContent = char.leadsToDoomsday;
-
-        document.getElementById("holo-badge-universe").textContent = char.universe;
-        document.getElementById("holo-badge-universe").style.color = UNIVERSE_COLORS[char.universe] || "#10b981";
-        document.getElementById("holo-badge-faction").textContent = char.faction;
+        document.getElementById("holo-char-mission").textContent = char.leadsToDoomsday;
+        document.getElementById("holo-faction-badge").textContent = char.faction.toUpperCase();
         document.getElementById("holo-universe-tag").textContent = char.universe.toUpperCase();
 
-        const stats = char.stats || { combat: 85, sorcery: 50, intellect: 85, danger: 90 };
-        document.getElementById("holo-stat-combat").textContent = `${stats.combat}%`;
-        document.getElementById("holo-bar-combat").style.width = `${stats.combat}%`;
+        const stats = char.stats || { combat: 85, sorcery: 70, intellect: 90, danger: 90 };
+        ["combat", "sorcery", "intellect", "danger"].forEach(s => {
+          const val = stats[s] || 80;
+          const bar = document.getElementById(`stat-bar-${s}`);
+          const textEl = document.getElementById(`stat-val-${s}`);
+          if (bar) bar.style.width = `${val}%`;
+          if (textEl) textEl.textContent = `${val}%`;
+        });
 
-        document.getElementById("holo-stat-sorcery").textContent = `${stats.sorcery}%`;
-        document.getElementById("holo-bar-sorcery").style.width = `${stats.sorcery}%`;
-
-        document.getElementById("holo-stat-intellect").textContent = `${stats.intellect}%`;
-        document.getElementById("holo-bar-intellect").style.width = `${stats.intellect}%`;
-
-        const dangerLabel = stats.danger >= 98 ? `OMEGA (${stats.danger}%)` : `CLASS ${Math.round(stats.danger / 10)} (${stats.danger}%)`;
-        document.getElementById("holo-stat-danger").textContent = dangerLabel;
-        document.getElementById("holo-bar-danger").style.width = `${stats.danger}%`;
-
-        document.getElementById("holo-btn-locate").onclick = () => {
-          if (char.mapNode) {
-            focusNodeOnMap(char.mapNode);
-          } else {
-            document.getElementById("multiverse-map").scrollIntoView({ behavior: "smooth" });
-          }
+        document.getElementById("holo-jump-map-btn").onclick = () => {
+          if (char.mapNode) focusNodeOnMap(char.mapNode);
         };
 
-        document.getElementById("holo-btn-dossier").onclick = () => {
-          const fullChar = CHARACTERS.find(c => c.name.includes(char.name) || char.name.includes(c.name)) || char;
-          openInspectorForCharacter(fullChar);
+        document.getElementById("holo-open-dossier-btn").onclick = () => {
+          openInspectorForCharacter(char.id);
         };
       }
-
-      // 3D Mouse Parallax & Touch Drag on Pedestal
-      let isDragging = false;
-      let startX = 0, startY = 0;
-
-      interactiveArea.addEventListener("pointerdown", (e) => {
-        isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-      });
-
-      window.addEventListener("pointermove", (e) => {
-        if (!isDragging) {
-          const rect = interactiveArea.getBoundingClientRect();
-          if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
-            interactiveArea.style.transform = `perspective(1100px) rotateY(${x * 24}deg) rotateX(${-y * 18}deg)`;
-          }
-          return;
-        }
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        const rotY = Math.max(-45, Math.min(45, dx * 0.25));
-        const rotX = Math.max(-25, Math.min(25, -dy * 0.2));
-        interactiveArea.style.transform = `perspective(1100px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
-      });
-
-      window.addEventListener("pointerup", () => {
-        isDragging = false;
-        interactiveArea.style.transform = `perspective(1100px) rotateY(0deg) rotateX(0deg)`;
-      });
 
       renderHoloCarousel();
+
+      // 3D Perspective Tilt Control on Drag
+      if (interactiveArea) {
+        let isDraggingStage = false, startTiltX = 0, startTiltY = 0;
+        let curRotX = 0, curRotY = 0;
+
+        interactiveArea.addEventListener("pointerdown", (e) => {
+          isDraggingStage = true;
+          startTiltX = e.clientX;
+          startTiltY = e.clientY;
+          interactiveArea.setPointerCapture(e.pointerId);
+        });
+
+        window.addEventListener("pointermove", (e) => {
+          if (!isDraggingStage) return;
+          const dx = e.clientX - startTiltX;
+          const dy = e.clientY - startTiltY;
+          curRotY = Math.max(-28, Math.min(28, dx * 0.18));
+          curRotX = Math.max(-18, Math.min(18, -dy * 0.14));
+          interactiveArea.style.transform = `rotateX(${curRotX}deg) rotateY(${curRotY}deg)`;
+        });
+
+        window.addEventListener("pointerup", (e) => {
+          if (isDraggingStage) {
+            isDraggingStage = false;
+            interactiveArea.style.transform = `rotateX(0deg) rotateY(0deg)`;
+          }
+        });
+      }
     }
 
-    window.projectCharacterById = function(charId) {
+    window.selectHoloCharacter = function(charId) {
       holoState.activeCharId = charId;
-      document.getElementById("holo-stage").scrollIntoView({ behavior: "smooth" });
-      const thumb = document.querySelector(`.holo-thumb[data-id="${charId}"]`);
-      if (thumb) {
-        document.querySelectorAll(".holo-thumb").forEach(t => t.classList.remove("active"));
-        thumb.classList.add("active");
-      }
       const char = HOLO_CHARACTERS.find(c => c.id === charId);
       if (char) {
         const container = document.getElementById("holo-cutout-container");
         if (container) {
-          container.innerHTML = `<img id="holo-real-cutout-img" src="${char.cutoutUrl}" alt="${char.name}" class="holo-character-cutout object-contain select-none" />`;
+          const localImg = `assets/images/characters/${char.id}.png`;
+          const fallbackImg = char.cutoutUrl || REAL_CUTOUT_MAP[char.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
+          container.innerHTML = `<img id="holo-real-cutout-img" src="${localImg}" onerror="if(this.src!=='${fallbackImg}')this.src='${fallbackImg}';" alt="${char.name}" class="holo-character-cutout object-contain select-none" />`;
         }
       }
     };
 
     /* =======================================================================
-       ROAD TO DOOMSDAY TIMELINE RENDERER (REAL LOGOS, POSTERS, SPOILERS)
+       ROAD TO DOOMSDAY TIMELINE RENDERER (LOCAL & REAL LOGOS, SPOILERS)
     ======================================================================= */
     function updateWatchProgress() {
       const watchableCount = TIMELINE_LANES.flatMap(l => l.items).filter(i => i.watchable).length;
       const done = state.watched.size;
       const pct = Math.round((done / watchableCount) * 100);
-      document.getElementById("watched-count").textContent = `${done} / ${watchableCount} Watched`;
+      document.getElementById("watched-count").textContent = `${done} / ${watchableCount} Watched (${pct}%)`;
       document.getElementById("watched-progress-bar").style.width = `${pct}%`;
     }
 
@@ -2994,19 +2883,21 @@
           card.className = `timeline-movie-card tilt-card glass border border-slate-500/25 flex flex-col justify-between ${item.upcoming ? "border-emerald-400/60" : ""}`;
 
           const fallbackSvg = buildFallbackLogoSVG(item.title, `${item.year} · ${item.universe}`, accent, item.icon);
+          const localLogo = `assets/images/movies/${item.id}.png`;
+          const remoteLogo = item.logoUrl;
 
           // Card Header with cinematic poster backdrop and real title logo
           const headerMarkup = `
             <div class="movie-backdrop-header" style="background-image: url('${item.backdropUrl || "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80"}');">
               <div class="movie-backdrop-overlay"></div>
-              <img src="${item.logoUrl}" alt="${item.title} Official Logo" class="movie-logo-img" onerror="this.outerHTML = decodeURIComponent('${encodeURIComponent(fallbackSvg)}')" />
+              <img src="${localLogo}" alt="${item.title} Logo" class="movie-logo-img" onerror="if(this.src.indexOf('assets/')!==-1){this.src='${remoteLogo}';}else{this.outerHTML = decodeURIComponent('${encodeURIComponent(fallbackSvg)}');}" />
             </div>
           `;
 
           card.innerHTML = `
             <div>
               ${headerMarkup}
-             
+              
               <div class="p-4 sm:p-5 space-y-3">
                 <div class="flex items-center justify-between gap-2">
                   <div class="flex items-center gap-1.5 text-xs font-bold" style="color:${accent}">
@@ -3042,53 +2933,52 @@
                       </span>
                       <span class="group-open:rotate-180 transition text-purple-400">▾</span>
                     </summary>
-                    <p class="text-[11px] opacity-90 leading-relaxed mt-2 pt-2 border-t border-purple-500/20">${item.spoilersLore}</p>
+                    <p class="text-[11.5px] opacity-90 leading-relaxed mt-2 text-slate-200">${item.spoilersLore}</p>
                   </details>
                 ` : ""}
 
-                <!-- POST-CREDITS BRIDGING SETUP -->
+                <!-- POST-CREDITS LORE SCENE -->
                 ${item.creditsScene ? `
-                  <details class="rounded-xl bg-amber-500/10 border border-amber-500/30 p-2.5 text-xs group">
-                    <summary class="font-bold text-amber-300 cursor-pointer flex items-center justify-between list-none text-[11px]">
-                      <span>✦ Bridging / Post-Credits Scene</span>
-                      <span class="group-open:rotate-180 transition">▾</span>
-                    </summary>
-                    <p class="mt-2 opacity-90 leading-relaxed text-[11px]">${item.creditsScene}</p>
-                  </details>
+                  <div class="rounded-xl p-3 bg-amber-500/10 border border-amber-500/30">
+                    <div class="text-[10.5px] font-black uppercase tracking-wider text-amber-300 mb-1">✦ Credits Scene Setup</div>
+                    <p class="text-[11.5px] opacity-85 leading-relaxed">${item.creditsScene}</p>
+                  </div>
                 ` : ""}
               </div>
             </div>
 
-            <div class="p-4 sm:p-5 pt-0">
-              <div class="flex items-center justify-between gap-2 pt-3 border-t border-slate-500/15">
-                ${item.watchable ? `
-                  <label class="inline-flex items-center gap-2 text-xs font-semibold cursor-pointer select-none">
-                    <input type="checkbox" class="watch-cb w-4 h-4 accent-emerald-500 rounded cursor-pointer" data-id="${item.id}" ${isWatched ? "checked" : ""} />
-                    <span class="${isWatched ? "text-emerald-400" : "opacity-80"}">${isWatched ? "Watched" : "Mark Watched"}</span>
-                  </label>
-                ` : `<span class="text-[11px] font-bold text-emerald-400">Release Target</span>`}
-                <button class="tl-inspect-btn text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-500/15 hover:bg-emerald-500/20 hover:text-emerald-300 transition">Inspect Lore</button>
-              </div>
+            <div class="p-4 sm:p-5 pt-0 border-t border-slate-500/15 mt-3 flex items-center justify-between">
+              ${item.watchable ? `
+                <label class="flex items-center gap-2 text-xs font-semibold cursor-pointer select-none">
+                  <input type="checkbox" class="w-4 h-4 accent-emerald-500 rounded cursor-pointer" data-id="${item.id}" ${isWatched ? "checked" : ""} />
+                  <span class="${isWatched ? "text-emerald-400 font-bold" : "opacity-80"}">${isWatched ? "Prepared" : "Mark as Watched"}</span>
+                </label>
+              ` : `
+                <span class="text-[11px] font-bold text-emerald-400 uppercase tracking-wider">Theatrical Climax</span>
+              `}
+
+              <button class="px-3 py-1.5 rounded-lg glass text-xs font-bold hover:border-emerald-400 transition" onclick="openInspectorForMovie('${item.id}')">
+                Lore File →
+              </button>
             </div>
           `;
 
-          const cb = card.querySelector(".watch-cb");
-          if (cb) {
-            cb.addEventListener("change", (e) => {
-              if (e.target.checked) state.watched.add(item.id);
-              else state.watched.delete(item.id);
+          const chk = card.querySelector("input[type='checkbox']");
+          if (chk) {
+            chk.addEventListener("change", (e) => {
+              if (e.target.checked) {
+                state.watched.add(item.id);
+              } else {
+                state.watched.delete(item.id);
+              }
               saveWatched();
               updateWatchProgress();
               renderTimeline();
             });
           }
 
-          card.querySelector(".tl-inspect-btn").addEventListener("click", () => {
-            openInspectorForMovie(item);
-          });
-
-          attachTiltEffect(card);
           grid.appendChild(card);
+          attachTiltEffect(card);
         });
 
         container.appendChild(section);
@@ -3098,87 +2988,88 @@
     }
 
     /* =======================================================================
-       CHARACTER & FACTION DOSSIER RENDERER (REAL CUTOUTS)
+       CHARACTER DOSSIERS RENDERER (POP-OUT 3D TILT CARDS)
     ======================================================================= */
     function renderDossier() {
       const grid = document.getElementById("dossier-grid");
-      const countEl = document.getElementById("dossier-count");
-      if (!grid) return;
+      const pillsContainer = document.getElementById("faction-filter-pills");
+      if (!grid || !pillsContainer) return;
+
+      const factions = ["all", ...new Set(CHARACTERS.map(c => c.faction))];
+      pillsContainer.innerHTML = factions.map(f => `
+        <button data-faction="${f}" class="px-2.5 py-1 rounded-xl text-xs font-semibold transition ${f === state.dossierFaction ? "bg-emerald-500/25 text-emerald-300 border border-emerald-500/40" : "glass opacity-75 hover:opacity-100"}">
+          ${f === "all" ? "All Factions" : f}
+        </button>
+      `).join("");
+
+      pillsContainer.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.dossierFaction = btn.dataset.faction;
+          renderDossier();
+        });
+      });
 
       const filtered = CHARACTERS.filter(c => {
         if (state.canonFilter === "official" && !c.official) return false;
         if (state.canonFilter === "unofficial" && c.official) return false;
-        if (state.dossierUniverse !== "all" && c.universe !== state.dossierUniverse) return false;
         if (state.dossierFaction !== "all" && c.faction !== state.dossierFaction) return false;
         return true;
       });
 
-      countEl.textContent = `Showing ${filtered.length} of ${CHARACTERS.length} characters (${filtered.filter(c => c.official).length} Confirmed · ${filtered.filter(c => !c.official).length} Unofficial)`;
       grid.innerHTML = "";
-
       filtered.forEach(c => {
-        const accent = !c.official ? "#a855f7" : (c.faction === "Doctor Doom's Faction" ? "#10b981" : (UNIVERSE_COLORS[c.universe] || "#0ea5e9"));
-        const realCutout = REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
+        const accent = UNIVERSE_COLORS[c.universe] || "#10b981";
+        const localImg = `assets/images/characters/${c.id}.png`;
+        const fallbackImg = c.cutoutUrl || REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
         const card = document.createElement("article");
         card.className = `popout-card tilt-card glass rounded-2xl p-4 flex flex-col justify-between gap-3 ${!c.official ? "unofficial-card" : ""}`;
-        if (c.official) card.style.borderTop = `2.5px solid ${accent}`;
 
         card.innerHTML = `
-          <!-- Real 3D Popout Cutout Image -->
-          <div class="popout-cutout-img flex items-center justify-center">
-            <img src="${realCutout}" alt="${c.name}" class="max-w-full max-h-full object-contain" />
-          </div>
-
           <div>
-            <div class="flex items-start justify-between gap-2 mb-2 pt-2">
-              <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style="background:${accent}22; color:${accent}">
-                ${FRANCHISE_ICONS[c.icon] || FRANCHISE_ICONS.avengers}
-              </div>
-              <div class="flex flex-wrap justify-end gap-1">
-                ${!c.official ? `<span class="unofficial-badge">UNOFFICIAL</span>` : `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:${accent}22; color:${accent}">${c.universe}</span>`}
-                ${c.tribute ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40">✦ Tribute</span>` : ""}
-              </div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:${accent}25; color:${accent}; border: 1px solid ${accent}40">
+                ${c.universe}
+              </span>
+              ${!c.official ? `<span class="unofficial-badge">[UNOFFICIAL]</span>` : `<span class="text-[10px] font-bold text-slate-400 uppercase">${c.faction.split(" ")[0]}</span>`}
             </div>
 
-            <h3 class="font-extrabold text-base leading-tight mt-1">${c.name}</h3>
-            <div class="text-xs font-semibold opacity-85 mt-0.5" style="color:${accent}">${c.alias}</div>
-            <div class="text-[11px] opacity-65 mt-0.5">${c.actor}</div>
-            <p class="text-xs opacity-80 mt-2.5 leading-relaxed line-clamp-3">${c.arc}</p>
+            <!-- Avatar & Real Character Cutout -->
+            <div class="relative h-44 w-full rounded-xl bg-gradient-to-b from-slate-900/60 to-slate-950/80 border border-white/5 flex items-center justify-center overflow-hidden mb-3">
+              <div class="absolute inset-0 bg-radial-glow opacity-30 pointer-events-none" style="background: radial-gradient(circle, ${accent}40 0%, transparent 70%);"></div>
+              <img src="${localImg}" onerror="if(this.src!=='${fallbackImg}')this.src='${fallbackImg}';" alt="${c.name}" class="popout-avatar max-h-[160px] max-w-[85%] object-contain select-none transition-transform duration-300" />
+            </div>
+
+            <h4 class="font-black text-lg leading-tight mb-0.5">${c.name}</h4>
+            <div class="text-xs font-semibold text-emerald-400 mb-1">${c.alias}</div>
+            <div class="text-[11px] opacity-60 mb-2">Portrayed by ${c.actor}</div>
+
+            <p class="text-xs opacity-80 leading-relaxed mb-3">${c.summary}</p>
           </div>
 
-          <div class="flex items-center justify-between gap-2 pt-2.5 border-t border-slate-500/15">
-            <button onclick="projectCharacterById('${c.id}')" class="text-[11px] font-bold text-emerald-400 hover:text-emerald-300 transition flex items-center gap-1">
-              <span>★ Project 3D</span>
-            </button>
-            <button class="char-inspect-btn shrink-0 px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-500/15 hover:bg-emerald-500/30 transition">
-              View &amp; Map
+          <div class="pt-2 border-t border-slate-500/15 flex items-center justify-between">
+            <span class="text-[10px] font-bold text-slate-400">${c.status || "Active Incursion"}</span>
+            <button class="px-2.5 py-1 rounded-lg glass text-xs font-bold hover:border-emerald-400 transition" onclick="openInspectorForCharacter('${c.id}')">
+              Details →
             </button>
           </div>
         `;
 
-        card.querySelector(".char-inspect-btn").addEventListener("click", () => {
-          openInspectorForCharacter(c);
-        });
-
-        attachTiltEffect(card);
         grid.appendChild(card);
+        attachTiltEffect(card);
       });
     }
 
-    const state = {
-      canonFilter: "all",
-      timelineD15Only: false,
-      dossierUniverse: "all",
-      dossierFaction: "all",
-      auditStatus: "all",
-      activeActIdx: 0,
-      countdownTarget: "india",
-      activeEdgeLayers: new Set(["doom_target", "alliance", "clash", "credits", "unofficial"]),
-      watched: new Set(JSON.parse(localStorage.getItem("doomsday_watched_v1") || "[]")),
-      mapTransform: { x: 0, y: 0, scale: 0.78 },
-      hoveredNodeId: null,
-      focusedNodeId: null
-    };
+    /* =======================================================================
+       GLOBAL APP STATE & SAFE STORAGE HELPERS
+    ======================================================================= */
+    function getStored(key, fallback) {
+      try {
+        const val = localStorage.getItem(key);
+        return val ? JSON.parse(val) : fallback;
+      } catch (e) {
+        return fallback;
+      }
+    }
 
     function saveWatched() {
       try {
@@ -3186,200 +3077,177 @@
       } catch (e) {}
     }
 
+    const state = {
+      canonFilter: "all",
+      dossierFaction: "all",
+      timelineD15Only: false,
+      activeEdgeLayers: new Set(["doom_target", "alliance", "clash", "credits", "unofficial"]),
+      watched: new Set(getStored("doomsday_watched_v1", [])),
+      mapTransform: { x: 0, y: 0, scale: 0.78 },
+      hoveredNodeId: null,
+      focusedNodeId: null,
+      mobilePanActive: false
+    };
+
+    /* =======================================================================
+       THREE.JS REAL-TIME COLLIDING UNIVERSES (HERO BACKDROP OVERLAY)
+    ======================================================================= */
+    let heroScene, heroCamera, heroRenderer;
+    let universe616Mesh, universe828Mesh, universe10005Mesh;
+    let doomVortexMesh, incursionParticles;
+    let targetMouseX = 0, targetMouseY = 0;
+
     function initThreeHero() {
       const container = document.getElementById("hero-canvas-container");
-      if (!container || typeof THREE === "undefined") return;
+      if (!container) return;
 
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(54, container.clientWidth / container.clientHeight, 0.1, 1000);
-      camera.position.set(0, 0.4, 15.5);
+      heroScene = new THREE.Scene();
+      heroCamera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      heroCamera.position.z = 85;
 
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(renderer.domElement);
+      heroRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+      heroRenderer.setSize(container.clientWidth, container.clientHeight);
+      heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.innerHTML = "";
+      container.appendChild(heroRenderer.domElement);
 
-      const ambient = new THREE.AmbientLight(0xffffff, 0.55);
-      scene.add(ambient);
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+      heroScene.add(ambientLight);
 
-      const centerLight = new THREE.PointLight(0xeab308, 3.2, 45);
-      centerLight.position.set(0, 0, 0);
-      scene.add(centerLight);
+      universe616Mesh = createPlanet(0xe21936, 11, -26, 6, 0);
+      universe828Mesh = createPlanet(0x0ea5e9, 9.5, 24, -4, -6);
+      universe10005Mesh = createPlanet(0xf59e0b, 7.5, 0, -22, -10);
 
-      const emeraldLight = new THREE.PointLight(0x10b981, 2.5, 40);
-      emeraldLight.position.set(6, 4, 6);
-      scene.add(emeraldLight);
+      const vortexGeo = new THREE.TorusGeometry(32, 1.2, 16, 120);
+      const vortexMat = new THREE.MeshBasicMaterial({
+        color: 0x10b981,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.28
+      });
+      doomVortexMesh = new THREE.Mesh(vortexGeo, vortexMat);
+      doomVortexMesh.rotation.x = Math.PI / 2.3;
+      heroScene.add(doomVortexMesh);
 
-      const crimsonLight = new THREE.PointLight(0xe21936, 2.0, 40);
-      crimsonLight.position.set(-7, -3, 5);
-      scene.add(crimsonLight);
+      const partCount = 1800;
+      const partGeo = new THREE.BufferGeometry();
+      const posArray = new Float32Array(partCount * 3);
+      const colorArray = new Float32Array(partCount * 3);
 
-      const worldGroup = new THREE.Group();
-      scene.add(worldGroup);
+      for (let i = 0; i < partCount; i++) {
+        posArray[i * 3] = (Math.random() - 0.5) * 160;
+        posArray[i * 3 + 1] = (Math.random() - 0.5) * 100;
+        posArray[i * 3 + 2] = (Math.random() - 0.5) * 90;
 
-      function createPlanet(radius, coreColor, wireColor, pos) {
-        const group = new THREE.Group();
-        const geo = new THREE.SphereGeometry(radius, 32, 32);
-        const mat = new THREE.MeshStandardMaterial({
-          color: coreColor,
-          emissive: coreColor,
-          emissiveIntensity: 0.35,
-          roughness: 0.45,
-          metalness: 0.25
-        });
-        const sphere = new THREE.Mesh(geo, mat);
-        group.add(sphere);
-
-        const wireGeo = new THREE.SphereGeometry(radius * 1.07, 18, 18);
-        const wireMat = new THREE.MeshBasicMaterial({
-          color: wireColor,
-          wireframe: true,
-          transparent: true,
-          opacity: 0.24
-        });
-        group.add(new THREE.Mesh(wireGeo, wireMat));
-
-        const ringGeo = new THREE.TorusGeometry(radius * 1.48, 0.03, 12, 72);
-        const ringMat = new THREE.MeshBasicMaterial({
-          color: wireColor,
-          transparent: true,
-          opacity: 0.45
-        });
-        const ring = new THREE.Mesh(ringGeo, ringMat);
-        ring.rotation.x = Math.PI * 0.42;
-        group.add(ring);
-
-        group.position.set(pos[0], pos[1], pos[2]);
-        return group;
+        const p = Math.random();
+        if (p < 0.35) {
+          colorArray[i * 3] = 0.88; colorArray[i * 3 + 1] = 0.10; colorArray[i * 3 + 2] = 0.21;
+        } else if (p < 0.65) {
+          colorArray[i * 3] = 0.05; colorArray[i * 3 + 1] = 0.65; colorArray[i * 3 + 2] = 0.91;
+        } else {
+          colorArray[i * 3] = 0.06; colorArray[i * 3 + 1] = 0.72; colorArray[i * 3 + 2] = 0.51;
+        }
       }
 
-      const earth616 = createPlanet(1.85, 0x991b1b, 0xe21936, [-6.4, 2.1, -1.5]);
-      const earth828 = createPlanet(1.75, 0x0369a1, 0x10b981, [6.5, 1.8, -1.2]);
-      const earth10005 = createPlanet(1.65, 0x92400e, 0xf59e0b, [-0.5, -4.6, -2.5]);
-      worldGroup.add(earth616, earth828, earth10005);
+      partGeo.setAttribute("position", new THREE.BufferAttribute(posArray, 3));
+      partGeo.setAttribute("color", new THREE.BufferAttribute(colorArray, 3));
 
-      const riftGroup = new THREE.Group();
-      const riftCore = new THREE.Mesh(
-        new THREE.OctahedronGeometry(0.95, 2),
-        new THREE.MeshBasicMaterial({ color: 0xfef08a, wireframe: true, transparent: true, opacity: 0.7 })
-      );
-      riftGroup.add(riftCore);
-
-      for (let i = 0; i < 3; i++) {
-        const torus = new THREE.Mesh(
-          new THREE.TorusGeometry(1.7 + i * 0.65, 0.025, 12, 80),
-          new THREE.MeshBasicMaterial({
-            color: i === 1 ? 0x10b981 : 0xeab308,
-            transparent: true,
-            opacity: 0.55 - i * 0.12
-          })
-        );
-        torus.rotation.set(i * 0.9, i * 1.1, 0);
-        riftGroup.add(torus);
-      }
-      worldGroup.add(riftGroup);
-
-      const particleCount = 720;
-      const pPos = new Float32Array(particleCount * 3);
-      const pColors = new Float32Array(particleCount * 3);
-      const palette = [
-        new THREE.Color(0x10b981),
-        new THREE.Color(0x34d399),
-        new THREE.Color(0xeab308),
-        new THREE.Color(0x0ea5e9),
-        new THREE.Color(0xe21936)
-      ];
-
-      for (let i = 0; i < particleCount; i++) {
-        const r = 3.2 + Math.random() * 19;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = (Math.random() - 0.5) * Math.PI;
-        pPos[i * 3] = r * Math.cos(theta) * Math.cos(phi);
-        pPos[i * 3 + 1] = r * Math.sin(phi) * 0.75;
-        pPos[i * 3 + 2] = r * Math.sin(theta) * Math.cos(phi) - 2;
-        const c = palette[i % palette.length];
-        pColors[i * 3] = c.r;
-        pColors[i * 3 + 1] = c.g;
-        pColors[i * 3 + 2] = c.b;
-      }
-
-      const pGeo = new THREE.BufferGeometry();
-      pGeo.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
-      pGeo.setAttribute("color", new THREE.BufferAttribute(pColors, 3));
-      const pMat = new THREE.PointsMaterial({
-        size: 0.11,
+      const partMat = new THREE.PointsMaterial({
+        size: 1.1,
         vertexColors: true,
         transparent: true,
-        opacity: 0.85
+        opacity: 0.72,
+        blending: THREE.AdditiveBlending
       });
-      const particles = new THREE.Points(pGeo, pMat);
-      scene.add(particles);
-
-      let targetMouseX = 0, targetMouseY = 0;
-      window.addEventListener("mousemove", (e) => {
-        targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2.2;
-        targetMouseY = (e.clientY / window.innerHeight - 0.5) * 1.4;
-      });
-
-      let scrollFactor = 0;
-      window.addEventListener("scroll", () => {
-        scrollFactor = Math.min(window.scrollY / window.innerHeight, 1.4);
-      }, { passive: true });
+      incursionParticles = new THREE.Points(partGeo, partMat);
+      heroScene.add(incursionParticles);
 
       window.addEventListener("resize", () => {
-        if (!container) return;
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
+        if (!heroCamera || !heroRenderer || !container) return;
+        heroCamera.aspect = container.clientWidth / container.clientHeight;
+        heroCamera.updateProjectionMatrix();
+        heroRenderer.setSize(container.clientWidth, container.clientHeight);
       });
 
-      const clock = new THREE.Clock();
-      function animate() {
-        requestAnimationFrame(animate);
-        const t = clock.getElapsedTime();
+      window.addEventListener("mousemove", (e) => {
+        targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2.2;
+        targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2.2;
+      });
 
-        earth616.rotation.y = t * 0.25;
-        earth828.rotation.y = -t * 0.28;
-        earth10005.rotation.y = t * 0.22;
-
-        earth616.position.x = -6.2 + Math.sin(t * 0.4) * 0.55;
-        earth616.position.y = 2.0 + Math.cos(t * 0.5) * 0.35;
-        earth828.position.x = 6.3 + Math.cos(t * 0.38) * 0.55;
-        earth828.position.y = 1.7 + Math.sin(t * 0.45) * 0.35;
-        earth10005.position.y = -4.5 + Math.sin(t * 0.55) * 0.4;
-
-        riftGroup.rotation.y = t * 0.45;
-        riftGroup.rotation.x = t * 0.22;
-        particles.rotation.y = t * 0.045;
-
-        const autoX = Math.sin(t * 0.18) * 0.45;
-        camera.position.x += (targetMouseX + autoX - camera.position.x) * 0.04;
-        camera.position.y += (-targetMouseY + 0.4 - scrollFactor * 1.6 - camera.position.y) * 0.04;
-        camera.position.z = 15.5 - scrollFactor * 2.8;
-        camera.lookAt(0, -scrollFactor * 0.5, 0);
-
-        renderer.render(scene, camera);
-      }
       animate();
     }
 
-    function updateCountdown() {
-      const targetStr = state.countdownTarget === "india"
-        ? "2026-12-17T00:00:00+05:30"
-        : "2026-12-18T00:00:00-05:00";
-      const diff = new Date(targetStr).getTime() - Date.now();
+    function createPlanet(colorHex, radius, x, y, z) {
+      const group = new THREE.Group();
+      group.position.set(x, y, z);
 
-      if (diff <= 0) {
-        ["cd-days", "cd-hours", "cd-mins", "cd-secs"].forEach(id => {
-          document.getElementById(id).textContent = "00";
-        });
-        return;
+      const sphereGeo = new THREE.SphereGeometry(radius, 36, 36);
+      const sphereMat = new THREE.MeshPhongMaterial({
+        color: colorHex,
+        emissive: colorHex,
+        emissiveIntensity: 0.28,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.75
+      });
+      const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+      group.add(sphere);
+
+      const coreGeo = new THREE.SphereGeometry(radius * 0.78, 24, 24);
+      const coreMat = new THREE.MeshBasicMaterial({
+        color: colorHex,
+        transparent: true,
+        opacity: 0.35
+      });
+      const core = new THREE.Mesh(coreGeo, coreMat);
+      group.add(core);
+
+      heroScene.add(group);
+      return group;
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      if (universe616Mesh) universe616Mesh.rotation.y += 0.0035;
+      if (universe828Mesh) universe828Mesh.rotation.y -= 0.0042;
+      if (universe10005Mesh) universe10005Mesh.rotation.y += 0.005;
+      if (doomVortexMesh) {
+        doomVortexMesh.rotation.z += 0.0028;
+        doomVortexMesh.rotation.y += 0.0015;
+      }
+      if (incursionParticles) {
+        incursionParticles.rotation.y += 0.0008;
       }
 
+      if (heroCamera) {
+        heroCamera.position.x += (targetMouseX * 10 - heroCamera.position.x) * 0.04;
+        heroCamera.position.y += (-targetMouseY * 8 - heroCamera.position.y) * 0.04;
+        heroCamera.lookAt(0, 0, 0);
+      }
+
+      if (heroRenderer && heroScene && heroCamera) {
+        heroRenderer.render(heroScene, heroCamera);
+      }
+    }
+
+    /* =======================================================================
+       COUNTDOWN CLOCK
+    ======================================================================= */
+    const RELEASE_DATES = {
+      india: new Date("2026-12-17T00:00:00+05:30").getTime(),
+      global: new Date("2026-12-18T00:00:00Z").getTime()
+    };
+    let activeReleaseTarget = "india";
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = Math.max(0, RELEASE_DATES[activeReleaseTarget] - now);
+
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const mins = Math.floor((diff / (1000 * 60)) % 60);
-      const secs = Math.floor((diff / 1000) % 60);
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
       document.getElementById("cd-days").textContent = String(days).padStart(2, "0");
       document.getElementById("cd-hours").textContent = String(hours).padStart(2, "0");
@@ -3387,19 +3255,13 @@
       document.getElementById("cd-secs").textContent = String(secs).padStart(2, "0");
     }
 
-    const EDGE_COLORS = {
-      doom_target: "#10b981",
-      alliance: "#0ea5e9",
-      clash: "#f97316",
-      credits: "#eab308",
-      unofficial: "#a855f7"
-    };
-
+    /* =======================================================================
+       INTERACTIVE MULTIVERSE CONNECTION MAP ENGINE
+    ======================================================================= */
     function applyMapTransform() {
-      const stage = document.getElementById("map-stage");
-      if (!stage) return;
-      const { x, y, scale } = state.mapTransform;
-      stage.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+      const cont = document.getElementById("map-transform-container");
+      if (!cont) return;
+      cont.style.transform = `translate(${state.mapTransform.x}px, ${state.mapTransform.y}px) scale(${state.mapTransform.scale})`;
     }
 
     function fitMapToViewport() {
@@ -3435,6 +3297,8 @@
 
         const a = nodeMap[edge.from];
         const b = nodeMap[edge.to];
+        if (!a || !b) return;
+
         const mx = (a.x + b.x) / 2;
         const my = (a.y + b.y) / 2 - 28;
         const d = `M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`;
@@ -3470,84 +3334,74 @@
     }
 
     function updateMapHoverHighlight() {
-      const activeId = state.hoveredNodeId;
-      const nodeEls = document.querySelectorAll(".map-node");
-      const edgeEls = document.querySelectorAll(".map-edge-line");
+      const activeId = state.hoveredNodeId || state.focusedNodeId;
+      const lines = document.querySelectorAll(".map-edge-line");
+      const nodes = document.querySelectorAll(".map-node");
 
       if (!activeId) {
-        nodeEls.forEach(el => el.classList.remove("dimmed"));
-        edgeEls.forEach(el => el.classList.remove("dimmed", "highlighted"));
+        lines.forEach(l => {
+          l.setAttribute("opacity", "0.62");
+          l.setAttribute("stroke-width", "2.2");
+        });
+        nodes.forEach(n => n.style.opacity = "1");
         return;
       }
 
-      const connected = new Set([activeId]);
-      edgeEls.forEach(el => {
-        if (el.dataset.from === activeId || el.dataset.to === activeId) {
-          connected.add(el.dataset.from);
-          connected.add(el.dataset.to);
-          el.classList.add("highlighted");
-          el.classList.remove("dimmed");
+      const connectedNodeIds = new Set([activeId]);
+      lines.forEach(l => {
+        const f = l.dataset.from;
+        const t = l.dataset.to;
+        if (f === activeId || t === activeId) {
+          l.setAttribute("opacity", "1");
+          l.setAttribute("stroke-width", "4.2");
+          connectedNodeIds.add(f);
+          connectedNodeIds.add(t);
         } else {
-          el.classList.add("dimmed");
-          el.classList.remove("highlighted");
+          l.setAttribute("opacity", "0.12");
+          l.setAttribute("stroke-width", "1.4");
         }
       });
 
-      nodeEls.forEach(el => {
-        if (connected.has(el.dataset.id)) {
-          el.classList.remove("dimmed");
-        } else {
-          el.classList.add("dimmed");
-        }
+      nodes.forEach(n => {
+        n.style.opacity = connectedNodeIds.has(n.dataset.id) ? "1" : "0.28";
       });
     }
 
     function renderMapNodes() {
-      const layer = document.getElementById("map-nodes-layer");
-      if (!layer) return;
-      layer.innerHTML = "";
+      const container = document.getElementById("map-nodes-container");
+      if (!container) return;
+      container.innerHTML = "";
 
-      MAP_NODES.filter(nodePassesCanon).forEach(node => {
-        const accent = UNIVERSE_COLORS[node.universe] || "#10b981";
+      MAP_NODES.forEach(node => {
+        if (!nodePassesCanon(node)) return;
+
         const el = document.createElement("div");
-        el.className = `map-node glass ${!node.official ? "unofficial-card" : ""} ${state.focusedNodeId === node.id ? "active-focus" : ""}`;
+        el.className = `map-node px-3 py-1.5 rounded-2xl glass-strong border flex items-center gap-2 ${!node.official ? "unofficial-card" : ""}`;
         el.dataset.id = node.id;
         el.style.left = `${node.x}px`;
         el.style.top = `${node.y}px`;
-        if (node.official) {
-          el.style.borderColor = `${accent}80`;
-        }
+        el.style.borderColor = node.official ? `${node.color}65` : "#a855f7";
 
         el.innerHTML = `
-          <div class="flex items-center justify-between gap-1.5 mb-1">
-            <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg shrink-0" style="background:${accent}25; color:${accent}">
-              ${FRANCHISE_ICONS[node.icon] || FRANCHISE_ICONS.avengers}
-            </span>
-            ${!node.official ? `<span class="text-[8px] font-black tracking-wider px-1.5 py-0.5 rounded-full bg-purple-500/25 text-purple-300 border border-dashed border-purple-400">UNOFFICIAL</span>` : `<span class="w-2 h-2 rounded-full" style="background:${accent}"></span>`}
+          <div class="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style="background:${node.color}25; color:${node.color}; box-shadow:0 0 10px ${node.color}40">
+            ${FRANCHISE_ICONS[node.icon] || FRANCHISE_ICONS.avengers}
           </div>
-          <div class="font-bold text-xs leading-tight truncate">${node.label}</div>
-          <div class="text-[10px] opacity-70 truncate mt-0.5">${node.sub}</div>
+          <div class="leading-tight text-left pr-1">
+            <div class="font-extrabold text-xs whitespace-nowrap">${node.label}</div>
+            <div class="text-[9.5px] opacity-70 whitespace-nowrap" style="color:${node.color}">${node.sub}</div>
+          </div>
         `;
 
-        el.addEventListener("mouseenter", () => {
-          state.hoveredNodeId = node.id;
-          updateMapHoverHighlight();
-        });
-        el.addEventListener("mouseleave", () => {
-          state.hoveredNodeId = null;
-          updateMapHoverHighlight();
-        });
-
-        let dragging = false, moved = false, startX = 0, startY = 0, origX = 0, origY = 0;
+        // Node drag handling
+        let dragging = false, startX = 0, startY = 0, initialNodeX = node.x, initialNodeY = node.y;
 
         el.addEventListener("pointerdown", (e) => {
           e.stopPropagation();
           dragging = true;
-          moved = false;
           startX = e.clientX;
           startY = e.clientY;
-          origX = node.x;
-          origY = node.y;
+          initialNodeX = node.x;
+          initialNodeY = node.y;
           el.setPointerCapture(e.pointerId);
         });
 
@@ -3555,26 +3409,38 @@
           if (!dragging) return;
           const dx = (e.clientX - startX) / state.mapTransform.scale;
           const dy = (e.clientY - startY) / state.mapTransform.scale;
-          if (Math.hypot(dx, dy) > 4) moved = true;
-          node.x = Math.max(70, Math.min(1530, origX + dx));
-          node.y = Math.max(60, Math.min(920, origY + dy));
+          node.x = initialNodeX + dx;
+          node.y = initialNodeY + dy;
           el.style.left = `${node.x}px`;
           el.style.top = `${node.y}px`;
           renderMapEdges();
         });
 
         el.addEventListener("pointerup", (e) => {
-          if (!dragging) return;
-          dragging = false;
-          el.releasePointerCapture(e.pointerId);
-          if (!moved) {
-            state.focusedNodeId = node.id;
-            openInspectorForNode(node);
-            renderMapNodes();
+          if (dragging) {
+            dragging = false;
+            try { el.releasePointerCapture(e.pointerId); } catch (err) {}
           }
         });
 
-        layer.appendChild(el);
+        el.addEventListener("click", (e) => {
+          e.stopPropagation();
+          state.focusedNodeId = node.id;
+          openInspectorForNode(node);
+          updateMapHoverHighlight();
+        });
+
+        el.addEventListener("mouseenter", () => {
+          state.hoveredNodeId = node.id;
+          updateMapHoverHighlight();
+        });
+
+        el.addEventListener("mouseleave", () => {
+          state.hoveredNodeId = null;
+          updateMapHoverHighlight();
+        });
+
+        container.appendChild(el);
       });
 
       renderMapEdges();
@@ -3582,10 +3448,30 @@
 
     function initMapInteractions() {
       const vp = document.getElementById("map-viewport");
+      const mobilePanToggle = document.getElementById("mobile-map-pan-toggle");
       let panning = false, startX = 0, startY = 0, origX = 0, origY = 0;
+
+      if (mobilePanToggle) {
+        mobilePanToggle.addEventListener("click", () => {
+          state.mobilePanActive = !state.mobilePanActive;
+          if (state.mobilePanActive) {
+            vp.classList.add("pan-mode-active");
+            mobilePanToggle.textContent = "Touch: Pan Map";
+            mobilePanToggle.classList.remove("bg-emerald-500/20", "text-emerald-300");
+            mobilePanToggle.classList.add("bg-cyan-500/30", "text-cyan-200");
+          } else {
+            vp.classList.remove("pan-mode-active");
+            mobilePanToggle.textContent = "Touch: Scroll Page";
+            mobilePanToggle.classList.add("bg-emerald-500/20", "text-emerald-300");
+            mobilePanToggle.classList.remove("bg-cyan-500/30", "text-cyan-200");
+          }
+        });
+      }
 
       vp.addEventListener("pointerdown", (e) => {
         if (e.target.closest(".map-node")) return;
+        // On mobile, only pan if pan mode is active or user uses mouse/pen
+        if (e.pointerType === "touch" && !state.mobilePanActive) return;
         panning = true;
         startX = e.clientX;
         startY = e.clientY;
@@ -3652,389 +3538,363 @@
 
       document.getElementById("multiverse-map").scrollIntoView({ behavior: "smooth", block: "center" });
       const vp = document.getElementById("map-viewport");
-      const scale = Math.max(state.mapTransform.scale, 0.92);
-      state.mapTransform.scale = scale;
-      state.mapTransform.x = vp.clientWidth / 2 - node.x * scale;
-      state.mapTransform.y = vp.clientHeight / 2 - node.y * scale;
-      state.focusedNodeId = node.id;
+      const vw = vp.clientWidth;
+      const vh = vp.clientHeight;
+      state.mapTransform.scale = Math.max(0.9, state.mapTransform.scale);
+      state.mapTransform.x = vw / 2 - node.x * state.mapTransform.scale;
+      state.mapTransform.y = vh / 2 - node.y * state.mapTransform.scale;
       applyMapTransform();
-      renderMapNodes();
+
+      state.focusedNodeId = nodeId;
+      updateMapHoverHighlight();
+      openInspectorForNode(node);
     }
 
-    function openDrawer(headerHTML, bodyHTML) {
-      document.getElementById("inspector-header-content").innerHTML = headerHTML;
-      document.getElementById("inspector-body").innerHTML = bodyHTML;
-      document.getElementById("inspector-backdrop").classList.add("open");
+    /* =======================================================================
+       INSPECTOR DRAWER LOGIC
+    ======================================================================= */
+    function openDrawer() {
       document.getElementById("inspector-drawer").classList.add("open");
+      document.getElementById("drawer-backdrop").classList.add("open");
     }
 
     function closeDrawer() {
-      document.getElementById("inspector-backdrop").classList.remove("open");
       document.getElementById("inspector-drawer").classList.remove("open");
+      document.getElementById("drawer-backdrop").classList.remove("open");
+      state.focusedNodeId = null;
+      updateMapHoverHighlight();
     }
 
     function buildConnectedChips(nodeId) {
-      const relatedEdges = MAP_EDGES.filter(e => e.from === nodeId || e.to === nodeId);
-      if (!relatedEdges.length) return "";
-      const nodeMap = Object.fromEntries(MAP_NODES.map(n => [n.id, n]));
+      const edges = MAP_EDGES.filter(e => e.from === nodeId || e.to === nodeId);
+      if (!edges.length) return `<div class="opacity-60 italic">No direct nexus links registered.</div>`;
 
-      const chips = relatedEdges.map(e => {
+      return edges.map(e => {
         const otherId = e.from === nodeId ? e.to : e.from;
-        const other = nodeMap[otherId];
-        if (!other) return "";
+        const otherNode = MAP_NODES.find(n => n.id === otherId);
+        const color = EDGE_COLORS[e.type] || "#94a3b8";
         return `
-          <button onclick="inspectNodeById('${other.id}')" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-500/15 hover:bg-emerald-500/20 hover:text-emerald-300 border border-slate-500/25 transition">
-            <span>${other.label}</span>
-            <span class="opacity-50">→</span>
+          <button class="px-2.5 py-1 rounded-xl glass border flex items-center justify-between gap-2 text-left hover:border-emerald-400 transition" onclick="focusNodeOnMap('${otherId}')">
+            <span class="font-bold">${otherNode ? otherNode.label : otherId}</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded font-semibold" style="background:${color}25; color:${color}">${e.type.toUpperCase()}</span>
           </button>
         `;
       }).join("");
-
-      return `
-        <div>
-          <div class="text-[11px] font-bold uppercase tracking-wider opacity-60 mb-2">Connected Multiverse Nodes</div>
-          <div class="flex flex-wrap gap-2">${chips}</div>
-        </div>
-      `;
     }
 
-    window.inspectNodeById = function(id) {
-      const node = MAP_NODES.find(n => n.id === id);
-      if (node) openInspectorForNode(node);
-    };
-
     function openInspectorForNode(node) {
-      const accent = UNIVERSE_COLORS[node.universe] || "#10b981";
-      const header = `
+      const content = document.getElementById("drawer-content");
+      content.innerHTML = `
         <div class="flex items-center gap-2 mb-1">
-          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:${accent}25; color:${accent}">${node.universe}</span>
-          ${!node.official ? `<span class="unofficial-badge">UNOFFICIAL</span>` : `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300">OFFICIAL CANON</span>`}
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold" style="background:${node.color}25; color:${node.color}; border:1px solid ${node.color}40">${node.universe}</span>
+          ${!node.official ? `<span class="unofficial-badge">[UNOFFICIAL]</span>` : ""}
         </div>
-        <h3 class="text-xl font-black leading-tight">${node.label}</h3>
-        <div class="text-xs opacity-70 mt-0.5">${node.sub} · ${node.actor}</div>
-      `;
+        <h3 class="text-xl font-black">${node.label}</h3>
+        <div class="text-xs font-semibold opacity-75">${node.sub}</div>
 
-      const body = `
-        <div class="space-y-4">
-          <button onclick="focusNodeOnMap('${node.id}'); closeDrawer();" class="w-full py-2.5 rounded-xl font-bold text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 transition">
-            ◎ Locate on Multiverse Map
-          </button>
-          <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider opacity-60 mb-1">Faction</div>
-            <div class="font-semibold">${node.faction}</div>
-          </div>
-          <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider opacity-60 mb-1">Powers &amp; Assets</div>
-            <p class="opacity-85 leading-relaxed">${node.powers}</p>
-          </div>
-          <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider opacity-60 mb-1">Road to Doomsday Arc</div>
-            <p class="opacity-85 leading-relaxed">${node.arc}</p>
-          </div>
-          <div class="rounded-xl p-3 bg-slate-500/10 border border-slate-500/20">
-            <div class="text-[10px] font-bold uppercase tracking-wider opacity-60 mb-1">Last Seen / Continuity Anchor</div>
-            <div class="text-xs font-medium">${node.lastSeen}</div>
-          </div>
-          ${buildConnectedChips(node.id)}
+        <div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20 leading-relaxed">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">Lore Assessment</div>
+          <p class="opacity-90">${node.lore}</p>
+        </div>
+
+        <div>
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Connected Multiverse Realities</div>
+          <div class="grid grid-cols-1 gap-1.5">${buildConnectedChips(node.id)}</div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-500/15 flex items-center gap-2">
+          ${node.charId ? `<button class="w-full py-2 rounded-xl bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 hover:bg-emerald-500/30 transition" onclick="selectHoloCharacter('${node.charId}'); document.getElementById('holo-stage').scrollIntoView({behavior:'smooth'});">Inspect in 3D Holo-Stage</button>` : ""}
         </div>
       `;
-      openDrawer(header, body);
+      openDrawer();
     }
 
     function openInspectorForEdge(edge) {
-      const nodeMap = Object.fromEntries(MAP_NODES.map(n => [n.id, n]));
-      const a = nodeMap[edge.from];
-      const b = nodeMap[edge.to];
-      const color = EDGE_COLORS[edge.type] || "#10b981";
-      const isUnofficial = edge.type === "unofficial";
+      const fromNode = MAP_NODES.find(n => n.id === edge.from);
+      const toNode = MAP_NODES.find(n => n.id === edge.to);
+      const color = EDGE_COLORS[edge.type] || "#94a3b8";
 
-      const header = `
+      const content = document.getElementById("drawer-content");
+      content.innerHTML = `
         <div class="flex items-center gap-2 mb-1">
-          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase" style="background:${color}25; color:${color}">${edge.type.replace("_", " ")}</span>
-          ${isUnofficial ? `<span class="unofficial-badge">UNOFFICIAL</span>` : ""}
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold" style="background:${color}25; color:${color}; border:1px solid ${color}40">${edge.type.toUpperCase()} CONNECTION</span>
+          ${edge.type === "unofficial" ? `<span class="unofficial-badge">[UNOFFICIAL]</span>` : ""}
         </div>
-        <h3 class="text-lg font-black leading-tight">${edge.label}</h3>
-        <div class="text-xs opacity-70 mt-0.5">${a.label} ↔ ${b.label}</div>
-      `;
+        <h3 class="text-lg font-black">${fromNode ? fromNode.label : edge.from} ⟷ ${toNode ? toNode.label : edge.to}</h3>
 
-      const body = `
-        <div class="space-y-4">
-          <p class="leading-relaxed opacity-90">${edge.desc}</p>
-          <div class="grid grid-cols-2 gap-2">
-            <button onclick="inspectNodeById('${a.id}')" class="p-3 rounded-xl glass text-left hover:border-emerald-400 transition">
-              <div class="text-[10px] opacity-60 uppercase">Node A</div>
-              <div class="font-bold text-xs mt-0.5">${a.label}</div>
-            </button>
-            <button onclick="inspectNodeById('${b.id}')" class="p-3 rounded-xl glass text-left hover:border-emerald-400 transition">
-              <div class="text-[10px] opacity-60 uppercase">Node B</div>
-              <div class="font-bold text-xs mt-0.5">${b.label}</div>
-            </button>
-          </div>
+        <div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20 leading-relaxed">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">Multiversal Domino Dynamics</div>
+          <p class="opacity-90">${edge.lore}</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 pt-2">
+          <button class="py-2 px-3 rounded-xl glass font-bold hover:border-emerald-400 text-left transition" onclick="focusNodeOnMap('${edge.from}')">
+            <div class="text-[10px] opacity-60">SOURCE NODE</div>
+            <div class="font-extrabold truncate">${fromNode ? fromNode.label : edge.from}</div>
+          </button>
+          <button class="py-2 px-3 rounded-xl glass font-bold hover:border-emerald-400 text-left transition" onclick="focusNodeOnMap('${edge.to}')">
+            <div class="text-[10px] opacity-60">TARGET NODE</div>
+            <div class="font-extrabold truncate">${toNode ? toNode.label : edge.to}</div>
+          </button>
         </div>
       `;
-      openDrawer(header, body);
+      openDrawer();
     }
 
-    function openInspectorForCharacter(c) {
-      const accent = !c.official ? "#a855f7" : (UNIVERSE_COLORS[c.universe] || "#10b981");
-      const realCutout = REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
+    function openInspectorForCharacter(charId) {
+      const c = CHARACTERS.find(ch => ch.id === charId);
+      if (!c) return;
+
+      const accent = UNIVERSE_COLORS[c.universe] || "#10b981";
+      const localImg = `assets/images/characters/${c.id}.png`;
+      const fallbackImg = c.cutoutUrl || REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
       const header = `
         <div class="flex items-center gap-2 mb-1">
           <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:${accent}25; color:${accent}">${c.universe}</span>
-          ${!c.official ? `<span class="unofficial-badge">UNOFFICIAL RUMOR</span>` : `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300">CONFIRMED CAST</span>`}
+          ${!c.official ? `<span class="unofficial-badge">[UNOFFICIAL]</span>` : ""}
         </div>
-        <h3 class="text-xl font-black leading-tight">${c.name}</h3>
-        <div class="text-xs opacity-75 mt-0.5">${c.alias} · ${c.actor}</div>
+        <div class="h-44 w-full rounded-xl bg-gradient-to-b from-slate-900/60 to-slate-950/80 border border-white/5 flex items-center justify-center overflow-hidden my-2">
+          <img src="${localImg}" onerror="if(this.src!=='${fallbackImg}')this.src='${fallbackImg}';" alt="${c.name}" class="max-h-[160px] max-w-[85%] object-contain" />
+        </div>
+        <h3 class="text-2xl font-black">${c.name}</h3>
+        <div class="text-xs font-semibold text-emerald-400">${c.alias}</div>
+        <div class="text-xs opacity-60">Portrayed by ${c.actor} · Faction: ${c.faction}</div>
       `;
 
-      const body = `
-        <div class="space-y-4">
-          <div class="flex items-center justify-center p-3 rounded-2xl bg-slate-950/70 border border-white/10 h-56 overflow-hidden">
-            <img src="${realCutout}" alt="${c.name}" class="max-h-full max-w-full object-contain drop-shadow-2xl" />
-          </div>
-          ${c.mapNode ? `
-            <button onclick="focusNodeOnMap('${c.mapNode}'); closeDrawer();" class="w-full py-2.5 rounded-xl font-bold text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 transition">
-              ◎ Locate on Multiverse Map
-            </button>
-          ` : ""}
-          <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider opacity-60 mb-1">Operational Faction</div>
-            <div class="font-semibold">${c.faction}</div>
-          </div>
-          <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider opacity-60 mb-1">Powers &amp; Abilities</div>
-            <p class="opacity-85 leading-relaxed">${c.powers}</p>
-          </div>
-          <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider opacity-60 mb-1">Arc Entering Doomsday</div>
-            <p class="opacity-85 leading-relaxed">${c.arc}</p>
-          </div>
-          <div class="rounded-xl p-3 bg-slate-500/10 border border-slate-500/20">
-            <div class="text-[10px] font-bold uppercase tracking-wider opacity-60 mb-1">Last Seen</div>
-            <div class="text-xs font-medium">${c.lastSeen}</div>
-          </div>
-          ${c.mapNode ? buildConnectedChips(c.mapNode) : ""}
+      const content = document.getElementById("drawer-content");
+      content.innerHTML = `
+        ${header}
+        <div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20 leading-relaxed">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">Intelligence Assessment</div>
+          <p class="opacity-90">${c.summary}</p>
+        </div>
+        <div class="rounded-xl p-3 bg-emerald-950/30 border border-emerald-500/30 leading-relaxed">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-300 mb-1">Direct Incursion Mission</div>
+          <p class="opacity-90">${c.leadsToDoomsday || "Active participant in Battleworld convergence."}</p>
+        </div>
+        ${c.powers ? `<div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20"><div class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1">Capabilities</div><p class="opacity-80">${c.powers}</p></div>` : ""}
+        <div class="pt-2 flex items-center gap-2">
+          <button class="w-full py-2 rounded-xl bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 hover:bg-emerald-500/30 transition" onclick="selectHoloCharacter('${c.id}'); document.getElementById('holo-stage').scrollIntoView({behavior:'smooth'}); closeDrawer();">
+            Inspect on 3D Holo-Stage →
+          </button>
         </div>
       `;
-      openDrawer(header, body);
+      openDrawer();
     }
 
-    function openInspectorForMovie(item) {
-      const accent = UNIVERSE_COLORS[item.universe] || "#0ea5e9";
-      const header = `
+    function openInspectorForMovie(movieId) {
+      const movie = TIMELINE_LANES.flatMap(l => l.items).find(m => m.id === movieId);
+      if (!movie) return;
+
+      const accent = UNIVERSE_COLORS[movie.universe] || "#0ea5e9";
+      const localLogo = `assets/images/movies/${movie.id}.png`;
+      const remoteLogo = movie.logoUrl;
+      const fallbackSvg = buildFallbackLogoSVG(movie.title, `${movie.year} · ${movie.universe}`, accent, movie.icon);
+
+      const content = document.getElementById("drawer-content");
+      content.innerHTML = `
         <div class="flex items-center gap-2 mb-1">
-          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:${accent}25; color:${accent}">${item.year} · ${item.universe}</span>
-          ${item.d15 ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/20 text-cyan-300">Disney+ 15</span>` : ""}
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:${accent}25; color:${accent}">${movie.universe}</span>
+          <span class="text-[10px] font-bold opacity-60">${movie.year}</span>
         </div>
-        <h3 class="text-xl font-black leading-tight">${item.title}</h3>
-      `;
-
-      const body = `
-        <div class="space-y-4">
-          <div class="h-28 rounded-xl overflow-hidden relative flex items-center justify-center p-3 bg-slate-950/80 border border-white/10" style="background-image: url('${item.backdropUrl || ""}'); background-size: cover; background-position: center;">
-            <div class="absolute inset-0 bg-black/60"></div>
-            <img src="${item.logoUrl}" alt="${item.title} Logo" class="relative z-10 max-h-16 max-w-full object-contain drop-shadow" onerror="this.outerHTML = decodeURIComponent('${encodeURIComponent(buildFallbackLogoSVG(item.title, `${item.year} · ${item.universe}`, accent, item.icon))}')" />
-          </div>
-         
-          <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider opacity-60 mb-1">Continuity Overview</div>
-            <p class="opacity-85 leading-relaxed">${item.summary}</p>
-          </div>
-
-          ${item.leadsToDoomsday ? `
-            <div class="rounded-xl p-3.5 leads-to-doomsday-box border border-emerald-500/40">
-              <div class="text-[11px] font-black uppercase tracking-wider text-emerald-300 mb-1">⚡ What Leads to Doomsday</div>
-              <p class="text-xs leading-relaxed opacity-90">${item.leadsToDoomsday}</p>
-            </div>
-          ` : ""}
-
-          ${item.spoilersLore ? `
-            <div class="rounded-xl p-3.5 essential-lore-box border border-purple-500/40">
-              <div class="text-[11px] font-black uppercase tracking-wider text-purple-300 mb-1">⚠️ Essential Lore &amp; Spoilers Needed</div>
-              <p class="text-xs leading-relaxed opacity-90">${item.spoilersLore}</p>
-            </div>
-          ` : ""}
-
-          ${item.creditsScene ? `
-            <div class="rounded-xl p-3.5 bg-amber-500/10 border border-amber-500/35">
-              <div class="text-[11px] font-bold uppercase tracking-wider text-amber-300 mb-1">✦ Post-Credits / Bridging Setup</div>
-              <p class="text-xs leading-relaxed opacity-90">${item.creditsScene}</p>
-            </div>
-          ` : ""}
+        <div class="h-32 w-full rounded-xl flex items-center justify-center p-3 bg-slate-950/80 border border-white/10 my-2 overflow-hidden" style="background-image: url('${movie.backdropUrl || ""}'); background-size: cover; background-position: center;">
+          <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
+          <img src="${localLogo}" alt="${movie.title} Logo" class="relative z-10 max-h-16 max-w-full object-contain drop-shadow" onerror="if(this.src.indexOf('assets/')!==-1){this.src='${remoteLogo}';}else{this.outerHTML = decodeURIComponent('${encodeURIComponent(fallbackSvg)}');}" />
         </div>
+        <h3 class="text-xl font-black">${movie.title}</h3>
+
+        <div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20 leading-relaxed">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">Continuity Overview</div>
+          <p class="opacity-90">${movie.summary}</p>
+        </div>
+
+        ${movie.leadsToDoomsday ? `
+          <div class="rounded-xl p-3.5 leads-to-doomsday-box border border-emerald-500/35">
+            <div class="text-[10.5px] font-black uppercase tracking-wider text-emerald-300 mb-1">⚡ WHAT LEADS TO DOOMSDAY</div>
+            <p class="opacity-95 leading-relaxed">${movie.leadsToDoomsday}</p>
+          </div>
+        ` : ""}
+
+        ${movie.spoilersLore ? `
+          <div class="rounded-xl p-3.5 essential-lore-box border border-purple-500/35">
+            <div class="text-[10.5px] font-black uppercase tracking-wider text-purple-300 mb-1">⚠️ ESSENTIAL LORE &amp; SPOILERS NEEDED</div>
+            <p class="opacity-95 leading-relaxed text-slate-200">${movie.spoilersLore}</p>
+          </div>
+        ` : ""}
+
+        ${movie.creditsScene ? `
+          <div class="rounded-xl p-3 bg-amber-500/10 border border-amber-500/30">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-amber-300 mb-1">Credits Scene Setup</div>
+            <p class="opacity-90">${movie.creditsScene}</p>
+          </div>
+        ` : ""}
       `;
-      openDrawer(header, body);
+      openDrawer();
     }
 
-    function attachTiltEffect(card) {
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
+    /* =======================================================================
+       3D TILT EFFECT FOR POP-OUT CARDS
+    ======================================================================= */
+    function attachTiltEffect(el) {
+      el.addEventListener("mousemove", (e) => {
+        const rect = el.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const rx = ((y / rect.height) - 0.5) * -7;
-        const ry = ((x / rect.width) - 0.5) * 7;
-        card.style.setProperty("--mx", `${(x / rect.width) * 100}%`);
-        card.style.setProperty("--my", `${(y / rect.height) * 100}%`);
-        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const rx = ((y - cy) / cy) * -9;
+        const ry = ((x - cx) / cx) * 9;
+        el.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02, 1.02, 1.02)`;
       });
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+
+      el.addEventListener("mouseleave", () => {
+        el.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
       });
     }
 
-    function setCanonFilter(val) {
-      state.canonFilter = val;
+    /* =======================================================================
+       CANON FILTER SWITCHER
+    ======================================================================= */
+    function setCanonFilter(canon) {
+      state.canonFilter = canon;
       document.querySelectorAll(".canon-btn").forEach(btn => {
-        const active = btn.dataset.canon === val;
-        btn.className = `canon-btn px-2 py-1 rounded-lg transition ${active
-          ? (val === "unofficial" ? "bg-purple-500/30 text-purple-300" : "bg-emerald-500/25 text-emerald-400")
-          : "opacity-75 hover:opacity-100"}`;
+        if (btn.dataset.canon === canon) {
+          btn.classList.add("bg-emerald-500/25", "text-emerald-400");
+          btn.classList.remove("opacity-75");
+        } else {
+          btn.classList.remove("bg-emerald-500/25", "text-emerald-400");
+          btn.classList.add("opacity-75");
+        }
       });
+
       renderMapNodes();
       renderDossier();
     }
 
+    /* =======================================================================
+       LEAK & PRODUCTION AUDIT MATRIX
+    ======================================================================= */
     function renderLeakAudit() {
-      const grid = document.getElementById("audit-claims-grid");
-      const filtered = state.auditStatus === "all"
-        ? AUDIT_CLAIMS
-        : AUDIT_CLAIMS.filter(a => a.status === state.auditStatus);
+      const tbody = document.getElementById("leak-table-body");
+      if (!tbody) return;
 
-      const badgeMap = {
-        corroborated: `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">✓ Corroborated</span>`,
-        contradicted: `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-red-500/20 text-red-300 border border-red-500/40">✕ Contradicted</span>`,
-        unverified: `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/40">? Unverified</span>`
+      const badgeStyles = {
+        "Confirmed": "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
+        "High Credibility": "bg-cyan-500/20 text-cyan-300 border-cyan-500/40",
+        "Plausible Rumor": "bg-amber-500/20 text-amber-300 border-amber-500/40",
+        "Audited / Debunked": "bg-red-500/20 text-red-300 border-red-500/40"
       };
 
-      grid.innerHTML = filtered.map(item => `
-        <div class="rounded-2xl p-4 bg-slate-950/35 border ${item.status === "contradicted" ? "border-red-500/45" : (item.status === "corroborated" ? "border-emerald-500/35" : "border-amber-500/35")}">
-          <div class="flex items-center justify-between gap-2 mb-2">
-            <span class="text-[11px] font-mono opacity-60">CLAIM #${String(item.id).padStart(2, "0")}</span>
-            ${badgeMap[item.status]}
-          </div>
-          <div class="font-bold text-sm leading-snug mb-1.5">${item.claim}</div>
-          <p class="text-xs opacity-80 leading-relaxed">${item.evidence}</p>
-        </div>
+      tbody.innerHTML = AUDIT_CLAIMS.map(c => `
+        <tr class="hover:bg-slate-500/10 transition">
+          <td class="py-3 px-3 font-bold text-slate-200">
+            <div>${c.claim}</div>
+            <div class="text-[10px] opacity-60 font-mono mt-0.5">${c.category}</div>
+          </td>
+          <td class="py-3 px-3 whitespace-nowrap text-slate-300">
+            <div>${c.source}</div>
+            <div class="text-[10px] opacity-60">${c.date}</div>
+          </td>
+          <td class="py-3 px-3 whitespace-nowrap">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border ${badgeStyles[c.status] || "bg-slate-500/20 text-slate-300"}">
+              ${c.status}
+            </span>
+          </td>
+          <td class="py-3 px-3 whitespace-nowrap font-mono font-bold text-emerald-400">${c.reliability}</td>
+          <td class="py-3 px-3 opacity-85 leading-relaxed">${c.details}</td>
+        </tr>
       `).join("");
     }
 
     function renderActExplorer() {
-      const tabsEl = document.getElementById("act-tabs");
-      const contentEl = document.getElementById("act-content");
+      const container = document.getElementById("act-cards-container");
+      if (!container) return;
 
-      tabsEl.innerHTML = LEAK_ACTS.map((a, idx) => `
-        <button data-idx="${idx}" class="act-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold transition ${idx === state.activeActIdx ? "bg-purple-500/30 text-purple-200 border border-purple-400" : "bg-slate-500/15 opacity-75 hover:opacity-100 border border-transparent"}">
-          ${a.act}
-        </button>
+      container.innerHTML = LEAK_ACTS.map(act => `
+        <div class="glass rounded-2xl p-4 border border-slate-500/25 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">${act.act}</span>
+              <span class="text-[11px] opacity-60">${act.timeline}</span>
+            </div>
+            <h4 class="font-black text-base mb-2">${act.title}</h4>
+            <p class="text-xs opacity-85 leading-relaxed mb-3">${act.summary}</p>
+          </div>
+
+          <div class="pt-2 border-t border-slate-500/15">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Key Battles &amp; Anchor Events</div>
+            <div class="flex flex-wrap gap-1">
+              ${act.keyEvents.map(k => `<span class="px-2 py-0.5 rounded-md bg-slate-900/60 text-[10px] border border-white/10">${k}</span>`).join("")}
+            </div>
+          </div>
+        </div>
       `).join("");
-
-      const active = LEAK_ACTS[state.activeActIdx];
-      contentEl.innerHTML = `
-        <div class="text-xs font-extrabold uppercase tracking-widest text-purple-400 mb-1">${active.act} · UNOFFICIAL LEAKED BEAT</div>
-        <h4 class="text-lg font-black mb-2">${active.title}</h4>
-        <p class="opacity-90">${active.text}</p>
-      `;
-
-      tabsEl.querySelectorAll(".act-tab-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          state.activeActIdx = Number(btn.dataset.idx);
-          renderActExplorer();
-        });
-      });
     }
 
     function renderConceptAndTheories() {
-      const conceptGrid = document.getElementById("concept-leaks-grid");
-      conceptGrid.innerHTML = CONCEPT_LEAKS.map(c => `
-        <article class="glass unofficial-card rounded-2xl p-4">
-          <div class="flex items-center justify-between gap-2 mb-2">
-            <span class="unofficial-badge">${c.tag}</span>
-            <span class="text-[10px] font-semibold opacity-65">${c.date}</span>
+      const cCont = document.getElementById("concept-leaks-container");
+      const tCont = document.getElementById("theories-container");
+      if (!cCont || !tCont) return;
+
+      cCont.innerHTML = CONCEPT_LEAKS.map(item => `
+        <details class="glass rounded-xl p-3 border border-slate-500/20 group">
+          <summary class="font-extrabold text-xs cursor-pointer flex items-center justify-between list-none">
+            <span class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>${item.title}</span>
+            </span>
+            <span class="text-[10px] opacity-60">${item.source} ▾</span>
+          </summary>
+          <div class="mt-2 pt-2 border-t border-slate-500/15 text-xs opacity-85 leading-relaxed">
+            ${item.body}
           </div>
-          <h4 class="font-extrabold text-sm sm:text-base mb-1.5">${c.title}</h4>
-          <p class="text-xs opacity-80 leading-relaxed">${c.desc}</p>
-        </article>
+        </details>
       `).join("");
 
-      const theoriesEl = document.getElementById("theories-accordion");
-      theoriesEl.innerHTML = FAN_THEORIES.map((t, i) => `
-        <details class="glass unofficial-card rounded-2xl p-4 group" ${i === 0 ? "open" : ""}>
-          <summary class="font-extrabold text-sm sm:text-base cursor-pointer list-none flex items-center justify-between gap-3">
-            <span>${t.title}</span>
-            <span class="text-purple-400 group-open:rotate-180 transition">▾</span>
+      tCont.innerHTML = FAN_THEORIES.map(t => `
+        <details class="glass rounded-xl p-3 border border-purple-500/25 group">
+          <summary class="font-extrabold text-xs text-purple-300 cursor-pointer flex items-center justify-between list-none">
+            <span class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+              <span>${t.name}</span>
+            </span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded font-mono bg-purple-500/20 text-purple-300">${t.credibility} ▾</span>
           </summary>
-          <p class="text-xs sm:text-sm opacity-85 leading-relaxed mt-3 pt-3 border-t border-purple-500/20">${t.body}</p>
+          <div class="mt-2 pt-2 border-t border-slate-500/15 text-xs opacity-85 leading-relaxed">
+            <p class="mb-1.5">${t.premise}</p>
+            <div class="text-[11px] text-emerald-300 font-semibold">Supporting Evidence: ${t.evidence}</div>
+          </div>
         </details>
       `).join("");
     }
 
+    /* =======================================================================
+       GLOBAL SEARCH ENGINE
+    ======================================================================= */
     function initGlobalSearch() {
       const input = document.getElementById("global-search");
       const dropdown = document.getElementById("search-dropdown");
       const clearBtn = document.getElementById("clear-search-btn");
+      if (!input || !dropdown) return;
 
-      const allMovies = TIMELINE_LANES.flatMap(l => l.items);
-
-      function runSearch() {
+      input.addEventListener("input", () => {
         const q = input.value.trim().toLowerCase();
-        clearBtn.classList.toggle("hidden", !q);
-        if (!q) {
-          dropdown.classList.add("hidden");
-          return;
-        }
-
-        const results = [];
-        HOLO_CHARACTERS.forEach(c => {
-          if (`${c.name} ${c.alias} ${c.actor} ${c.faction}`.toLowerCase().includes(q)) {
-            results.push({ type: "3D Holo-Stage", title: c.name, sub: `${c.alias} · ${c.actor}`, action: () => { projectCharacterById(c.id); } });
-          }
-        });
-        CHARACTERS.forEach(c => {
-          if (`${c.name} ${c.alias} ${c.actor} ${c.faction}`.toLowerCase().includes(q)) {
-            if (!results.some(r => r.title === c.name)) {
-              results.push({ type: c.official ? "Character" : "Unofficial", title: c.name, sub: `${c.alias} · ${c.actor}`, action: () => { if (c.mapNode) focusNodeOnMap(c.mapNode); openInspectorForCharacter(c); } });
-            }
-          }
-        });
-        allMovies.forEach(m => {
-          if (`${m.title} ${m.year} ${m.summary} ${m.leadsToDoomsday || ""} ${m.spoilersLore || ""}`.toLowerCase().includes(q)) {
-            results.push({ type: "Timeline Movie", title: m.title, sub: `${m.year} · ${m.universe}`, action: () => { document.getElementById("timeline").scrollIntoView({ behavior: "smooth" }); openInspectorForMovie(m); } });
-          }
-        });
-        AUDIT_CLAIMS.forEach(a => {
-          if (`${a.claim} ${a.evidence}`.toLowerCase().includes(q)) {
-            results.push({ type: "Unofficial Leak", title: a.claim.slice(0, 60) + "...", sub: `Audit: ${a.status.toUpperCase()}`, action: () => { document.getElementById("leak-audit").scrollIntoView({ behavior: "smooth" }); } });
-          }
-        });
-
-        if (!results.length) {
-          dropdown.innerHTML = `<div class="p-3 text-xs opacity-70">No matches found for "${q}"</div>`;
+        if (q.length > 0) {
+          clearBtn.classList.remove("hidden");
+          runSearch(q);
         } else {
-          dropdown.innerHTML = results.slice(0, 8).map((r, i) => `
-            <button data-idx="${i}" class="search-res-item w-full text-left px-3.5 py-2.5 hover:bg-emerald-500/15 transition flex items-center justify-between gap-2">
-              <div class="min-w-0">
-                <div class="font-bold text-xs truncate">${r.title}</div>
-                <div class="text-[11px] opacity-65 truncate">${r.sub}</div>
-              </div>
-              <span class="shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full ${r.type.includes("Unofficial") ? "bg-purple-500/25 text-purple-300" : (r.type.includes("Holo") ? "bg-emerald-500/25 text-emerald-300" : "bg-cyan-500/20 text-cyan-300")}">${r.type}</span>
-            </button>
-          `).join("");
-
-          dropdown.querySelectorAll(".search-res-item").forEach(btn => {
-            btn.addEventListener("click", () => {
-              results[Number(btn.dataset.idx)].action();
-              dropdown.classList.add("hidden");
-            });
-          });
+          clearBtn.classList.add("hidden");
+          dropdown.classList.add("hidden");
         }
-        dropdown.classList.remove("hidden");
-      }
+      });
 
-      input.addEventListener("input", runSearch);
       clearBtn.addEventListener("click", () => {
         input.value = "";
-        runSearch();
+        clearBtn.classList.add("hidden");
+        dropdown.classList.add("hidden");
+        input.focus();
       });
+
       document.addEventListener("click", (e) => {
         if (!e.target.closest("#global-search") && !e.target.closest("#search-dropdown")) {
           dropdown.classList.add("hidden");
@@ -4042,130 +3902,161 @@
       });
     }
 
-    function initControls() {
-      const themeBtn = document.getElementById("theme-toggle");
-      const sun = document.getElementById("theme-icon-sun");
-      const moon = document.getElementById("theme-icon-moon");
+    function runSearch(query) {
+      const dropdown = document.getElementById("search-dropdown");
+      const results = [];
 
-      themeBtn.addEventListener("click", () => {
-        const html = document.documentElement;
-        const isDark = html.getAttribute("data-theme") === "dark";
-        html.setAttribute("data-theme", isDark ? "light" : "dark");
-        sun.classList.toggle("hidden", !isDark);
-        moon.classList.toggle("hidden", isDark);
+      CHARACTERS.forEach(c => {
+        if (c.name.toLowerCase().includes(query) || c.alias.toLowerCase().includes(query) || c.actor.toLowerCase().includes(query)) {
+          results.push({ type: "Character", label: c.name, sub: c.alias, action: () => openInspectorForCharacter(c.id) });
+        }
       });
 
-      // Looping Theme Music Button
-      const musicBtn = document.getElementById("theme-music-toggle");
-      if (musicBtn) {
-        musicBtn.addEventListener("click", toggleDoomsdayThemeMusic);
+      TIMELINE_LANES.flatMap(l => l.items).forEach(m => {
+        if (m.title.toLowerCase().includes(query) || m.summary.toLowerCase().includes(query)) {
+          results.push({ type: "Movie", label: m.title, sub: `${m.year} · ${m.universe}`, action: () => openInspectorForMovie(m.id) });
+        }
+      });
+
+      AUDIT_CLAIMS.forEach(a => {
+        if (a.claim.toLowerCase().includes(query) || a.details.toLowerCase().includes(query)) {
+          results.push({ type: "Leak Audit", label: a.claim, sub: `${a.status} (${a.source})`, action: () => document.getElementById("leak-audit").scrollIntoView({behavior:"smooth"}) });
+        }
+      });
+
+      if (!results.length) {
+        dropdown.innerHTML = `<div class="p-3 text-xs opacity-60 text-center">No multiverse records matching "${query}"</div>`;
+      } else {
+        dropdown.innerHTML = results.slice(0, 8).map((r, i) => `
+          <div class="p-2.5 hover:bg-slate-500/15 cursor-pointer flex items-center justify-between text-xs" data-idx="${i}">
+            <div>
+              <div class="font-bold text-slate-100">${r.label}</div>
+              <div class="text-[10px] opacity-65">${r.sub}</div>
+            </div>
+            <span class="text-[9.5px] px-1.5 py-0.5 rounded font-mono bg-slate-900/60 border border-white/10 uppercase">${r.type}</span>
+          </div>
+        `).join("");
+
+        dropdown.querySelectorAll("[data-idx]").forEach(item => {
+          item.addEventListener("click", () => {
+            const idx = parseInt(item.dataset.idx, 10);
+            results[idx].action();
+            dropdown.classList.add("hidden");
+          });
+        });
       }
+
+      dropdown.classList.remove("hidden");
+    }
+
+    /* =======================================================================
+       CONTROLS, THEME, TIMELINE FILTERS, SCROLL REVEAL OBSERVER
+    ======================================================================= */
+    function initControls() {
+      const themeToggle = document.getElementById("theme-toggle");
+      const darkIcon = document.getElementById("theme-icon-dark");
+      const lightIcon = document.getElementById("theme-icon-light");
+
+      function updateThemeIcons(theme) {
+        if (theme === "light") {
+          darkIcon.classList.remove("hidden");
+          lightIcon.classList.add("hidden");
+        } else {
+          darkIcon.classList.add("hidden");
+          lightIcon.classList.remove("hidden");
+        }
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-theme") || "dark";
+        const next = cur === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        updateThemeIcons(next);
+      });
 
       document.querySelectorAll(".canon-btn").forEach(btn => {
         btn.addEventListener("click", () => setCanonFilter(btn.dataset.canon));
       });
 
-      const cdIndia = document.getElementById("cd-india");
-      const cdGlobal = document.getElementById("cd-global");
-      const cdLabel = document.getElementById("countdown-label");
-
-      cdIndia.addEventListener("click", () => {
-        state.countdownTarget = "india";
-        cdIndia.className = "px-2 py-0.5 rounded-md bg-emerald-500/30 text-emerald-200 font-semibold transition";
-        cdGlobal.className = "px-2 py-0.5 rounded-md text-slate-300 hover:text-white transition";
-        cdLabel.textContent = "India Theatrical Release · Dec 17, 2026 (EN / HI / TA / TE)";
-        updateCountdown();
-      });
-
-      cdGlobal.addEventListener("click", () => {
-        state.countdownTarget = "global";
-        cdGlobal.className = "px-2 py-0.5 rounded-md bg-emerald-500/30 text-emerald-200 font-semibold transition";
-        cdIndia.className = "px-2 py-0.5 rounded-md text-slate-300 hover:text-white transition";
-        cdLabel.textContent = "US / Global Theatrical Release · Dec 18, 2026";
-        updateCountdown();
-      });
-
-      const tlAll = document.getElementById("tl-filter-all");
-      const tlD15 = document.getElementById("tl-filter-d15");
-      tlAll.addEventListener("click", () => {
+      document.getElementById("tl-filter-all").addEventListener("click", (e) => {
         state.timelineD15Only = false;
-        tlAll.className = "px-2.5 py-1 rounded-lg bg-cyan-500/25 text-cyan-300 transition";
-        tlD15.className = "px-2.5 py-1 rounded-lg opacity-75 hover:opacity-100 transition";
+        e.target.classList.add("bg-cyan-500/25", "text-cyan-300");
+        document.getElementById("tl-filter-d15").classList.remove("bg-cyan-500/25", "text-cyan-300");
         renderTimeline();
       });
-      tlD15.addEventListener("click", () => {
+
+      document.getElementById("tl-filter-d15").addEventListener("click", (e) => {
         state.timelineD15Only = true;
-        tlD15.className = "px-2.5 py-1 rounded-lg bg-cyan-500/25 text-cyan-300 transition";
-        tlAll.className = "px-2.5 py-1 rounded-lg opacity-75 hover:opacity-100 transition";
+        e.target.classList.add("bg-cyan-500/25", "text-cyan-300");
+        document.getElementById("tl-filter-all").classList.remove("bg-cyan-500/25", "text-cyan-300");
         renderTimeline();
       });
 
-      document.querySelectorAll(".uni-filter-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          state.dossierUniverse = btn.dataset.uni;
-          document.querySelectorAll(".uni-filter-btn").forEach(b => {
-            b.classList.remove("bg-emerald-500/25", "text-emerald-300", "border-emerald-500/40");
-            b.classList.add("bg-slate-500/10", "border-slate-500/20");
-          });
-          btn.classList.add("bg-emerald-500/25", "text-emerald-300", "border-emerald-500/40");
-          btn.classList.remove("bg-slate-500/10", "border-slate-500/20");
-          renderDossier();
-        });
+      document.getElementById("cd-india").addEventListener("click", (e) => {
+        activeReleaseTarget = "india";
+        document.getElementById("countdown-label").textContent = "Theatrical Release · Dec 17, 2026 (EN / HI / TA / TE)";
+        e.target.classList.add("bg-emerald-500/30", "text-emerald-200", "font-semibold");
+        document.getElementById("cd-global").classList.remove("bg-emerald-500/30", "text-emerald-200", "font-semibold");
+        updateCountdown();
       });
 
-      document.querySelectorAll(".fac-filter-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          state.dossierFaction = btn.dataset.fac;
-          document.querySelectorAll(".fac-filter-btn").forEach(b => b.classList.remove("bg-white/10", "border-white/20"));
-          btn.classList.add("bg-white/10", "border-white/20");
-          renderDossier();
-        });
+      document.getElementById("cd-global").addEventListener("click", (e) => {
+        activeReleaseTarget = "global";
+        document.getElementById("countdown-label").textContent = "Global Premiere · Dec 18, 2026 (Worldwide Theaters)";
+        e.target.classList.add("bg-emerald-500/30", "text-emerald-200", "font-semibold");
+        document.getElementById("cd-india").classList.remove("bg-emerald-500/30", "text-emerald-200", "font-semibold");
+        updateCountdown();
       });
 
-      document.querySelectorAll(".audit-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          state.auditStatus = btn.dataset.status;
-          document.querySelectorAll(".audit-btn").forEach(b => b.style.opacity = "0.65");
-          btn.style.opacity = "1";
-          renderLeakAudit();
-        });
-      });
+      document.getElementById("theme-music-toggle").addEventListener("click", toggleDoomsdayThemeMusic);
+      document.getElementById("close-drawer-btn").addEventListener("click", closeDrawer);
+      document.getElementById("drawer-backdrop").addEventListener("click", closeDrawer);
 
-      document.getElementById("inspector-close").addEventListener("click", closeDrawer);
-      document.getElementById("inspector-backdrop").addEventListener("click", closeDrawer);
-      document.addEventListener("keydown", (e) => {
+      window.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeDrawer();
       });
 
+      // Safe scroll reveal observer with low threshold + mobile immediate visibility
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add("visible");
         });
-      }, { threshold: 0.08 });
-      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+      }, { threshold: 0.01 });
+
+      document.querySelectorAll(".reveal").forEach(el => {
+        observer.observe(el);
+        if (window.innerWidth <= 768) {
+          el.classList.add("visible");
+        }
+      });
     }
 
     /* =======================================================================
-       BOOTSTRAP
+       DECOUPLED SAFE BOOTSTRAP (ISOLATED PER COMPONENT)
     ======================================================================= */
     window.onload = function () {
       try {
         initThreeHero();
       } catch (err) {
-        console.warn("Three.js fallback:", err);
+        console.warn("Three.js hero fallback:", err);
       }
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
 
-      initHoloStage();
-      initMapInteractions();
-      renderTimeline();
-      renderDossier();
-      renderLeakAudit();
-      renderActExplorer();
-      renderConceptAndTheories();
-      initGlobalSearch();
-      initControls();
+      try {
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      } catch (err) {
+        console.warn("Countdown:", err);
+      }
+
+      try { initHoloStage(); } catch (err) { console.error("HoloStage:", err); }
+      try { initMapInteractions(); } catch (err) { console.error("MapInteractions:", err); }
+      try { renderTimeline(); } catch (err) { console.error("Timeline:", err); }
+      try { renderDossier(); } catch (err) { console.error("Dossier:", err); }
+      try { renderLeakAudit(); } catch (err) { console.error("LeakAudit:", err); }
+      try { renderActExplorer(); } catch (err) { console.error("ActExplorer:", err); }
+      try { renderConceptAndTheories(); } catch (err) { console.error("ConceptTheories:", err); }
+      try { initGlobalSearch(); } catch (err) { console.error("GlobalSearch:", err); }
+      try { initControls(); } catch (err) { console.error("Controls:", err); }
     };
   </script>
 </body>
