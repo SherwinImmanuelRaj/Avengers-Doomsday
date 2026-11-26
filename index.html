@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
-  <title>Avengers: Doomsday — Multiverse Lore Atlas, 3D Holo-Stage & Connection Map</title>
+  <title>Avengers: Doomsday — Multiverse Lore Atlas & Connection Matrix</title>
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png" />
 
   <!-- Fonts: Inter + Cinzel for Gothic Latverian Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,7 +20,7 @@
 
   <style>
     /* =====================================================================
-       THEME VARIABLES & MULTIVERSE COLOR SYSTEM
+       PRISTINE GLASSMORPHIC THEME VARIABLES & MULTIVERSE COLOR SYSTEM
     ===================================================================== */
     :root {
       --u616: #e21936;
@@ -32,35 +33,37 @@
     }
 
     [data-theme="dark"] {
-      --bg-primary: #06080f;
-      --bg-secondary: #0b101d;
-      --bg-elevated: rgba(15, 23, 42, 0.72);
-      --glass-bg: rgba(13, 19, 34, 0.68);
-      --glass-bg-strong: rgba(10, 15, 28, 0.90);
-      --glass-border: rgba(255, 255, 255, 0.12);
+      --bg-primary: #040711;
+      --bg-secondary: #080d1e;
+      --bg-elevated: rgba(13, 20, 38, 0.75);
+      --glass-bg: rgba(9, 14, 28, 0.65);
+      --glass-bg-strong: rgba(7, 11, 23, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.11);
       --glass-border-hover: rgba(16, 185, 129, 0.55);
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
       --text-muted: #64748b;
-      --map-grid: rgba(148, 163, 184, 0.08);
-      --map-bg: radial-gradient(circle at 50% 48%, rgba(16, 185, 129, 0.12) 0%, rgba(14, 165, 233, 0.06) 30%, rgba(6, 8, 15, 0.96) 75%);
-      --card-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.75);
+      --map-grid: rgba(148, 163, 184, 0.07);
+      --map-bg: radial-gradient(circle at 50% 48%, rgba(16, 185, 129, 0.12) 0%, rgba(14, 165, 233, 0.06) 30%, rgba(4, 7, 17, 0.96) 75%);
+      --card-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.14);
+      --glass-glow: 0 0 35px rgba(16, 185, 129, 0.18);
     }
 
     [data-theme="light"] {
       --bg-primary: #f1f5f9;
       --bg-secondary: #e2e8f0;
       --bg-elevated: rgba(255, 255, 255, 0.85);
-      --glass-bg: rgba(255, 255, 255, 0.75);
-      --glass-bg-strong: rgba(255, 255, 255, 0.95);
-      --glass-border: rgba(15, 23, 42, 0.14);
+      --glass-bg: rgba(255, 255, 255, 0.72);
+      --glass-bg-strong: rgba(255, 255, 255, 0.94);
+      --glass-border: rgba(15, 23, 42, 0.12);
       --glass-border-hover: rgba(16, 185, 129, 0.65);
       --text-primary: #0f172a;
       --text-secondary: #334155;
       --text-muted: #64748b;
       --map-grid: rgba(15, 23, 42, 0.07);
       --map-bg: radial-gradient(circle at 50% 48%, rgba(16, 185, 129, 0.10) 0%, rgba(14, 165, 233, 0.08) 32%, rgba(241, 245, 249, 0.96) 75%);
-      --card-shadow: 0 14px 32px -12px rgba(15, 23, 42, 0.16);
+      --card-shadow: 0 16px 36px -12px rgba(15, 23, 42, 0.16), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+      --glass-glow: 0 0 25px rgba(16, 185, 129, 0.15);
     }
 
     * {
@@ -79,6 +82,17 @@
       color: var(--text-primary);
       overflow-x: hidden;
       transition: background-color 0.35s ease, color 0.35s ease;
+      position: relative;
+    }
+
+    /* Ambient Background Glow Lights (Glassmorphic Atmosphere) */
+    .ambient-glow-sphere {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.28;
     }
 
     .font-display {
@@ -87,16 +101,21 @@
 
     .glass {
       background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(24px) saturate(170%);
+      -webkit-backdrop-filter: blur(24px) saturate(170%);
       border: 1px solid var(--glass-border);
       box-shadow: var(--card-shadow);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    .glass:hover {
+      border-color: var(--glass-border-hover);
     }
 
     .glass-strong {
       background: var(--glass-bg-strong);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(32px) saturate(190%);
+      -webkit-backdrop-filter: blur(32px) saturate(190%);
       border: 1px solid var(--glass-border);
       box-shadow: var(--card-shadow);
     }
@@ -104,10 +123,6 @@
     /* Latverian Emerald & Cosmic Accents */
     .glow-doom {
       text-shadow: 0 0 24px rgba(16, 185, 129, 0.7), 0 0 45px rgba(16, 185, 129, 0.35);
-    }
-
-    .border-glow-doom {
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.38), inset 0 0 15px rgba(16, 185, 129, 0.15);
     }
 
     .unofficial-badge {
@@ -128,85 +143,72 @@
     .unofficial-card {
       border-style: dashed !important;
       border-color: rgba(168, 85, 247, 0.55) !important;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(13, 19, 34, 0.7)) !important;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(9, 14, 28, 0.75)) !important;
     }
 
     /* =====================================================================
-       3D MULTIVERSE CHARACTER HOLO-STAGE & PEDESTAL STYLES
+       2D HOLOGRAPHIC CHARACTER SHOWCASE (CRISP 2D PRESENTATION)
     ===================================================================== */
-    .holo-viewport {
-      perspective: 1200px;
-      perspective-origin: 50% 50%;
-    }
-
-    .holo-stage-3d {
-      transform-style: preserve-3d;
-      transition: transform 0.15s ease-out;
-    }
-
-    .holo-pedestal {
-      position: absolute;
-      bottom: 18px;
-      width: 320px;
-      height: 72px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0.15) 45%, transparent 70%);
-      border: 2px solid rgba(16, 185, 129, 0.6);
-      box-shadow: 0 0 40px rgba(16, 185, 129, 0.4), inset 0 0 25px rgba(16, 185, 129, 0.3);
-      transform: rotateX(72deg);
-      pointer-events: none;
-      animation: pedestalPulse 4s ease-in-out infinite;
-    }
-
-    .holo-pedestal-rings {
-      position: absolute;
-      inset: -12px;
-      border-radius: 50%;
-      border: 1px dashed rgba(234, 179, 8, 0.5);
-      animation: pedestalSpin 24s linear infinite;
-    }
-
-    @keyframes pedestalPulse {
-      0%, 100% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.35), inset 0 0 25px rgba(16, 185, 129, 0.25); }
-      50% { box-shadow: 0 0 65px rgba(16, 185, 129, 0.65), inset 0 0 45px rgba(52, 211, 153, 0.45); }
-    }
-
-    @keyframes pedestalSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .holo-character-cutout {
+    .showcase-viewport {
       position: relative;
-      height: 410px;
+      min-height: 480px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 1.5rem;
+      background: radial-gradient(circle at 50% 50%, rgba(13, 20, 38, 0.7) 0%, rgba(5, 8, 18, 0.95) 100%);
+      border: 1px solid var(--glass-border);
+    }
+
+    .showcase-character-cutout {
+      position: relative;
+      z-index: 10;
+      max-height: 420px;
       max-width: 90%;
       object-fit: contain;
-      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 25px var(--char-glow, rgba(16, 185, 129, 0.45)));
-      transform: translateZ(40px);
-      transition: all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
-      animation: floatCutout 4.2s ease-in-out infinite;
+      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 28px var(--char-glow, rgba(16, 185, 129, 0.5)));
+      animation: gentleFloat 4.2s ease-in-out infinite;
+      transition: filter 0.35s ease, transform 0.35s ease;
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
-    @keyframes floatCutout {
-      0%, 100% { transform: translateY(0) translateZ(40px); }
-      50% { transform: translateY(-12px) translateZ(45px); }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    .holo-ambient-portal {
+    .showcase-ambient-portal {
       position: absolute;
-      width: 360px;
-      height: 360px;
+      width: 380px;
+      height: 380px;
       border-radius: 50%;
-      background: radial-gradient(circle, var(--char-glow, rgba(16, 185, 129, 0.28)) 0%, transparent 68%);
-      filter: blur(28px);
-      z-index: 0;
+      background: radial-gradient(circle, var(--char-glow, rgba(16, 185, 129, 0.28)) 0%, transparent 70%);
+      filter: blur(32px);
+      z-index: 1;
       pointer-events: none;
-      animation: portalBreathe 5s ease-in-out infinite alternate;
+      animation: portalPulse 5s ease-in-out infinite alternate;
     }
 
-    @keyframes portalBreathe {
+    @keyframes portalPulse {
       0% { transform: scale(0.92); opacity: 0.65; }
       100% { transform: scale(1.15); opacity: 0.95; }
+    }
+
+    .showcase-pedestal {
+      position: absolute;
+      bottom: 22px;
+      width: 340px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, var(--char-glow, rgba(16, 185, 129, 0.45)) 0%, transparent 72%);
+      border-bottom: 2px solid var(--char-glow, rgba(16, 185, 129, 0.7));
+      box-shadow: 0 0 35px var(--char-glow, rgba(16, 185, 129, 0.4)), inset 0 0 20px var(--char-glow, rgba(16, 185, 129, 0.25));
+      pointer-events: none;
+      z-index: 2;
     }
 
     .stat-bar-fill {
@@ -235,36 +237,39 @@
 
     .timeline-movie-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85);
+      box-shadow: 0 22px 45px -10px rgba(0, 0, 0, 0.9);
     }
 
     .movie-backdrop-header {
       position: relative;
-      height: 140px;
+      height: 170px;
       width: 100%;
       overflow: hidden;
-      background-size: cover;
-      background-position: center;
+      background: radial-gradient(circle at 50% 40%, rgba(16, 185, 129, 0.12) 0%, rgba(14, 165, 233, 0.06) 45%, rgba(4, 7, 17, 0.96) 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 14px;
+      padding: 16px;
     }
 
     .movie-backdrop-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(6, 8, 15, 0.4) 0%, rgba(6, 8, 15, 0.82) 65%, var(--bg-primary) 100%);
+      background: linear-gradient(to bottom, rgba(4, 7, 17, 0.08) 0%, rgba(4, 7, 17, 0.42) 75%, rgba(4, 7, 17, 0.85) 100%);
       pointer-events: none;
     }
 
     .movie-logo-img {
       position: relative;
       z-index: 10;
-      max-height: 72px;
-      max-width: 86%;
+      width: auto;
+      height: auto;
+      max-height: 132px;
+      max-width: 92%;
       object-fit: contain;
-      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.95));
+      border-radius: 6px;
+      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.9));
       transition: transform 0.25s ease;
     }
 
@@ -274,12 +279,12 @@
 
     .leads-to-doomsday-box {
       border-left: 3px solid #10b981;
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(13, 19, 34, 0.45));
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(9, 14, 28, 0.55));
     }
 
     .essential-lore-box {
       border-left: 3px solid #a855f7;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.10), rgba(13, 19, 34, 0.45));
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.10), rgba(9, 14, 28, 0.55));
     }
 
     /* =====================================================================
@@ -320,24 +325,15 @@
       inset: 0;
       z-index: 2;
       background:
-        radial-gradient(circle at 50% 42%, transparent 16%, rgba(6, 8, 15, 0.68) 72%, var(--bg-primary) 100%),
-        linear-gradient(to bottom, rgba(6, 8, 15, 0.35) 0%, transparent 25%, transparent 72%, var(--bg-primary) 100%);
+        radial-gradient(circle at 50% 45%, transparent 16%, rgba(4, 7, 17, 0.68) 72%, var(--bg-primary) 100%),
+        linear-gradient(to bottom, rgba(4, 7, 17, 0.4) 0%, transparent 25%, transparent 72%, var(--bg-primary) 100%);
       pointer-events: none;
     }
 
     [data-theme="light"] .hero-vignette {
       background:
-        radial-gradient(circle at 50% 42%, rgba(6, 8, 15, 0.18) 10%, rgba(6, 8, 15, 0.58) 72%, rgba(241, 245, 249, 0.96) 100%),
-        linear-gradient(to bottom, rgba(6, 8, 15, 0.35) 0%, transparent 25%, transparent 74%, var(--bg-primary) 100%);
-    }
-
-    @keyframes emeraldPulse {
-      0%, 100% { filter: drop-shadow(0 0 14px rgba(16, 185, 129, 0.55)) drop-shadow(0 0 36px rgba(16, 185, 129, 0.22)); }
-      50% { filter: drop-shadow(0 0 22px rgba(16, 185, 129, 0.85)) drop-shadow(0 0 54px rgba(52, 211, 153, 0.35)); }
-    }
-
-    .doomsday-logo-glow {
-      animation: emeraldPulse 3.8s ease-in-out infinite;
+        radial-gradient(circle at 50% 45%, rgba(4, 7, 17, 0.18) 10%, rgba(4, 7, 17, 0.58) 72%, rgba(241, 245, 249, 0.96) 100%),
+        linear-gradient(to bottom, rgba(4, 7, 17, 0.35) 0%, transparent 25%, transparent 74%, var(--bg-primary) 100%);
     }
 
     @keyframes scrollFloat {
@@ -422,31 +418,17 @@
     }
 
     /* =====================================================================
-       POP-OUT 3D TILT DOSSIER CARDS
+       POP-OUT DOSSIER CARDS
     ===================================================================== */
-    .tilt-card {
-      transform-style: preserve-3d;
-      transition: transform 0.12s ease-out, box-shadow 0.25s ease;
-      will-change: transform;
-    }
-
     .popout-card {
       position: relative;
       overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
 
-    .popout-card:hover .popout-badge {
-      transform: translateZ(28px) scale(1.05);
-      box-shadow: 0 12px 28px -4px rgba(16, 185, 129, 0.45);
-    }
-
-    .popout-card:hover .popout-avatar {
-      transform: translateZ(42px) scale(1.08);
-      filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.7));
-    }
-
-    .popout-card:hover .popout-quote {
-      transform: translateZ(18px);
+    .popout-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.85);
     }
 
     /* =====================================================================
@@ -455,8 +437,8 @@
     #drawer-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
       z-index: 70;
       opacity: 0;
       pointer-events: none;
@@ -543,6 +525,12 @@
 </head>
 <body>
 
+  <!-- Ambient Background Glow Lights (Glassmorphic Backdrop) -->
+  <div class="ambient-glow-sphere w-[500px] h-[500px] bg-emerald-500 top-20 left-10"></div>
+  <div class="ambient-glow-sphere w-[600px] h-[600px] bg-cyan-500 top-[900px] right-10"></div>
+  <div class="ambient-glow-sphere w-[550px] h-[550px] bg-purple-600 top-[2200px] left-1/4"></div>
+  <div class="ambient-glow-sphere w-[500px] h-[500px] bg-emerald-600 top-[3500px] right-20"></div>
+
   <!-- HTML5 Audio Element for Looping Doomsday Theme -->
   <audio id="doomsday-theme-audio" loop preload="auto">
     <source src="assets/audio/doomsday_theme.mp3" type="audio/mpeg" />
@@ -550,53 +538,49 @@
   </audio>
 
   <!-- =======================================================================
-       STICKY FLOATING GLASSMORPHIC HUD
+       STICKY FLOATING GLASSMORPHIC HUD (WITH DOOMSDAY LOGO & FAVICON)
   ======================================================================= -->
   <header id="floating-hud" class="fixed top-3 left-0 right-0 z-50 px-3 sm:px-5 pointer-events-none">
-    <div class="max-w-7xl mx-auto glass-strong rounded-2xl px-3 py-2.5 sm:px-4 pointer-events-auto">
+    <div class="max-w-7xl mx-auto glass-strong rounded-2xl px-3 py-2 sm:px-4 pointer-events-auto">
       <div class="flex flex-wrap items-center justify-between gap-2.5">
 
-        <!-- Brand Mark & Quick-Jump Nav -->
-        <div class="flex items-center gap-3">
-          <a href="#hero" class="flex items-center gap-2 group" title="Back to Top">
-            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500/30 via-emerald-900/60 to-slate-900 border border-emerald-400/50 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition">
-              <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 32 32" fill="none">
-                <path d="M16 3L6 28H11.5L13.5 22.5H19.5L21 26L26 21.5L21.5 17.5V20H14.5L16 15.8L18.8 22.5H24.5L16 3Z" fill="currentColor"/>
-                <circle cx="16" cy="16" r="13.5" stroke="currentColor" stroke-width="1.6" stroke-dasharray="60 14"/>
-              </svg>
-            </div>
-            <div class="hidden sm:block leading-tight">
-              <div class="font-display font-bold text-xs tracking-widest text-emerald-400">DOOMSDAY</div>
-              <div class="text-[10px] tracking-wider uppercase opacity-70">Lore Atlas</div>
-            </div>
-          </a>
+        <!-- Brand Mark with Doomsday Logo Image -->
+        <a href="#hero" class="flex items-center gap-2.5 group" title="Back to Top">
+          <div class="w-9 h-9 rounded-xl glass border border-emerald-400/40 flex items-center justify-center p-1.5 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition">
+            <img src="assets/icons/favicon.png" alt="Avengers Emblem" class="max-h-full max-w-full object-contain" />
+          </div>
+          <div class="flex items-center">
+            <img src="assets/icons/doomsday_logo.png" alt="Avengers: Doomsday" class="h-6 sm:h-7 w-auto object-contain drop-shadow-[0_0_12px_rgba(16,185,129,0.5)] group-hover:scale-105 transition" />
+          </div>
+        </a>
 
-          <nav class="hidden lg:flex items-center gap-1 ml-2">
-            <a href="#hero" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Hero</a>
-            <a href="#holo-stage" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 hover:bg-emerald-500/25 transition">★ Holo-Stage</a>
-            <a href="#multiverse-map" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Connection Map</a>
-            <a href="#timeline" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Timeline</a>
-            <a href="#dossier" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Dossiers</a>
-            <a href="#leak-audit" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-purple-500/15 hover:text-purple-400 transition">Leak Audit</a>
-          </nav>
-        </div>
+        <!-- Main Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-1 ml-2">
+          <a href="#hero" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Hero</a>
+          <a href="#holo-stage" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 hover:bg-emerald-500/25 transition">★ Showcase</a>
+          <a href="#multiverse-map" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Connection Map</a>
+          <a href="#timeline" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Timeline</a>
+          <a href="#dossier" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-emerald-500/15 hover:text-emerald-400 transition">Dossiers</a>
+          <a href="#leak-audit" class="px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-purple-500/15 hover:text-purple-400 transition">Leak Audit</a>
+        </nav>
 
-        <!-- Live Search Bar -->
+        <!-- Agentic Multiverse Search Bar -->
         <div class="relative flex-1 min-w-[160px] max-w-xs sm:max-w-sm">
           <div class="relative flex items-center">
-            <svg class="w-4 h-4 absolute left-3 opacity-60 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 absolute left-3 text-emerald-400/80 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
             </svg>
             <input
               id="global-search"
               type="text"
-              placeholder="Search characters, movies, leaks..."
+              placeholder="Ask Agentic Search (Doom, Mutants, 828...)"
               autocomplete="off"
-              class="w-full pl-9 pr-8 py-1.5 rounded-xl text-xs sm:text-sm bg-slate-500/10 border border-slate-500/25 focus:outline-none focus:border-emerald-400/70 transition"
+              class="w-full pl-9 pr-12 py-1.5 rounded-xl text-xs sm:text-sm bg-slate-500/10 border border-slate-500/25 focus:outline-none focus:border-emerald-400/70 transition"
             />
+            <span class="hidden md:inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-mono bg-slate-500/20 text-slate-300 absolute right-7 pointer-events-none">/</span>
             <button id="clear-search-btn" class="hidden absolute right-2.5 text-xs opacity-60 hover:opacity-100" aria-label="Clear search">✕</button>
           </div>
-          <div id="search-dropdown" class="hidden absolute left-0 right-0 mt-2 glass-strong rounded-xl max-h-80 overflow-y-auto shadow-2xl divide-y divide-slate-500/15 z-50"></div>
+          <div id="search-dropdown" class="hidden absolute left-0 sm:-left-12 right-0 sm:w-[440px] max-w-[92vw] mt-2 glass-strong rounded-2xl max-h-[75vh] overflow-y-auto shadow-2xl border border-emerald-500/30 z-50"></div>
         </div>
 
         <!-- Music Control + Canon Filter + Theme Toggle -->
@@ -628,16 +612,15 @@
   </header>
 
   <!-- =======================================================================
-       HERO: CINEMATIC VIDEO BACKGROUND + EMBOSSED DOOMSDAY COLD OPEN
+       HERO: CINEMATIC VIDEO BACKGROUND + DOOMSDAY LOGO IMAGE CENTERPIECE
   ======================================================================= -->
-  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
-    <!-- Cinematic Looping Video Background with 3D Particles & Vignette Overlay -->
+  <section id="hero" class="relative min-h-[94vh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
+    <!-- Cinematic Looping Video Background with Vignette -->
     <div id="hero-media-container">
       <video id="hero-bg-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1920&q=80">
         <source src="assets/video/hero_incursion.mp4" type="video/mp4" />
         <source src="https://assets.mixkit.co/videos/preview/mixkit-flying-through-a-star-field-in-space-41547-large.mp4" type="video/mp4" />
       </video>
-      <div id="hero-canvas-container"></div>
       <div class="hero-vignette"></div>
     </div>
 
@@ -645,24 +628,22 @@
     <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
       
       <!-- Phase Tag Badge -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold uppercase tracking-widest mb-5 shadow-lg shadow-emerald-500/10">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-emerald-500/40 text-emerald-300 text-xs font-bold uppercase tracking-widest mb-5 shadow-lg shadow-emerald-500/10">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span>Multiverse Incursion Saga · The Final Stand</span>
       </div>
 
-      <!-- Main Latverian Embossed Title Treatment -->
-      <div class="mb-4">
-        <div class="font-display font-black text-xs sm:text-sm tracking-[0.35em] text-slate-300 uppercase mb-1">
+      <!-- Main Centerpiece: Official Avengers Doomsday Logo PNG -->
+      <div class="mb-4 flex flex-col items-center">
+        <div class="font-display font-black text-xs sm:text-sm tracking-[0.35em] text-emerald-300/80 uppercase mb-2">
           MARVEL STUDIOS PRESENTS
         </div>
-        <div class="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-slate-400 drop-shadow-2xl leading-none">
-          AVENGERS
-        </div>
-        <div class="font-display font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 doomsday-logo-glow -mt-1 sm:-mt-2">
-          DOOMSDAY
+        <div class="relative flex items-center justify-center">
+          <img src="assets/icons/doomsday_logo.png" alt="Avengers: Doomsday Logo" class="max-h-28 sm:max-h-40 md:max-h-52 w-auto object-contain drop-shadow-[0_0_45px_rgba(16,185,129,0.7)] select-none pointer-events-none hover:scale-[1.02] transition duration-500" />
         </div>
       </div>
 
+      <!-- Numberless Subtitle (User Approved A1) -->
       <h1 class="text-xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white drop-shadow mb-3">
         Infinite Realities in Collapse. Colliding Universes. The Sovereign Monarch.
       </h1>
@@ -702,28 +683,9 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 w-full max-w-3xl mb-7">
-        <div class="glass rounded-xl p-3 text-center border-red-500/30">
-          <div class="text-base sm:text-lg font-black text-white">Confirmed Assemble</div>
-          <div class="text-[11px] font-medium text-slate-300">Earth-616 · Earth-828 · Earth-10005</div>
-        </div>
-        <div class="glass rounded-xl p-3 text-center border-cyan-500/30">
-          <div class="text-base sm:text-lg font-black text-cyan-300">Operational Factions</div>
-          <div class="text-[11px] font-medium text-slate-300">Latveria · TVA · Thunderbolts</div>
-        </div>
-        <div class="glass rounded-xl p-3 text-center border-amber-500/30">
-          <div class="text-base sm:text-lg font-black text-amber-300">Bridging Nexus Scenes</div>
-          <div class="text-[11px] font-medium text-slate-300">Multiverse Domination Climax</div>
-        </div>
-        <div class="glass rounded-xl p-3 text-center border-purple-500/40" style="border-style: dashed;">
-          <div class="text-base sm:text-lg font-black text-purple-300">Audited Leak Dossiers</div>
-          <div class="text-[11px] font-medium text-purple-200">Plot Acts &amp; Verified Rumors</div>
-        </div>
-      </div>
-
       <div class="flex flex-wrap items-center justify-center gap-3 mb-7">
         <a href="#holo-stage" class="px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 shadow-lg shadow-emerald-500/30 hover:scale-[1.03] transition flex items-center gap-2">
-          <span>★ Launch Holo-Stage</span>
+          <span>★ Launch Showcase</span>
         </a>
         <a href="#multiverse-map" class="px-6 py-3 rounded-xl font-bold text-sm glass text-white hover:border-emerald-400/60 hover:scale-[1.03] transition">
           Explore Connection Map
@@ -739,7 +701,7 @@
       </div>
 
       <a href="#holo-stage" class="scroll-cue inline-flex flex-col items-center gap-1 text-xs uppercase tracking-widest text-emerald-300/90">
-        <span>Enter Multiverse Holo-Stage</span>
+        <span>Enter Hologram Showcase</span>
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M19 9l-7 7-7-7"/>
         </svg>
@@ -748,20 +710,20 @@
   </section>
 
   <!-- =======================================================================
-       MULTIVERSE CHARACTER HOLO-STAGE & PEDESTAL
+       2D HOLOGRAPHIC CHARACTER SHOWCASE (NEAT GLASSMORPHIC SPOTLIGHT)
   ======================================================================= -->
   <section id="holo-stage" class="py-16 px-3 sm:px-6 max-w-7xl mx-auto reveal">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
       <div>
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-widest mb-2">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>Multiverse Gateway · Character Hologram Stage</span>
+          <span>Multiverse Gateway · Character Hologram Showcase</span>
         </div>
         <h2 class="text-2xl sm:text-4xl font-black tracking-tight flex items-center gap-3">
-          <span>Character Holo-Stage</span>
+          <span>Character Hologram Showcase</span>
         </h2>
         <p class="text-sm opacity-75 mt-1 max-w-2xl">
-          Rotate character cutouts on a 3D pedestal, filter by specific film, and inspect their direct Incursion mission leading into <em>Avengers: Doomsday</em>.
+          Inspect high-definition character holograms in crisp 2D presentation, filter by specific movie, and examine their direct Incursion mission leading into <em>Avengers: Doomsday</em>.
         </p>
       </div>
 
@@ -771,31 +733,27 @@
       </div>
     </div>
 
-    <!-- Main 3D Display Container -->
+    <!-- Main Glassmorphic Display Container -->
     <div class="glass rounded-3xl overflow-hidden relative border border-slate-500/20 p-4 sm:p-7">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
 
-        <!-- 3D Pedestal & Character Cutout Display (7 cols) -->
-        <div class="lg:col-span-7 flex flex-col items-center justify-center relative min-h-[460px] holo-viewport overflow-hidden rounded-2xl bg-gradient-to-b from-slate-950/80 via-slate-900/40 to-slate-950/90 border border-white/5">
-          <div id="holo-portal-aura" class="holo-ambient-portal"></div>
+        <!-- 2D Character Showcase Spotlight (7 cols) -->
+        <div class="lg:col-span-7 flex flex-col items-center justify-center relative showcase-viewport">
+          <div id="holo-portal-aura" class="showcase-ambient-portal"></div>
 
-          <!-- Rotating 3D Holo-Stage Pedestal Base -->
-          <div class="holo-pedestal">
-            <div class="holo-pedestal-rings"></div>
+          <!-- Flat Grounded Hologram Pedestal Base -->
+          <div class="showcase-pedestal"></div>
+
+          <!-- Character Cutout Container (Crisp 2D Upright) -->
+          <div id="holo-cutout-container" class="relative z-10 flex items-center justify-center p-3 w-full h-full min-h-[420px]">
+            <!-- Injected Cutout Image -->
           </div>
 
-          <!-- 3D Stage Interactive Area with Character Cutout -->
-          <div id="holo-stage-interactive" class="holo-stage-3d flex items-center justify-center w-full h-full cursor-grab active:cursor-grabbing select-none" title="Drag to tilt & inspect 3D perspective">
-            <div id="holo-cutout-container" class="relative z-10 flex items-center justify-center p-3">
-              <!-- Injected Cutout Image -->
-            </div>
-          </div>
-
-          <!-- Floating Pedestal Controls -->
-          <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[11px] opacity-75 pointer-events-none">
-            <span class="inline-flex items-center gap-1 bg-slate-950/70 px-2.5 py-1 rounded-lg border border-white/10">
-              <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
-              <span>Drag to tilt 3D perspective</span>
+          <!-- Floating Pedestal Badge -->
+          <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[11px] opacity-75 pointer-events-none z-20">
+            <span class="inline-flex items-center gap-1.5 bg-slate-950/70 px-2.5 py-1 rounded-lg border border-white/10">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Holographic Multiverse Transmission</span>
             </span>
             <span id="holo-universe-tag" class="font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300">
               EARTH-828
@@ -1023,7 +981,7 @@
   </section>
 
   <!-- =======================================================================
-       CHARACTER DOSSIERS (POP-OUT 3D TILT CARDS)
+       CHARACTER DOSSIERS (POP-OUT GLASS CARDS)
   ======================================================================= -->
   <section id="dossier" class="py-16 px-3 sm:px-6 max-w-7xl mx-auto reveal">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
@@ -1031,7 +989,7 @@
         <div class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Intelligence Dossiers · Operatives &amp; Factions</div>
         <h2 class="text-2xl sm:text-4xl font-black tracking-tight">Character Intelligence Files</h2>
         <p class="text-sm opacity-75 mt-1 max-w-2xl">
-          Pop-out 3D tilt dossiers covering every confirmed champion, villain, and unconfirmed multiverse operative.
+          Frosted glass intelligence dossiers covering every confirmed champion, villain, and unconfirmed multiverse operative.
         </p>
       </div>
 
@@ -1120,7 +1078,10 @@
   ======================================================================= -->
   <footer class="py-12 px-4 border-t border-slate-500/20 text-center text-xs opacity-75">
     <div class="max-w-4xl mx-auto space-y-3">
-      <div class="font-display font-bold tracking-widest text-emerald-400">AVENGERS: DOOMSDAY · MULTIVERSE ATLAS</div>
+      <div class="flex items-center justify-center gap-2 mb-2">
+        <img src="assets/icons/favicon.png" alt="Avengers Emblem" class="w-5 h-5 object-contain" />
+        <span class="font-display font-bold tracking-widest text-emerald-400">AVENGERS: DOOMSDAY · MULTIVERSE ATLAS</span>
+      </div>
       <p class="leading-relaxed">
         Continuity research compiled from Marvel Studios official releases, Disney+ Phase 4–6 broadcasts, San Diego Comic-Con, D23, and production trade filings.
       </p>
@@ -2534,7 +2495,7 @@
       "c_spidey_peter": "https://www.pngmart.com/files/12/Miles-Morales-Spider-Man-PNG-Transparent-Picture.png"
     };
 
-    // Ensure all Holo & Dossier characters have cutoutUrl defined
+    // Ensure all characters have cutoutUrl defined
     HOLO_CHARACTERS.forEach(c => {
       c.cutoutUrl = REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
     });
@@ -2569,7 +2530,7 @@
     }
 
     /* =======================================================================
-       LOOPING DOOMSDAY THEME MUSIC ENGINE (DUAL HTML5 AUDIO + WEB AUDIO SYNTH)
+       LOOPING DOOMSDAY THEME MUSIC ENGINE WITH DUAL AUTOPLAY & WEB AUDIO
     ======================================================================= */
     let isThemePlaying = false;
     let webAudioContext = null;
@@ -2675,8 +2636,57 @@
       }
     }
 
+    function startAutoAudio() {
+      const audio = document.getElementById("doomsday-theme-audio");
+      const btnText = document.getElementById("music-btn-text");
+      const eq = document.getElementById("music-equalizer");
+
+      if (!audio || isThemePlaying) return;
+      audio.volume = 0.55;
+
+      // Ensure accurate initial standby UI
+      if (btnText) btnText.textContent = "Play Theme";
+      if (eq) eq.classList.remove("music-playing");
+
+      const activateThemeOnFirstClick = (e) => {
+        // Let the HUD button's own click listener handle direct button clicks
+        if (e && e.target && e.target.closest && e.target.closest("#theme-music-toggle")) {
+          cleanupAudioListeners();
+          return;
+        }
+        if (isThemePlaying || !audio) {
+          cleanupAudioListeners();
+          return;
+        }
+
+        const p = audio.play();
+        if (p !== undefined) {
+          p.then(() => {
+            isThemePlaying = true;
+            if (btnText) btnText.textContent = "Pause Theme";
+            if (eq) eq.classList.add("music-playing");
+            cleanupAudioListeners();
+          }).catch(() => {
+            // Keep listeners attached until a valid user activation gesture succeeds
+          });
+        }
+      };
+
+      const cleanupAudioListeners = () => {
+        window.removeEventListener("click", activateThemeOnFirstClick);
+        window.removeEventListener("pointerdown", activateThemeOnFirstClick);
+        window.removeEventListener("keydown", activateThemeOnFirstClick);
+        window.removeEventListener("touchstart", activateThemeOnFirstClick);
+      };
+
+      window.addEventListener("click", activateThemeOnFirstClick);
+      window.addEventListener("pointerdown", activateThemeOnFirstClick);
+      window.addEventListener("keydown", activateThemeOnFirstClick);
+      window.addEventListener("touchstart", activateThemeOnFirstClick);
+    }
+
     /* =======================================================================
-       3D MULTIVERSE CHARACTER HOLO-STAGE LOGIC
+       2D HOLOGRAPHIC CHARACTER SHOWCASE ENGINE
     ======================================================================= */
     const holoState = {
       activeCharId: "c_doom",
@@ -2686,7 +2696,6 @@
     function initHoloStage() {
       const filterBar = document.getElementById("holo-movie-filters");
       const carousel = document.getElementById("holo-char-carousel");
-      const interactiveArea = document.getElementById("holo-stage-interactive");
       if (!filterBar || !carousel) return;
 
       const movieFilterOptions = [
@@ -2730,7 +2739,7 @@
           holoState.activeCharId = filtered[0].id;
         }
 
-        carousel.innerHTML = filtered.map(c => {{
+        carousel.innerHTML = filtered.map(c => {
           const localImg = `assets/images/characters/${c.id}.png`;
           const fallbackImg = c.cutoutUrl || REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
           return `
@@ -2744,7 +2753,7 @@
             </div>
           </button>
         `;
-        }}).join("");
+        }).join("");
 
         carousel.querySelectorAll(".holo-thumb").forEach(thumb => {
           thumb.addEventListener("click", () => {
@@ -2762,13 +2771,13 @@
         const char = HOLO_CHARACTERS.find(c => c.id === holoState.activeCharId) || HOLO_CHARACTERS[0];
         if (!char) return;
 
-        // Render Character Cutout Image in 3D stage with local asset check
+        // Render Character Cutout Image in 2D showcase with local asset check
         const container = document.getElementById("holo-cutout-container");
         const localImg = `assets/images/characters/${char.id}.png`;
         const fallbackImg = char.cutoutUrl || REAL_CUTOUT_MAP[char.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
 
         container.innerHTML = `
-          <img id="holo-real-cutout-img" src="${localImg}" onerror="if(this.src!=='${fallbackImg}')this.src='${fallbackImg}';" alt="${char.name}" class="holo-character-cutout object-contain select-none" />
+          <img id="holo-real-cutout-img" src="${localImg}" onerror="if(this.src!=='${fallbackImg}')this.src='${fallbackImg}';" alt="${char.name}" class="showcase-character-cutout object-contain select-none" />
         `;
 
         document.getElementById("holo-portal-aura").style.setProperty("--char-glow", char.glowColor || "rgba(16, 185, 129, 0.45)");
@@ -2801,35 +2810,6 @@
       }
 
       renderHoloCarousel();
-
-      // 3D Perspective Tilt Control on Drag
-      if (interactiveArea) {
-        let isDraggingStage = false, startTiltX = 0, startTiltY = 0;
-        let curRotX = 0, curRotY = 0;
-
-        interactiveArea.addEventListener("pointerdown", (e) => {
-          isDraggingStage = true;
-          startTiltX = e.clientX;
-          startTiltY = e.clientY;
-          interactiveArea.setPointerCapture(e.pointerId);
-        });
-
-        window.addEventListener("pointermove", (e) => {
-          if (!isDraggingStage) return;
-          const dx = e.clientX - startTiltX;
-          const dy = e.clientY - startTiltY;
-          curRotY = Math.max(-28, Math.min(28, dx * 0.18));
-          curRotX = Math.max(-18, Math.min(18, -dy * 0.14));
-          interactiveArea.style.transform = `rotateX(${curRotX}deg) rotateY(${curRotY}deg)`;
-        });
-
-        window.addEventListener("pointerup", (e) => {
-          if (isDraggingStage) {
-            isDraggingStage = false;
-            interactiveArea.style.transform = `rotateX(0deg) rotateY(0deg)`;
-          }
-        });
-      }
     }
 
     window.selectHoloCharacter = function(charId) {
@@ -2840,7 +2820,7 @@
         if (container) {
           const localImg = `assets/images/characters/${char.id}.png`;
           const fallbackImg = char.cutoutUrl || REAL_CUTOUT_MAP[char.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
-          container.innerHTML = `<img id="holo-real-cutout-img" src="${localImg}" onerror="if(this.src!=='${fallbackImg}')this.src='${fallbackImg}';" alt="${char.name}" class="holo-character-cutout object-contain select-none" />`;
+          container.innerHTML = `<img id="holo-real-cutout-img" src="${localImg}" onerror="if(this.src!=='${fallbackImg}')this.src='${fallbackImg}';" alt="${char.name}" class="showcase-character-cutout object-contain select-none" />`;
         }
       }
     };
@@ -2886,11 +2866,11 @@
           const localLogo = `assets/images/movies/${item.id}.png`;
           const remoteLogo = item.logoUrl;
 
-          // Card Header with cinematic poster backdrop and real title logo
+          // Card Header with clean default glassmorphic backdrop and aspect-ratio-safe movie image
           const headerMarkup = `
-            <div class="movie-backdrop-header" style="background-image: url('${item.backdropUrl || "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80"}');">
+            <div class="movie-backdrop-header" style="background-image: radial-gradient(circle at 50% 40%, ${accent}24 0%, rgba(8, 13, 26, 0.94) 70%, rgba(4, 7, 17, 0.99) 100%);">
               <div class="movie-backdrop-overlay"></div>
-              <img src="${localLogo}" alt="${item.title} Logo" class="movie-logo-img" onerror="if(this.src.indexOf('assets/')!==-1){this.src='${remoteLogo}';}else{this.outerHTML = decodeURIComponent('${encodeURIComponent(fallbackSvg)}');}" />
+              <img src="${localLogo}" alt="${item.title}" class="movie-logo-img" onerror="if(this.src.indexOf('assets/')!==-1){this.src='${remoteLogo}';}else{this.outerHTML = decodeURIComponent('${encodeURIComponent(fallbackSvg)}');}" />
             </div>
           `;
 
@@ -2978,7 +2958,6 @@
           }
 
           grid.appendChild(card);
-          attachTiltEffect(card);
         });
 
         container.appendChild(section);
@@ -2988,7 +2967,7 @@
     }
 
     /* =======================================================================
-       CHARACTER DOSSIERS RENDERER (POP-OUT 3D TILT CARDS)
+       CHARACTER DOSSIERS RENDERER (POP-OUT GLASS CARDS)
     ======================================================================= */
     function renderDossier() {
       const grid = document.getElementById("dossier-grid");
@@ -3022,7 +3001,7 @@
         const localImg = `assets/images/characters/${c.id}.png`;
         const fallbackImg = c.cutoutUrl || REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
         const card = document.createElement("article");
-        card.className = `popout-card tilt-card glass rounded-2xl p-4 flex flex-col justify-between gap-3 ${!c.official ? "unofficial-card" : ""}`;
+        card.className = `popout-card glass rounded-2xl p-4 flex flex-col justify-between gap-3 ${!c.official ? "unofficial-card" : ""}`;
 
         card.innerHTML = `
           <div>
@@ -3055,7 +3034,6 @@
         `;
 
         grid.appendChild(card);
-        attachTiltEffect(card);
       });
     }
 
@@ -3090,91 +3068,10 @@
     };
 
     /* =======================================================================
-       THREE.JS REAL-TIME COLLIDING UNIVERSES (HERO BACKDROP OVERLAY)
+       HERO PARTICLES REMOVED FOR CLEAN VIDEO PLAYBACK
     ======================================================================= */
-    let heroScene, heroCamera, heroRenderer;
-    let universe616Mesh, universe828Mesh, universe10005Mesh;
-    let doomVortexMesh, incursionParticles;
-    let targetMouseX = 0, targetMouseY = 0;
-
     function initThreeHero() {
-      const container = document.getElementById("hero-canvas-container");
-      if (!container) return;
-
-      heroScene = new THREE.Scene();
-      heroCamera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-      heroCamera.position.z = 85;
-
-      heroRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
-      heroRenderer.setSize(container.clientWidth, container.clientHeight);
-      heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      container.innerHTML = "";
-      container.appendChild(heroRenderer.domElement);
-
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-      heroScene.add(ambientLight);
-
-      universe616Mesh = createPlanet(0xe21936, 11, -26, 6, 0);
-      universe828Mesh = createPlanet(0x0ea5e9, 9.5, 24, -4, -6);
-      universe10005Mesh = createPlanet(0xf59e0b, 7.5, 0, -22, -10);
-
-      const vortexGeo = new THREE.TorusGeometry(32, 1.2, 16, 120);
-      const vortexMat = new THREE.MeshBasicMaterial({
-        color: 0x10b981,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.28
-      });
-      doomVortexMesh = new THREE.Mesh(vortexGeo, vortexMat);
-      doomVortexMesh.rotation.x = Math.PI / 2.3;
-      heroScene.add(doomVortexMesh);
-
-      const partCount = 1800;
-      const partGeo = new THREE.BufferGeometry();
-      const posArray = new Float32Array(partCount * 3);
-      const colorArray = new Float32Array(partCount * 3);
-
-      for (let i = 0; i < partCount; i++) {
-        posArray[i * 3] = (Math.random() - 0.5) * 160;
-        posArray[i * 3 + 1] = (Math.random() - 0.5) * 100;
-        posArray[i * 3 + 2] = (Math.random() - 0.5) * 90;
-
-        const p = Math.random();
-        if (p < 0.35) {
-          colorArray[i * 3] = 0.88; colorArray[i * 3 + 1] = 0.10; colorArray[i * 3 + 2] = 0.21;
-        } else if (p < 0.65) {
-          colorArray[i * 3] = 0.05; colorArray[i * 3 + 1] = 0.65; colorArray[i * 3 + 2] = 0.91;
-        } else {
-          colorArray[i * 3] = 0.06; colorArray[i * 3 + 1] = 0.72; colorArray[i * 3 + 2] = 0.51;
-        }
-      }
-
-      partGeo.setAttribute("position", new THREE.BufferAttribute(posArray, 3));
-      partGeo.setAttribute("color", new THREE.BufferAttribute(colorArray, 3));
-
-      const partMat = new THREE.PointsMaterial({
-        size: 1.1,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.72,
-        blending: THREE.AdditiveBlending
-      });
-      incursionParticles = new THREE.Points(partGeo, partMat);
-      heroScene.add(incursionParticles);
-
-      window.addEventListener("resize", () => {
-        if (!heroCamera || !heroRenderer || !container) return;
-        heroCamera.aspect = container.clientWidth / container.clientHeight;
-        heroCamera.updateProjectionMatrix();
-        heroRenderer.setSize(container.clientWidth, container.clientHeight);
-      });
-
-      window.addEventListener("mousemove", (e) => {
-        targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2.2;
-        targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2.2;
-      });
-
-      animate();
+      // Particles and wireframe canvas removed per user preference so hero_incursion.mp4 renders cleanly.
     }
 
     function createPlanet(colorHex, radius, x, y, z) {
@@ -3583,19 +3480,36 @@
     }
 
     function openInspectorForNode(node) {
+      const color = UNIVERSE_COLORS[node.universe] || node.color || "#10b981";
+      const loreText = node.lore || node.arc || "Classified multiversal nexus point.";
+      const holoId = node.charId || (typeof HOLO_CHARACTERS !== "undefined" && HOLO_CHARACTERS.some(h => h.id === node.id) ? node.id : null);
       const content = document.getElementById("drawer-content");
       content.innerHTML = `
         <div class="flex items-center gap-2 mb-1">
-          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold" style="background:${node.color}25; color:${node.color}; border:1px solid ${node.color}40">${node.universe}</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold" style="background:${color}25; color:${color}; border:1px solid ${color}40">${node.universe}</span>
           ${!node.official ? `<span class="unofficial-badge">[UNOFFICIAL]</span>` : ""}
         </div>
         <h3 class="text-xl font-black">${node.label}</h3>
-        <div class="text-xs font-semibold opacity-75">${node.sub}</div>
+        <div class="text-xs font-semibold opacity-75">${node.sub || ""}</div>
 
         <div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20 leading-relaxed">
           <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">Lore Assessment</div>
-          <p class="opacity-90">${node.lore}</p>
+          <p class="opacity-90">${loreText}</p>
         </div>
+
+        ${node.powers ? `
+          <div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20 leading-relaxed">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1">Capabilities</div>
+            <p class="opacity-85">${node.powers}</p>
+          </div>
+        ` : ""}
+
+        ${node.lastSeen ? `
+          <div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20 leading-relaxed">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-amber-400 mb-1">Last Confirmed Sighting</div>
+            <p class="opacity-85">${node.lastSeen}</p>
+          </div>
+        ` : ""}
 
         <div>
           <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Connected Multiverse Realities</div>
@@ -3603,7 +3517,7 @@
         </div>
 
         <div class="pt-3 border-t border-slate-500/15 flex items-center gap-2">
-          ${node.charId ? `<button class="w-full py-2 rounded-xl bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 hover:bg-emerald-500/30 transition" onclick="selectHoloCharacter('${node.charId}'); document.getElementById('holo-stage').scrollIntoView({behavior:'smooth'});">Inspect in 3D Holo-Stage</button>` : ""}
+          ${holoId ? `<button class="w-full py-2 rounded-xl bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 hover:bg-emerald-500/30 transition" onclick="selectHoloCharacter('${holoId}'); document.getElementById('holo-stage').scrollIntoView({behavior:'smooth'}); closeDrawer();">Inspect in Showcase</button>` : ""}
         </div>
       `;
       openDrawer();
@@ -3613,6 +3527,7 @@
       const fromNode = MAP_NODES.find(n => n.id === edge.from);
       const toNode = MAP_NODES.find(n => n.id === edge.to);
       const color = EDGE_COLORS[edge.type] || "#94a3b8";
+      const edgeText = edge.lore || edge.desc || edge.label || "Cross-reality incursion connection.";
 
       const content = document.getElementById("drawer-content");
       content.innerHTML = `
@@ -3621,10 +3536,11 @@
           ${edge.type === "unofficial" ? `<span class="unofficial-badge">[UNOFFICIAL]</span>` : ""}
         </div>
         <h3 class="text-lg font-black">${fromNode ? fromNode.label : edge.from} ⟷ ${toNode ? toNode.label : edge.to}</h3>
+        ${edge.label ? `<div class="text-xs font-semibold text-emerald-400">${edge.label}</div>` : ""}
 
         <div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20 leading-relaxed">
           <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">Multiversal Domino Dynamics</div>
-          <p class="opacity-90">${edge.lore}</p>
+          <p class="opacity-90">${edgeText}</p>
         </div>
 
         <div class="grid grid-cols-2 gap-2 pt-2">
@@ -3645,9 +3561,16 @@
       const c = CHARACTERS.find(ch => ch.id === charId);
       if (!c) return;
 
+      const holoAliasMap = { u_wanda: "c_wanda", u_wolverine: "c_wolverine", u_deadpool: "c_deadpool" };
+      const holoId = holoAliasMap[c.id] || c.id;
+      const holoMatch = typeof HOLO_CHARACTERS !== "undefined" ? HOLO_CHARACTERS.find(h => h.id === holoId) : null;
+
       const accent = UNIVERSE_COLORS[c.universe] || "#10b981";
       const localImg = `assets/images/characters/${c.id}.png`;
       const fallbackImg = c.cutoutUrl || REAL_CUTOUT_MAP[c.id] || "https://www.pngmart.com/files/22/Doctor-Doom-PNG-Free-Download.png";
+      const assessmentText = c.summary || c.arc || (holoMatch && holoMatch.lore) || "Active multiversal operative tracked by TVA temporal sensors.";
+      const missionText = c.leadsToDoomsday || (holoMatch && holoMatch.lore) || (c.lastSeen ? `Last Seen: ${c.lastSeen}` : "Active participant in Battleworld convergence.");
+
       const header = `
         <div class="flex items-center gap-2 mb-1">
           <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:${accent}25; color:${accent}">${c.universe}</span>
@@ -3666,17 +3589,24 @@
         ${header}
         <div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20 leading-relaxed">
           <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">Intelligence Assessment</div>
-          <p class="opacity-90">${c.summary}</p>
+          <p class="opacity-90">${assessmentText}</p>
         </div>
         <div class="rounded-xl p-3 bg-emerald-950/30 border border-emerald-500/30 leading-relaxed">
           <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-300 mb-1">Direct Incursion Mission</div>
-          <p class="opacity-90">${c.leadsToDoomsday || "Active participant in Battleworld convergence."}</p>
+          <p class="opacity-90">${missionText}</p>
         </div>
         ${c.powers ? `<div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20"><div class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1">Capabilities</div><p class="opacity-80">${c.powers}</p></div>` : ""}
+        ${c.lastSeen ? `<div class="rounded-xl p-3 bg-slate-900/50 border border-slate-500/20"><div class="text-[10px] font-bold uppercase tracking-wider text-amber-400 mb-1">Last Confirmed Sighting</div><p class="opacity-80">${c.lastSeen}</p></div>` : ""}
         <div class="pt-2 flex items-center gap-2">
-          <button class="w-full py-2 rounded-xl bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 hover:bg-emerald-500/30 transition" onclick="selectHoloCharacter('${c.id}'); document.getElementById('holo-stage').scrollIntoView({behavior:'smooth'}); closeDrawer();">
-            Inspect on 3D Holo-Stage →
-          </button>
+          ${holoMatch ? `
+            <button class="w-full py-2 rounded-xl bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 hover:bg-emerald-500/30 transition" onclick="selectHoloCharacter('${holoMatch.id}'); document.getElementById('holo-stage').scrollIntoView({behavior:'smooth'}); closeDrawer();">
+              Inspect in Showcase →
+            </button>
+          ` : (c.mapNode ? `
+            <button class="w-full py-2 rounded-xl bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/40 hover:bg-cyan-500/30 transition" onclick="focusNodeOnMap('${c.mapNode}'); document.getElementById('multiverse-map').scrollIntoView({behavior:'smooth'}); closeDrawer();">
+              Locate on Connection Map →
+            </button>
+          ` : "")}
         </div>
       `;
       openDrawer();
@@ -3697,9 +3627,8 @@
           <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:${accent}25; color:${accent}">${movie.universe}</span>
           <span class="text-[10px] font-bold opacity-60">${movie.year}</span>
         </div>
-        <div class="h-32 w-full rounded-xl flex items-center justify-center p-3 bg-slate-950/80 border border-white/10 my-2 overflow-hidden" style="background-image: url('${movie.backdropUrl || ""}'); background-size: cover; background-position: center;">
-          <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
-          <img src="${localLogo}" alt="${movie.title} Logo" class="relative z-10 max-h-16 max-w-full object-contain drop-shadow" onerror="if(this.src.indexOf('assets/')!==-1){this.src='${remoteLogo}';}else{this.outerHTML = decodeURIComponent('${encodeURIComponent(fallbackSvg)}');}" />
+        <div class="relative h-36 w-full rounded-xl flex items-center justify-center p-3 border border-white/10 my-2 overflow-hidden" style="background: radial-gradient(circle at 50% 40%, ${accent}24 0%, rgba(8, 13, 26, 0.94) 70%, rgba(4, 7, 17, 0.99) 100%);">
+          <img src="${localLogo}" alt="${movie.title}" class="relative z-10 w-auto h-auto max-h-24 max-w-[90%] object-contain rounded drop-shadow" onerror="if(this.src.indexOf('assets/')!==-1){this.src='${remoteLogo}';}else{this.outerHTML = decodeURIComponent('${encodeURIComponent(fallbackSvg)}');}" />
         </div>
         <h3 class="text-xl font-black">${movie.title}</h3>
 
@@ -3730,26 +3659,6 @@
         ` : ""}
       `;
       openDrawer();
-    }
-
-    /* =======================================================================
-       3D TILT EFFECT FOR POP-OUT CARDS
-    ======================================================================= */
-    function attachTiltEffect(el) {
-      el.addEventListener("mousemove", (e) => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const cx = rect.width / 2;
-        const cy = rect.height / 2;
-        const rx = ((y - cy) / cy) * -9;
-        const ry = ((x - cx) / cx) * 9;
-        el.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02, 1.02, 1.02)`;
-      });
-
-      el.addEventListener("mouseleave", () => {
-        el.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
-      });
     }
 
     /* =======================================================================
@@ -3869,82 +3778,260 @@
     }
 
     /* =======================================================================
-       GLOBAL SEARCH ENGINE
+       AGENTIC MULTIVERSE SEARCH ENGINE
     ======================================================================= */
+    const AGENT_QUICK_PROMPTS = [
+      { label: "⚡ Who fights Doom?", query: "who fights doom" },
+      { label: "🧬 Earth-10005 Mutants", query: "mutants" },
+      { label: "🌌 Explain Incursion", query: "incursion" },
+      { label: "🛡️ Earth-828 Fantastic Four", query: "earth-828" },
+      { label: "📅 Upcoming 2026-2028", query: "upcoming" }
+    ];
+
     function initGlobalSearch() {
       const input = document.getElementById("global-search");
       const dropdown = document.getElementById("search-dropdown");
       const clearBtn = document.getElementById("clear-search-btn");
       if (!input || !dropdown) return;
 
-      input.addEventListener("input", () => {
+      input.addEventListener("focus", () => {
         const q = input.value.trim().toLowerCase();
         if (q.length > 0) {
-          clearBtn.classList.remove("hidden");
-          runSearch(q);
+          runAgenticSearch(q);
         } else {
-          clearBtn.classList.add("hidden");
-          dropdown.classList.add("hidden");
+          renderAgentQuickPrompts();
         }
       });
 
-      clearBtn.addEventListener("click", () => {
-        input.value = "";
-        clearBtn.classList.add("hidden");
-        dropdown.classList.add("hidden");
-        input.focus();
+      input.addEventListener("input", () => {
+        const q = input.value.trim().toLowerCase();
+        if (q.length > 0) {
+          if (clearBtn) clearBtn.classList.remove("hidden");
+          runAgenticSearch(q);
+        } else {
+          if (clearBtn) clearBtn.classList.add("hidden");
+          renderAgentQuickPrompts();
+        }
+      });
+
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          input.value = "";
+          clearBtn.classList.add("hidden");
+          renderAgentQuickPrompts();
+          input.focus();
+        });
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if ((e.key === "/" || (e.ctrlKey && e.key.toLowerCase() === "k")) && document.activeElement !== input) {
+          e.preventDefault();
+          input.focus();
+        } else if (e.key === "Escape") {
+          dropdown.classList.add("hidden");
+          input.blur();
+        }
       });
 
       document.addEventListener("click", (e) => {
-        if (!e.target.closest("#global-search") && !e.target.closest("#search-dropdown")) {
+        if (!e.target.closest("#global-search") && !e.target.closest("#search-dropdown") && !e.target.closest("#clear-search-btn")) {
           dropdown.classList.add("hidden");
         }
       });
     }
 
-    function runSearch(query) {
+    function renderAgentQuickPrompts() {
       const dropdown = document.getElementById("search-dropdown");
-      const results = [];
+      const input = document.getElementById("global-search");
+      if (!dropdown) return;
 
-      CHARACTERS.forEach(c => {
-        if (c.name.toLowerCase().includes(query) || c.alias.toLowerCase().includes(query) || c.actor.toLowerCase().includes(query)) {
-          results.push({ type: "Character", label: c.name, sub: c.alias, action: () => openInspectorForCharacter(c.id) });
-        }
-      });
-
-      TIMELINE_LANES.flatMap(l => l.items).forEach(m => {
-        if (m.title.toLowerCase().includes(query) || m.summary.toLowerCase().includes(query)) {
-          results.push({ type: "Movie", label: m.title, sub: `${m.year} · ${m.universe}`, action: () => openInspectorForMovie(m.id) });
-        }
-      });
-
-      AUDIT_CLAIMS.forEach(a => {
-        if (a.claim.toLowerCase().includes(query) || a.details.toLowerCase().includes(query)) {
-          results.push({ type: "Leak Audit", label: a.claim, sub: `${a.status} (${a.source})`, action: () => document.getElementById("leak-audit").scrollIntoView({behavior:"smooth"}) });
-        }
-      });
-
-      if (!results.length) {
-        dropdown.innerHTML = `<div class="p-3 text-xs opacity-60 text-center">No multiverse records matching "${query}"</div>`;
-      } else {
-        dropdown.innerHTML = results.slice(0, 8).map((r, i) => `
-          <div class="p-2.5 hover:bg-slate-500/15 cursor-pointer flex items-center justify-between text-xs" data-idx="${i}">
-            <div>
-              <div class="font-bold text-slate-100">${r.label}</div>
-              <div class="text-[10px] opacity-65">${r.sub}</div>
-            </div>
-            <span class="text-[9.5px] px-1.5 py-0.5 rounded font-mono bg-slate-900/60 border border-white/10 uppercase">${r.type}</span>
+      dropdown.innerHTML = `
+        <div class="p-3.5 space-y-2.5">
+          <div class="flex items-center justify-between text-[10px] font-black uppercase tracking-wider text-emerald-400">
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> T.V.A. Agentic Search Console</span>
+            <span class="opacity-60 font-mono">READY</span>
           </div>
-        `).join("");
+          <p class="text-[11px] text-slate-300 leading-relaxed">Ask a natural question or select an intelligence briefing below:</p>
+          <div class="flex flex-wrap gap-1.5">
+            ${AGENT_QUICK_PROMPTS.map(p => `
+              <button type="button" class="agent-prompt-chip px-2.5 py-1 rounded-lg bg-slate-800/70 hover:bg-emerald-500/20 border border-white/10 hover:border-emerald-400/50 text-[11px] font-semibold text-slate-200 transition" data-query="${p.query}">
+                ${p.label}
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      `;
 
-        dropdown.querySelectorAll("[data-idx]").forEach(item => {
-          item.addEventListener("click", () => {
-            const idx = parseInt(item.dataset.idx, 10);
-            results[idx].action();
-            dropdown.classList.add("hidden");
-          });
+      dropdown.querySelectorAll(".agent-prompt-chip").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const q = btn.dataset.query;
+          if (input) input.value = q;
+          const clearBtn = document.getElementById("clear-search-btn");
+          if (clearBtn) clearBtn.classList.remove("hidden");
+          runAgenticSearch(q);
         });
+      });
+
+      dropdown.classList.remove("hidden");
+    }
+
+    function generateAgentBriefing(query, matchedChars, matchedMovies, matchedLeaks) {
+      const q = query.toLowerCase();
+      if (q.includes("who fight") || q.includes("oppos") || (q.includes("doom") && q.includes("fight"))) {
+        return {
+          title: "Tactical Threat Synthesis: Anti-Doom Coalition",
+          summary: "Victor von Doom (Earth-828) faces a fractured 3-universe alliance: Sam Wilson's Avengers & Yelena's New Avengers (Earth-616), Reed Richards' Fantastic Four (Earth-828), Charles Xavier's X-Men (Earth-10005), and God Loki's TVA."
+        };
       }
+      if (q.includes("mutant") || q.includes("x-men") || q.includes("xmen") || q.includes("10005")) {
+        return {
+          title: "Earth-10005 Mutant Incursion Dossier",
+          summary: "The Fox-verse X-Men (Xavier, Magneto, Cyclops, Beast, Nightcrawler, Mystique, Gambit) collide with Earth-616 as Monica Rambeau remains stranded across realities."
+        };
+      }
+      if (q.includes("incursion") || q.includes("battleworld") || q.includes("collapse")) {
+        return {
+          title: "Multiverse Incursion Protocol",
+          summary: "An Incursion occurs when two Earths collide at their dimensional boundaries. Doom exploits dying realities to forge Battleworld around Loki's Yggdrasil throne."
+        };
+      }
+      if (q.includes("828") || q.includes("fantastic")) {
+        return {
+          title: "Earth-828 Nexus Origin",
+          summary: "Home to the retro-futuristic Fantastic Four, Franklin Richards, and Victor von Doom. Their flight into Earth-616 space triggers the Doomsday alert."
+        };
+      }
+      if (q.includes("upcoming") || q.includes("2026") || q.includes("2027") || q.includes("2028")) {
+        return {
+          title: "Upcoming Multiverse Slate",
+          summary: "Key roadmap milestones: Spider-Man: Brand New Day (2026), Avengers: Doomsday (Dec 2026), Avengers: Secret Wars (2027), and the 2028 MCU Soft Reset."
+        };
+      }
+      if (q.includes("tva") || q.includes("loki") || q.includes("yggdrasil")) {
+        return {
+          title: "TVA & Yggdrasil Temporal Watch",
+          summary: "God Loki holds the multiverse branches together at the Citadel at the End of Time while Mobius, O.B., and Casey monitor temporal decay."
+        };
+      }
+      const total = matchedChars.length + matchedMovies.length + matchedLeaks.length;
+      return {
+        title: `Agentic Intelligence Scan: "${query}"`,
+        summary: total > 0
+          ? `Found ${matchedChars.length} operative(s), ${matchedMovies.length} canon entry(ies), and ${matchedLeaks.length} leak record(s) linked to your query.`
+          : `No direct dossier matches found for "${query}". Try searching a hero (Doom, Loki, Wolverine), universe (Earth-828), or concept (Incursion).`
+      };
+    }
+
+    function runAgenticSearch(rawQuery) {
+      const dropdown = document.getElementById("search-dropdown");
+      if (!dropdown) return;
+      const query = rawQuery.toLowerCase().trim();
+      const tokens = query.split(/\s+/).filter(t => t.length > 1 && !["who", "what", "where", "the", "is", "are", "in", "for", "and", "show", "me", "explain"].includes(t));
+      const searchTerms = tokens.length ? tokens : [query];
+
+      const matchesText = (text) => {
+        const lower = (text || "").toLowerCase();
+        return lower.includes(query) || searchTerms.every(t => lower.includes(t)) || searchTerms.some(t => lower.includes(t));
+      };
+
+      // Score & rank matches
+      const matchedChars = [];
+      (CHARACTERS || []).forEach(c => {
+        const blob = `${c.name || ""} ${c.alias || ""} ${c.actor || ""} ${c.faction || ""} ${c.universe || ""} ${c.powers || ""} ${c.arc || ""}`;
+        if (matchesText(blob)) {
+          const exact = (c.name || "").toLowerCase().includes(query) || (c.alias || "").toLowerCase().includes(query);
+          matchedChars.push({
+            score: exact ? 3 : 1,
+            type: "Operative",
+            id: c.id,
+            label: c.name || "Unknown",
+            sub: `${c.alias || ""} · ${c.universe || ""}`,
+            img: `assets/images/characters/${c.id}.png`,
+            action: () => {
+              openInspectorForCharacter(c.id);
+              if (typeof window.selectHoloCharacter === "function" && typeof HOLO_CHARACTERS !== "undefined" && HOLO_CHARACTERS.some(h => h.id === c.id)) {
+                window.selectHoloCharacter(c.id);
+              }
+            }
+          });
+        }
+      });
+      matchedChars.sort((a, b) => b.score - a.score);
+
+      const matchedMovies = [];
+      (TIMELINE_LANES || []).flatMap(l => l.items || []).forEach(m => {
+        const blob = `${m.title || ""} ${m.summary || ""} ${m.universe || ""} ${m.year || ""} ${m.leadsToDoomsday || ""} ${m.spoilersLore || ""} ${m.upcoming ? "upcoming" : ""}`;
+        if (matchesText(blob)) {
+          const exact = (m.title || "").toLowerCase().includes(query);
+          matchedMovies.push({
+            score: exact ? 3 : 1,
+            type: "Timeline",
+            id: m.id,
+            label: m.title || "Untitled",
+            sub: `${m.year || ""} · ${m.universe || ""}`,
+            action: () => openInspectorForMovie(m.id)
+          });
+        }
+      });
+      matchedMovies.sort((a, b) => b.score - a.score);
+
+      const matchedLeaks = [];
+      (AUDIT_CLAIMS || []).forEach(a => {
+        const blob = `${a.claim || ""} ${a.details || ""} ${a.status || ""} ${a.source || ""}`;
+        if (matchesText(blob)) {
+          matchedLeaks.push({
+            type: "Leak Audit",
+            label: a.claim || "Classified Claim",
+            sub: `${a.status || ""} (${a.source || ""})`,
+            action: () => {
+              const el = document.getElementById("leak-audit");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        }
+      });
+
+      const briefing = generateAgentBriefing(query, matchedChars, matchedMovies, matchedLeaks);
+      const combined = [...matchedChars.slice(0, 4), ...matchedMovies.slice(0, 3), ...matchedLeaks.slice(0, 2)];
+
+      let html = `
+        <div class="p-3.5 bg-gradient-to-br from-emerald-500/15 via-slate-900/60 to-cyan-500/10 border-b border-emerald-500/25">
+          <div class="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-emerald-400 mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>${briefing.title}</span>
+          </div>
+          <p class="text-[11.5px] text-slate-200 leading-relaxed">${briefing.summary}</p>
+        </div>
+      `;
+
+      if (combined.length > 0) {
+        html += `<div class="divide-y divide-slate-500/15">` + combined.map((r, i) => `
+          <div class="p-2.5 hover:bg-emerald-500/10 cursor-pointer flex items-center justify-between gap-2.5 text-xs transition" data-agent-idx="${i}">
+            <div class="flex items-center gap-2.5 min-w-0">
+              ${r.img ? `<img src="${r.img}" alt="${r.label}" class="w-8 h-8 rounded-lg object-contain bg-slate-900/80 border border-white/10 shrink-0" onerror="this.style.display='none'" />` : `<div class="w-8 h-8 rounded-lg bg-slate-800/80 border border-white/10 flex items-center justify-center text-[10px] font-bold text-cyan-300 shrink-0">${r.type[0]}</div>`}
+              <div class="min-w-0">
+                <div class="font-bold text-slate-100 truncate">${r.label}</div>
+                <div class="text-[10px] text-slate-400 truncate">${r.sub}</div>
+              </div>
+            </div>
+            <span class="text-[9.5px] px-2 py-0.5 rounded-md font-mono bg-slate-900/80 border border-white/10 text-emerald-300 uppercase shrink-0">${r.type}</span>
+          </div>
+        `).join("") + `</div>`;
+      } else {
+        html += `<div class="p-3 text-xs opacity-60 text-center">No direct entity records matched "${rawQuery}".</div>`;
+      }
+
+      dropdown.innerHTML = html;
+
+      dropdown.querySelectorAll("[data-agent-idx]").forEach(item => {
+        item.addEventListener("click", () => {
+          const idx = parseInt(item.dataset.agentIdx, 10);
+          if (combined[idx] && combined[idx].action) {
+            combined[idx].action();
+          }
+          dropdown.classList.add("hidden");
+        });
+      });
 
       dropdown.classList.remove("hidden");
     }
@@ -4057,6 +4144,9 @@
       try { renderConceptAndTheories(); } catch (err) { console.error("ConceptTheories:", err); }
       try { initGlobalSearch(); } catch (err) { console.error("GlobalSearch:", err); }
       try { initControls(); } catch (err) { console.error("Controls:", err); }
+
+      // Attempt automatic theme music playback with seamless gesture fallback
+      try { startAutoAudio(); } catch (err) { console.warn("AutoAudio:", err); }
     };
   </script>
 </body>
